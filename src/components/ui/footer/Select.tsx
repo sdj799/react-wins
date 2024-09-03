@@ -98,7 +98,6 @@ const SelectOptionsStyle = styled.ul<{ show: boolean }>`
 
 const OptionStyle = styled.li`
   font-size: 12px;
-  padding: 10px 15px;
   transition: background-color 0.2s ease-in;
   &:hover {
     background-color: #eceef2;
@@ -106,5 +105,7 @@ const OptionStyle = styled.li`
 
   & > a {
     width: 100%;
+    display: block;
+    padding: 10px 15px;
   }
 `;
