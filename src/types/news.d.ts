@@ -1,0 +1,20 @@
+export type TNews = {
+  artcContents: string;
+  artcNextSeq: number;
+  artcPrevSeq: number;
+  artcSeq: number;
+  artcTitle: string;
+  boardCatSeq: number;
+  boardCode: string;
+  delYn: string;
+  endDttm: number;
+  maxArticlePerPage: number;
+  regDttm: number;
+  regr: string;
+  startDttm: number;
+  totalPage: number;
+  updDttm: number;
+  updr: string;
+  useYn: string;
+  viewCnt: number;
+};
