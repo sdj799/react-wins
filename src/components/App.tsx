@@ -1,7 +1,10 @@
-export default function App() {
+import Home from "@pages/Home";
+
+const App = () => {
   return (
     <>
-      <div>App</div>
+      <Home />
     </>
   );
-}
+};
+export default App;
