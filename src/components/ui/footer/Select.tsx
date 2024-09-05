@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Select = () => {
   const [currentOption, setCurrentOption] = useState("Project-wins");
-  const [isOptionsVisible, setIsOptionsVisible] = useState(false);
+  const [$isOptionsVisible, setIsOptionsVisible] = useState(false);
 
   const onClickOptionHandler = (e: React.MouseEvent<HTMLElement>) => {
     const target = e.target as HTMLElement;
@@ -42,7 +42,7 @@ const Select = () => {
   return (
     <SelectStyle onClick={() => setIsOptionsVisible((prev) => !prev)}>
       <LabelStyle>{currentOption}</LabelStyle>
-      <SelectOptionsStyle show={isOptionsVisible}>
+      <SelectOptionsStyle $isOptionsVisible={$isOptionsVisible}>
         {MEMBER_LIST.map((member) => (
           <OptionStyle key={member.id} value={member.name} onClick={onClickOptionHandler}>
             <Link to={member.link} target="_blank" onClick={(e) => e.stopPropagation()}>
@@ -80,7 +80,7 @@ const LabelStyle = styled.label`
   font-size: 13px;
 `;
 
-const SelectOptionsStyle = styled.ul<{ show: boolean }>`
+const SelectOptionsStyle = styled.ul<{ $isOptionsVisible: boolean }>`
   position: absolute;
   list-style: none;
   top: 40px;
@@ -88,7 +88,7 @@ const SelectOptionsStyle = styled.ul<{ show: boolean }>`
   width: 100%;
   overflow: scroll;
   height: 100px;
-  max-height: ${(props) => (props.show ? "none" : "0")};
+  max-height: ${(props) => (props.$isOptionsVisible ? "none" : "0")};
   padding: 0;
   border-radius: 8px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
