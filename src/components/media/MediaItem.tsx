@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import { formatDate } from "@utils/date";
 import { TNews } from "@types/news";
-import calendar from "../../assets/icons/calendar.png";
-import check from "../../assets/icons/check.png";
+import TitleInfo from "./TitleInfo";
 
+//media카테고리 공통 컴포넌트(소식,보도자료)
 const MediaItem = ({ news }: { news: TNews }) => {
   return (
     <ArticleContainer>
@@ -12,16 +11,7 @@ const MediaItem = ({ news }: { news: TNews }) => {
           <NewsTitle>{news.artcTitle}</NewsTitle>
           <ContentBox dangerouslySetInnerHTML={{ __html: news.artcContents }}></ContentBox>
         </MainContent>
-        <InfoDisplayList>
-          <li>
-            <span>{formatDate(new Date(news.regDttm))}</span>
-            <Icon src={calendar}></Icon>
-          </li>
-          <li>
-            <span>{news.viewCnt}</span>
-            <Icon src={check}></Icon>
-          </li>
-        </InfoDisplayList>
+        <TitleInfo date={news.regDttm} view={news.viewCnt} />
       </ArticleBox>
     </ArticleContainer>
   );
@@ -54,25 +44,4 @@ const ContentBox = styled.div`
   height: calc(100% - 23px);
   margin-top: 10px;
   overflow: hidden;
-`;
-const InfoDisplayList = styled.ul`
-  width: 110px;
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-
-  & > li {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-  }
-
-  list-style: none;
-`;
-
-const Icon = styled.img`
-  width: 16px;
-  height: 16px;
-  margin-left: 5px;
 `;

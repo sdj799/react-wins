@@ -1,27 +1,17 @@
 import styled from "styled-components";
 import { TNews } from "@types/news";
-import { formatDate } from "@utils/date";
-import calendar from "../../assets/icons/calendar.png";
-import check from "../../assets/icons/check.png";
 import kakao from "../../assets/icons/kakao.png";
 import facebook from "../../assets/icons/facebook.png";
+import TitleInfo from "./TitleInfo";
 
+//media카테고리 공통 컴포넌트(소식,보도자료)
 const MediaDetail = ({ news }: { news: TNews | undefined }) => {
   return (
     <>
       <ArticleContainer>
         <ContentHeader>
           <h1>{news?.artcTitle}</h1>
-          <InfoDisplayList>
-            <li>
-              <span>{news && formatDate(new Date(news.regDttm))}</span>
-              <Icon src={calendar}></Icon>
-            </li>
-            <li>
-              <span>{news?.viewCnt}</span>
-              <Icon src={check}></Icon>
-            </li>
-          </InfoDisplayList>
+          <TitleInfo date={news && news?.regDttm} view={news?.viewCnt} />
         </ContentHeader>
         <MainContent dangerouslySetInnerHTML={news && { __html: news?.artcContents }}></MainContent>
       </ArticleContainer>
@@ -59,31 +49,6 @@ const ContentHeader = styled.div`
     margin: 0;
   }
 `;
-
-const InfoDisplayList = styled.ul`
-  display: flex;
-  flex-direction: row;
-  padding: 4px 0px;
-
-  & > li {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: 14px;
-    line-height: 20px;
-    color: #5b5a5a;
-    &:last-child {
-      margin-left: 20px;
-    }
-  }
-
-  list-style: none;
-`;
-const Icon = styled.img`
-  width: 16px;
-  height: 16px;
-  margin-left: 5px;
-`;
 const MainContent = styled.div`
   padding: 20px 10px;
 `;
@@ -96,10 +61,6 @@ const SnsList = styled.ul`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  & > li {
-    color: #5b5a5a;
-    margin-left: 10px;
-  }
 
   list-style: none;
 `;
