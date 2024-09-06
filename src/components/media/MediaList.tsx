@@ -1,17 +1,17 @@
 import styled from "styled-components";
 import MediaItem from "./MediaItem";
-import { TNews } from "@types/news";
+import { TMedia } from "@types/media";
 import PaginationButtons from "./PaginationButtons";
 import MediaLayout from "./MediaLayout";
 
-const MediaList = ({ newsList }: { newsList: TNews[] }) => {
+const MediaList = ({ mediaList }: { mediaList: TMedia[] }) => {
   return (
     <>
       <MediaLayout>
         <List>
-          {newsList.map((news) => (
-            <li key={news.artcSeq}>
-              <MediaItem news={news} />
+          {mediaList.map((media) => (
+            <li key={media.artcSeq}>
+              <MediaItem media={media} />
             </li>
           ))}
         </List>

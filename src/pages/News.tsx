@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import MediaList from "@components/media/MediaList";
-import { TNews } from "@types/news";
+import { TMedia } from "@types/media";
 import dummy from "../../data.json";
 
 const News = () => {
-  const [newsList, setNewsList] = useState<TNews[]>([]);
+  const [newsList, setNewsList] = useState<TMedia[]>([]);
 
   useEffect(() => {
     setNewsList(dummy.data.list);
@@ -12,7 +12,7 @@ const News = () => {
 
   return (
     <>
-      <MediaList newsList={newsList} />
+      <MediaList mediaList={newsList} />
     </>
   );
 };

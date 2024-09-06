@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TNews } from "@types/news";
+import { TMedia } from "@types/media";
 import kakao from "../../assets/icons/kakao.png";
 import facebook from "../../assets/icons/facebook.png";
 import TitleInfo from "./TitleInfo";
@@ -7,17 +7,17 @@ import NavigationControls from "./NavigationControls";
 import MediaLayout from "./MediaLayout";
 
 //media카테고리 공통 컴포넌트(소식,보도자료)
-const MediaDetail = ({ news }: { news: TNews | undefined }) => {
+const MediaDetail = ({ media }: { media: TMedia | undefined }) => {
   return (
     <>
       <MediaLayout>
         <>
           <ArticleContainer>
             <ContentHeader>
-              <h1>{news?.artcTitle}</h1>
-              <TitleInfo date={news && news?.regDttm} view={news?.viewCnt} />
+              <h1>{media?.artcTitle}</h1>
+              <TitleInfo date={media && media?.regDttm} view={media?.viewCnt} />
             </ContentHeader>
-            <MainContent dangerouslySetInnerHTML={news && { __html: news?.artcContents }}></MainContent>
+            <MainContent dangerouslySetInnerHTML={media && { __html: media?.artcContents }}></MainContent>
           </ArticleContainer>
           <ArticleFooter>
             <SnsList>

@@ -1,4 +1,4 @@
-export type TNews = {
+export type TMedia = {
   artcContents: string;
   artcNextSeq: number;
   artcPrevSeq: number;
@@ -17,4 +17,5 @@ export type TNews = {
   updr: string;
   useYn: string;
   viewCnt: number;
+  imgFilePath?: string;
 };
