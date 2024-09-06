@@ -1,11 +1,8 @@
-import Iksan from "@pages/Iksan";
-import Location from "../pages/Location";
-import Coach from "@pages/Coach";
-
-export default function App() {
+const App = () => {
   return (
     <>
-      <Coach />
+      <h1>App Component</h1>
     </>
   );
-}
+};
+export default App;
