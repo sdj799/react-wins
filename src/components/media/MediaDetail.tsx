@@ -3,6 +3,7 @@ import { TNews } from "@types/news";
 import kakao from "../../assets/icons/kakao.png";
 import facebook from "../../assets/icons/facebook.png";
 import TitleInfo from "./TitleInfo";
+import NavigationControls from "./NavigationControls";
 
 //media카테고리 공통 컴포넌트(소식,보도자료)
 const MediaDetail = ({ news }: { news: TNews | undefined }) => {
@@ -25,6 +26,7 @@ const MediaDetail = ({ news }: { news: TNews | undefined }) => {
           </li>
         </SnsList>
       </ArticleFooter>
+      <NavigationControls />
     </>
   );
 };

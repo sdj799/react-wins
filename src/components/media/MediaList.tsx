@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import MediaItem from "./MediaItem";
 import { TNews } from "@types/news";
+import PaginationButtons from "./PaginationButtons";
 
 const MediaList = ({ newsList }: { newsList: TNews[] }) => {
   return (
@@ -12,6 +13,7 @@ const MediaList = ({ newsList }: { newsList: TNews[] }) => {
           </li>
         ))}
       </List>
+      <PaginationButtons />
     </>
   );
 };
