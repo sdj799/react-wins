@@ -7,11 +7,9 @@ export type TMedia = {
   boardCatSeq: number;
   boardCode: string;
   delYn: string;
-  endDttm: number;
   maxArticlePerPage: number;
   regDttm: number;
   regr: string;
-  startDttm: number;
   totalPage: number;
   updDttm: number;
   updr: string;

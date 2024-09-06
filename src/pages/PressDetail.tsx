@@ -3,17 +3,17 @@ import { TMedia } from "@types/media";
 import dummy from "../../data.json";
 import { useEffect, useState } from "react";
 
-const NewsDetail = () => {
-  const [news, setNews] = useState<TMedia>();
+const PressDetail = () => {
+  const [press, setPress] = useState<TMedia>();
 
   useEffect(() => {
-    setNews(dummy.news.list[0]);
+    setPress(dummy.press.list[0]);
   }, []);
 
   return (
     <>
-      <MediaDetail media={news} />
+      <MediaDetail media={press} />
     </>
   );
 };
-export default NewsDetail;
+export default PressDetail;

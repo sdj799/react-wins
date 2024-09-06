@@ -3,17 +3,17 @@ import MediaList from "@components/media/MediaList";
 import { TMedia } from "@types/media";
 import dummy from "../../data.json";
 
-const News = () => {
-  const [newsList, setNewsList] = useState<TMedia[]>([]);
+const Press = () => {
+  const [pressList, setPressList] = useState<TMedia[]>([]);
 
   useEffect(() => {
-    setNewsList(dummy.news.list);
+    setPressList(dummy.press.list);
   }, []);
 
   return (
     <>
-      <MediaList mediaList={newsList} />
+      <MediaList mediaList={pressList} />
     </>
   );
 };
-export default News;
+export default Press;
