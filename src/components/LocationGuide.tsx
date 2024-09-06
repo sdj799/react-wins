@@ -60,7 +60,9 @@ const LocationGuide = ({ address1, address2, href, busList, subway }: TLocationG
                 <GuideLi>{address1}</GuideLi>
                 <GuideLi>{address2}</GuideLi>
                 <GuideLi>
-                  <LocationBtn href={href}>찾아오기</LocationBtn>
+                  <LocationBtn href={href} target="_blank" rel="noopener noreferrer">
+                    찾아오기
+                  </LocationBtn>
                 </GuideLi>
                 <GuideLi>
                   <small>※ 찾아오기 버튼을 누르시면, 출발지에서 야구장으로 가는 길을 쉽게 확인하실 수 있습니다.</small>

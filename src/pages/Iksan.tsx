@@ -1,8 +1,9 @@
 import KakaoMap from "@components/KakaoMap";
-import { ArtiTitle, LocationWrapper, TitleWrapper } from "./Location";
+import { LocationWrapper } from "./Location";
 import LocationGuide from "@components/LocationGuide";
 import iksanImg from "../assets/images/iksan_img.png";
 import styled from "styled-components";
+import LocationTitle from "@components/LocationTitle";
 
 const StateBox = styled.div`
   border: 1px solid #e4e4e4;
@@ -15,9 +16,7 @@ const Iksan = () => {
   return (
     <>
       <div>
-        <TitleWrapper>
-          <ArtiTitle>퓨처스리그가 펼쳐지는 익산 야구장</ArtiTitle>
-        </TitleWrapper>
+        <LocationTitle title="퓨처스리그가 펼쳐지는 익산 야구장" />
         <img style={{ width: "100%" }} src={iksanImg} alt="익산 야구장 이미지" />
 
         <StateBox>
@@ -29,9 +28,7 @@ const Iksan = () => {
         </StateBox>
       </div>
       <LocationWrapper>
-        <TitleWrapper>
-          <ArtiTitle>오시는 길</ArtiTitle>
-        </TitleWrapper>
+        <LocationTitle title="오시는 길" />
         <KakaoMap lat={35.96745213} lng={127.00624385} location={"익산 야구장"} />
         <LocationGuide
           address1="주소 : 전라북도 익산시 무왕로 1397 익산야구장"
