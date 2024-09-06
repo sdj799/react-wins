@@ -11,9 +11,9 @@ const NewsDetail = () => {
   }, []);
 
   return (
-    <section>
+    <>
       <MediaDetail news={news} />
-    </section>
+    </>
   );
 };
 export default NewsDetail;

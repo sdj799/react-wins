@@ -11,9 +11,9 @@ const News = () => {
   }, []);
 
   return (
-    <section>
+    <>
       <MediaList newsList={newsList} />
-    </section>
+    </>
   );
 };
 export default News;

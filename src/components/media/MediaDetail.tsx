@@ -4,29 +4,34 @@ import kakao from "../../assets/icons/kakao.png";
 import facebook from "../../assets/icons/facebook.png";
 import TitleInfo from "./TitleInfo";
 import NavigationControls from "./NavigationControls";
+import MediaLayout from "./MediaLayout";
 
 //media카테고리 공통 컴포넌트(소식,보도자료)
 const MediaDetail = ({ news }: { news: TNews | undefined }) => {
   return (
     <>
-      <ArticleContainer>
-        <ContentHeader>
-          <h1>{news?.artcTitle}</h1>
-          <TitleInfo date={news && news?.regDttm} view={news?.viewCnt} />
-        </ContentHeader>
-        <MainContent dangerouslySetInnerHTML={news && { __html: news?.artcContents }}></MainContent>
-      </ArticleContainer>
-      <ArticleFooter>
-        <SnsList>
-          <li>
-            <SnsIcon src={kakao} />
-          </li>
-          <li>
-            <SnsIcon src={facebook} />
-          </li>
-        </SnsList>
-      </ArticleFooter>
-      <NavigationControls />
+      <MediaLayout>
+        <>
+          <ArticleContainer>
+            <ContentHeader>
+              <h1>{news?.artcTitle}</h1>
+              <TitleInfo date={news && news?.regDttm} view={news?.viewCnt} />
+            </ContentHeader>
+            <MainContent dangerouslySetInnerHTML={news && { __html: news?.artcContents }}></MainContent>
+          </ArticleContainer>
+          <ArticleFooter>
+            <SnsList>
+              <li>
+                <SnsIcon src={kakao} />
+              </li>
+              <li>
+                <SnsIcon src={facebook} />
+              </li>
+            </SnsList>
+          </ArticleFooter>
+        </>
+        <NavigationControls />
+      </MediaLayout>
     </>
   );
 };
