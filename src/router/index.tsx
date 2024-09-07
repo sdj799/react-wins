@@ -1,7 +1,8 @@
-import { createBrowserRouter } from "react-router-dom";
+import Home from "@pages/Home";
+import Location from "@pages/Location";
 import BasicLayout from "layouts/BasicLayout";
 import CommonLayout from "layouts/CommonLayout";
-import Home from "@pages/Home";
+import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
   {
@@ -35,7 +36,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/wizpark/location",
-        element: "찾아오기 component", // 컴포넌트 삽입
+        element: <Location />,
       },
       {
         path: "/game",
