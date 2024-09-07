@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 export const LocationWrapper = styled.div`
   padding-top: 20px;
+  width: 100%;
 `;
 
 const Location = () => {
