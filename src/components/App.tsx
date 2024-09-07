@@ -1,7 +1,12 @@
+import Iksan from "@pages/Iksan";
+
 const App = () => {
   return (
     <>
-      <h1>App Component</h1>
+      {/* <Location /> */}
+      {/* <Detail /> */}
+      <Iksan />
+      {/* <Coach /> */}
     </>
   );
 };

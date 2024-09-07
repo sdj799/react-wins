@@ -1,6 +1,6 @@
-import PlayerInfo from "@components/PlayerInfo";
-import { PlayerContentsWrapper } from "./Coach";
+import PlayerInfo from "@components/Player/PlayerInfo";
 import TopButton from "@components/TopButton";
+import { PlayerContentsWrapper } from "./Coach";
 
 const Detail = () => {
   return (

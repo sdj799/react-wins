@@ -1,4 +1,4 @@
-import PlayerCard from "@components/PlayerCard";
+import PlayerCard from "@components/Player/PlayerCard";
 import SearchForm from "@components/SearchForm";
 import { useState } from "react";
 import styled from "styled-components";

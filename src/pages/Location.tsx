@@ -1,7 +1,7 @@
+import KakaoMap from "@components/Location/KakaoMap";
+import LocationGuide from "@components/Location/LocationGuide";
+import LocationTitle from "@components/Location/LocationTitle";
 import styled from "styled-components";
-import LocationGuide from "../components/LocationGuide";
-import KakaoMap from "../components/KakaoMap";
-import LocationTitle from "@components/LocationTitle";
 
 export const LocationWrapper = styled.div`
   padding-top: 20px;

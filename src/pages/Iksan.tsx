@@ -1,9 +1,9 @@
-import KakaoMap from "@components/KakaoMap";
-import { LocationWrapper } from "./Location";
-import LocationGuide from "@components/LocationGuide";
-import iksanImg from "../assets/images/iksan_img.png";
+import KakaoMap from "@components/Location/KakaoMap";
+import LocationGuide from "@components/Location/LocationGuide";
+import LocationTitle from "@components/Location/LocationTitle";
 import styled from "styled-components";
-import LocationTitle from "@components/LocationTitle";
+import iksanImg from "../assets/images/iksan_img.png";
+import { LocationWrapper } from "./Location";
 
 const StateBox = styled.div`
   border: 1px solid #e4e4e4;
