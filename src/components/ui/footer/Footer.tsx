@@ -1,7 +1,7 @@
 import styled from "styled-components";
+import Information from "./Information";
 import Logo from "./Logo";
 import Nav from "./Nav";
-import Information from "./Information";
 import Select from "./Select";
 import Social from "./Social";
 
@@ -26,6 +26,9 @@ const Footer = () => {
 export default Footer;
 
 const FooterStyle = styled.footer`
+  position: relative;
+  left: 0;
+  bottom: 0;
   width: 100%;
   display: flex;
   justify-content: center;
