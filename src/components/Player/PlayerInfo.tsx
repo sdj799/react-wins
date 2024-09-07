@@ -68,7 +68,33 @@ const PictureButton = styled.a`
   color: #fff;
 `;
 
+const PlayerRecord = styled.div`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 2%;
+`;
+
+const PlayerRecordDt = styled.dt`
+  display: inline-block;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 100;
+  line-height: 53px;
+`;
+
+const PlayerRecordDd = styled.dd`
+  display: inline-block;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 100;
+  line-height: 53px;
+`;
+
 const PlayerInfo = () => {
+  const isPitcher = true;
+  // todo : 어디 페이지에서 요청 받았는지 확인해야함
+
   return (
     <>
       <InfoArti>
@@ -112,6 +138,14 @@ const PlayerInfo = () => {
               <PictureButton href={`/media/photos/1?searchWord=김강&search.sort=400`}>사진 보기</PictureButton>
             </InfoListWrapper>
           </dl>
+          {isPitcher && (
+            <PlayerRecord>
+              <dl>
+                <PlayerRecordDt>2024 정규리그 성적 : </PlayerRecordDt>
+                <PlayerRecordDd>평균자책점 11.25 / 0 승 / 1 패 / 0 세이브</PlayerRecordDd>
+              </dl>
+            </PlayerRecord>
+          )}
         </div>
       </InfoArti>
     </>
