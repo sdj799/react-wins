@@ -1,9 +1,9 @@
-import { Outlet } from "react-router-dom";
-import styled from "styled-components";
-import Header from "@components/ui/header/Header";
 import Footer from "@components/ui/footer/Footer";
+import Header from "@components/ui/header/Header";
 import Banner from "@components/ui/main/Banner";
 import Breadcrumb from "@components/ui/main/Breadcrumb";
+import { Outlet } from "react-router-dom";
+import styled from "styled-components";
 
 const CommonLayout = () => {
   return (
@@ -33,7 +33,7 @@ const MainStyle = styled.main`
   max-width: 1100px;
   padding-top: 80px;
   padding-bottom: 100px;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
