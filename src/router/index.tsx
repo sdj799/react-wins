@@ -1,3 +1,4 @@
+import Coach from "@pages/Coach";
 import Home from "@pages/Home";
 import Location from "@pages/Location";
 import BasicLayout from "layouts/BasicLayout";
@@ -56,7 +57,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/player",
-        element: "코칭스텝 component", // 컴포넌트 삽입
+        element: <Coach />,
       },
       {
         path: "/player/pitcher",
