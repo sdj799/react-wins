@@ -1,7 +1,8 @@
-import { createBrowserRouter } from "react-router-dom";
+import Coach from "@pages/Coach";
+import Home from "@pages/Home";
 import BasicLayout from "layouts/BasicLayout";
 import CommonLayout from "layouts/CommonLayout";
-import Home from "@pages/Home";
+import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
   {
@@ -55,7 +56,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/player",
-        element: "코칭스텝 component", // 컴포넌트 삽입
+        element: <Coach />,
       },
       {
         path: "/player/pitcher",
