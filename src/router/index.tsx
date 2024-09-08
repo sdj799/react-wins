@@ -4,6 +4,8 @@ import Location from "@pages/Location";
 import BasicLayout from "layouts/BasicLayout";
 import CommonLayout from "layouts/CommonLayout";
 import { createBrowserRouter } from "react-router-dom";
+import WizParkIntro from "../components/WizPark/WizParkIntro.tsx";
+import WizParkGuide from "../components/WizPark/WizParkGuide.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -29,11 +31,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/wizpark",
-        element: "구장소개 component", // 컴포넌트 삽입
+        element: <WizParkIntro />, // 컴포넌트 삽입
       },
       {
         path: "/wizpark/guide",
-        element: "구장안내도 component", // 컴포넌트 삽입
+        element: <WizParkGuide />, // 컴포넌트 삽입
       },
       {
         path: "/wizpark/location",
