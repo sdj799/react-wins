@@ -1,5 +1,7 @@
 import Home from "@pages/Home";
 import Location from "@pages/Location";
+import News from "@pages/News";
+import Press from "@pages/Press";
 import BasicLayout from "layouts/BasicLayout";
 import CommonLayout from "layouts/CommonLayout";
 import { createBrowserRouter } from "react-router-dom";
@@ -72,11 +74,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/media",
-        element: "wiz소식 component", // 컴포넌트 삽입
+        element: <News />, // 컴포넌트 삽입
       },
       {
         path: "/media/wizpress",
-        element: "wiz보도자료 component", // 컴포넌트 삽입
+        element: <Press />, // 컴포넌트 삽입
       },
     ],
   },
