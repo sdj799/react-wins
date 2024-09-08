@@ -1,5 +1,7 @@
 import Coach from "@pages/Coach";
+import CoachDetail from "@pages/CoachDetail";
 import Home from "@pages/Home";
+import Iksan from "@pages/Iksan";
 import Location from "@pages/Location";
 import BasicLayout from "layouts/BasicLayout";
 import CommonLayout from "layouts/CommonLayout";
@@ -40,6 +42,10 @@ export const router = createBrowserRouter([
         element: <Location />,
       },
       {
+        path: "/wizpark/iksan",
+        element: <Iksan />,
+      },
+      {
         path: "/game",
         element: "정규리그 component", // 컴포넌트 삽입
       },
@@ -56,8 +62,12 @@ export const router = createBrowserRouter([
         element: "관전포인트 component", // 컴포넌트 삽입
       },
       {
-        path: "/player",
+        path: "/player/coach",
         element: <Coach />,
+      },
+      {
+        path: "/player/coach/detail",
+        element: <CoachDetail />,
       },
       {
         path: "/player/pitcher",
