@@ -23,8 +23,7 @@ const TopButton = () => {
     <>
       <TopBtnWrapper>
         <TopBtn onClick={() => window.scrollTo(0, 0)}>
-          TOP
-          <IoTriangle />
+          TOP <IoTriangle />
         </TopBtn>
       </TopBtnWrapper>
     </>

@@ -1,3 +1,4 @@
+import { FaChevronRight } from "react-icons/fa6";
 import styled from "styled-components";
 
 const InfoArti = styled.article`
@@ -136,7 +137,7 @@ const PlayerInfo = ({ isPitcher, isCatcher }: { isPitcher?: boolean; isCatcher?:
                 </li>
               </ul>
               <PictureButton href={`/media/photos/1?searchWord=김강&search.sort=400`}>
-                {(isCatcher || isPitcher) && "선수 "}사진 보기
+                {(isCatcher || isPitcher) && "선수 "}사진 보기 <FaChevronRight fontSize={"0.8em"} />
               </PictureButton>
             </InfoListWrapper>
           </dl>
