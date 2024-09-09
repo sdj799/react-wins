@@ -1,5 +1,5 @@
-import WP_STA from "../../assets/images/WP_STA.jpg";
-import { IntroWrapper, Image, Title, SubTitleH6, UnderBar, TitleH6, ContentsP } from "../../styles/WizParkIntro";
+import WP_STA from "@assets/images/WP_STA.jpg";
+import { IntroWrapper, Image, Title, SubTitleH6, UnderBar, TitleH6, ContentsP } from "@styles/WizParkIntro";
 
 interface SectionProps {
     title: string;
