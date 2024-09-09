@@ -13,13 +13,20 @@ const TopBtn = styled.button`
   border-radius: 4px;
 `;
 
+const TopBtnWrapper = styled.div`
+  height: 100px;
+  position: relative;
+`;
+
 const TopButton = () => {
   return (
     <>
-      <TopBtn onClick={() => window.scrollTo(0, 0)}>
-        TOP
-        <IoTriangle />
-      </TopBtn>
+      <TopBtnWrapper>
+        <TopBtn onClick={() => window.scrollTo(0, 0)}>
+          TOP
+          <IoTriangle />
+        </TopBtn>
+      </TopBtnWrapper>
     </>
   );
 };

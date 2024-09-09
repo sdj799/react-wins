@@ -3,6 +3,8 @@ import CoachDetail from "@pages/CoachDetail";
 import Home from "@pages/Home";
 import Iksan from "@pages/Iksan";
 import Location from "@pages/Location";
+import Pitcher from "@pages/Pitcher";
+import PitcherDetail from "@pages/PitcherDetail";
 import BasicLayout from "layouts/BasicLayout";
 import CommonLayout from "layouts/CommonLayout";
 import { createBrowserRouter } from "react-router-dom";
@@ -71,7 +73,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/player/pitcher",
-        element: "투수 component", // 컴포넌트 삽입
+        element: <Pitcher />,
+      },
+      {
+        path: "/player/pitcher/detail",
+        element: <PitcherDetail />,
       },
       {
         path: "/player/catcher",
