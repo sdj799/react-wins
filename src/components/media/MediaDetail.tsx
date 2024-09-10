@@ -1,7 +1,7 @@
 import facebook from "@assets/icons/facebook.png";
+import kakao from "@assets/icons/kakao.png";
 import { TMedia } from "@customTypes/media";
 import styled from "styled-components";
-import kakao from "../../assets/icons/kakao.png";
 import MediaLayout from "./MediaLayout";
 import NavigationControls from "./NavigationControls";
 import TitleInfo from "./TitleInfo";
