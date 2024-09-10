@@ -37,7 +37,7 @@ const PitcherDetail = () => {
     <>
       <PlayerContentsWrapper>
         <PlayerInfo isPitcher={true} />
-        <PlayerDetail />
+        <PlayerDetail isPitcher={true} />
         <TopButton />
       </PlayerContentsWrapper>
     </>

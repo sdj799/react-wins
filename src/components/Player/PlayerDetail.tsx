@@ -1,10 +1,14 @@
 import Title from "@components/Location/LocationTitle";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
+import HitterRecent from "./HitterRecent";
 import HitterTable from "./HitterTable";
 import HitterTable2 from "./HitterTable2";
+import HitterTotal from "./HitterTotal";
+import PitcherRecent from "./PitcherRecent";
 import PitcherTable from "./PitcherTable";
 import PitcherTable2 from "./PitcherTable2";
+import PitcherTotal from "./PitcherTotal";
 
 const DetailMenuWrapper = styled.div`
   height: 60px;
@@ -27,13 +31,9 @@ const MenuA = styled.a`
   line-height: 60px;
 `;
 
-const PlayerDetail = () => {
+const PlayerDetail = ({ isPitcher }: { isPitcher: boolean }) => {
   const [menu, setMenu] = useState("league");
   const [title, setTitle] = useState("2024 시즌 정규리그 기록");
-  const [isPitcher, setIspitcher] = useState(true);
-  useEffect(() => {
-    setIspitcher(false);
-  }, []);
   return (
     <>
       <DetailMenuWrapper>
@@ -76,17 +76,20 @@ const PlayerDetail = () => {
       <div style={{ marginTop: "40px" }}>
         <Title title={title} />
       </div>
-      {menu === "league" && isPitcher ? (
-        <>
-          <PitcherTable />
-          <PitcherTable2 />
-        </>
-      ) : (
-        <>
-          <HitterTable />
-          <HitterTable2 />
-        </>
-      )}
+      {menu === "league" &&
+        (isPitcher ? (
+          <>
+            <PitcherTable />
+            <PitcherTable2 />
+          </>
+        ) : (
+          <>
+            <HitterTable />
+            <HitterTable2 />
+          </>
+        ))}
+      {menu === "recent" && (isPitcher ? <PitcherRecent /> : <HitterRecent />)}
+      {menu === "total" && (isPitcher ? <PitcherTotal /> : <HitterTotal />)}
     </>
   );
 };

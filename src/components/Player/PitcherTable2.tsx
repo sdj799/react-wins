@@ -103,37 +103,6 @@ const pitcherHeaders = [
 const PitcherTable2 = () => {
   const [data, _setData] = useState(() => [pitResponse]);
 
-  // const columns = [
-  //   columnHelper.accessor("firstName", {
-  //     cell: (info) => info.getValue(),
-  //     header: headerList[0],
-  //     footer: (info) => info.column.id,
-  //   }),
-  //   columnHelper.accessor((row) => row.lastName, {
-  //     id: "lastName",
-  //     cell: (info) => <i>{info.getValue()}</i>,
-  //     header: headerList[1],
-  //     footer: (info) => info.column.id,
-  //   }),
-  //   columnHelper.accessor("age", {
-  //     header: headerList[2],
-  //     cell: (info) => info.renderValue(),
-  //     footer: (info) => info.column.id,
-  //   }),
-  //   columnHelper.accessor("visits", {
-  //     header: headerList[3],
-  //     footer: (info) => info.column.id,
-  //   }),
-  //   columnHelper.accessor("status", {
-  //     header: headerList[4],
-  //     footer: (info) => info.column.id,
-  //   }),
-  //   columnHelper.accessor("progress", {
-  //     header: headerList[5],
-  //     footer: (info) => info.column.id,
-  //   }),
-  // ];
-
   const columns = pitcherFeilds.map((field, index) =>
     columnHelper.accessor(field, {
       header: pitcherHeaders[index],

@@ -1,0 +1,24 @@
+export type PitcherTotalType = {
+  bb: number;
+  bf: number;
+  er: number;
+  era: string;
+  gamenum: number;
+  gyear: string;
+  hit: number;
+  hold: number;
+  hp: number;
+  hr: number;
+  inn2: number;
+  innDisplay: string;
+  kk: number;
+  l: number;
+  r: number;
+  sho: number;
+  sv: number;
+  teamCode: string;
+  teamName: string;
+  w: number;
+  wCg: number;
+  wra: string;
+};
