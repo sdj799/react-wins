@@ -2,17 +2,35 @@ import Footer from "@components/ui/footer/Footer";
 import Header from "@components/ui/header/Header";
 import Banner from "@components/ui/main/Banner";
 import Breadcrumb from "@components/ui/main/Breadcrumb";
-import { Outlet } from "react-router-dom";
+import Search from "@components/ui/main/Search";
+import { Outlet, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const CommonLayout = () => {
+  const { pathname } = useLocation();
+  const currentPath = pathname.split("/").filter((element) => element);
+
   return (
     <CommonLayoutStyle>
       <Header />
       <Banner />
       <MainStyle>
-        <Breadcrumb />
-        <Outlet />
+        <MainUtilsStyle>
+          {(currentPath[1] === "coach" ||
+            currentPath[1] === "pitcher" ||
+            currentPath[1] === "catcher" ||
+            currentPath[1] === "infielder" ||
+            currentPath[1] === "outfielder" ||
+            currentPath[0] === "media") && <Search />}
+          <Breadcrumb />
+        </MainUtilsStyle>
+        {currentPath[0] === "game" || currentPath[0] === "media" ? (
+          <Outlet />
+        ) : (
+          <MainInnerStyle>
+            <Outlet />
+          </MainInnerStyle>
+        )}
       </MainStyle>
       <Footer />
     </CommonLayoutStyle>
@@ -33,6 +51,23 @@ const MainStyle = styled.main`
   max-width: 1100px;
   padding-top: 80px;
   padding-bottom: 100px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const MainUtilsStyle = styled.section`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #ec0a0b;
+`;
+
+const MainInnerStyle = styled.section`
+  padding-top: 40px;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
