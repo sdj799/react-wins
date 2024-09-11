@@ -1,7 +1,14 @@
+import Coach from "@pages/Coach";
+import CoachDetail from "@pages/CoachDetail";
 import Home from "@pages/Home";
+import Iksan from "@pages/Iksan";
 import Location from "@pages/Location";
 import News from "@pages/News";
+import Pitcher from "@pages/Pitcher";
+import PitcherDetail from "@pages/PitcherDetail";
 import Press from "@pages/Press";
+import WizParkGuide from "@pages/WizParkGuide.tsx";
+import WizParkIntro from "@pages/WizParkIntro.tsx";
 import BasicLayout from "layouts/BasicLayout";
 import CommonLayout from "layouts/CommonLayout";
 import { createBrowserRouter } from "react-router-dom";
@@ -30,15 +37,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/wizpark",
-        element: "구장소개 component", // 컴포넌트 삽입
+        element: <WizParkIntro />, // 컴포넌트 삽입
       },
       {
         path: "/wizpark/guide",
-        element: "구장안내도 component", // 컴포넌트 삽입
+        element: <WizParkGuide />, // 컴포넌트 삽입
       },
       {
         path: "/wizpark/location",
         element: <Location />,
+      },
+      {
+        path: "/wizpark/iksan",
+        element: <Iksan />,
       },
       {
         path: "/game",
@@ -57,12 +68,20 @@ export const router = createBrowserRouter([
         element: "관전포인트 component", // 컴포넌트 삽입
       },
       {
-        path: "/player",
-        element: "코칭스텝 component", // 컴포넌트 삽입
+        path: "/player/coach",
+        element: <Coach />,
+      },
+      {
+        path: "/player/coach/detail",
+        element: <CoachDetail />,
       },
       {
         path: "/player/pitcher",
-        element: "투수 component", // 컴포넌트 삽입
+        element: <Pitcher />,
+      },
+      {
+        path: "/player/pitcher/detail",
+        element: <PitcherDetail />,
       },
       {
         path: "/player/catcher",
