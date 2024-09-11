@@ -1,7 +1,7 @@
 import MediaList from "@components/media/MediaList";
 import { TMedia } from "@customTypes/media";
+import dummy from "@data/media.json";
 import { useEffect, useState } from "react";
-import dummy from "../../data.json";
 
 const Press = () => {
   const [pressList, setPressList] = useState<TMedia[]>([]);

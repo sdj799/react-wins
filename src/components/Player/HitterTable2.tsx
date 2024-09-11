@@ -1,5 +1,5 @@
 import { HitterType } from "@customTypes/playerHitter";
-import { TableCell, TableHeader } from "@styles/PlayerTable";
+import { TableCell, TableHeader } from "@styles/PlayerTable.style";
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { useState } from "react";
 import styled from "styled-components";

@@ -1,7 +1,7 @@
 import MediaDetail from "@components/media/MediaDetail";
 import { TMedia } from "@customTypes/media";
+import dummy from "@data/media.json";
 import { useEffect, useState } from "react";
-import dummy from "../../data.json";
 
 const PressDetail = () => {
   const [press, setPress] = useState<TMedia>();
