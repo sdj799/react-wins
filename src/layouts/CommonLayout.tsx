@@ -24,13 +24,9 @@ const CommonLayout = () => {
             currentPath[0] === "media") && <Search />}
           <Breadcrumb />
         </MainUtilsStyle>
-        {currentPath[0] === "game" || currentPath[0] === "media" ? (
+        <MainInnerStyle $hasPadding={!(currentPath[0] === "game" || currentPath[0] === "media")}>
           <Outlet />
-        ) : (
-          <MainInnerStyle>
-            <Outlet />
-          </MainInnerStyle>
-        )}
+        </MainInnerStyle>
       </MainStyle>
       <Footer />
     </CommonLayoutStyle>
@@ -65,8 +61,8 @@ const MainUtilsStyle = styled.section`
   border-bottom: 2px solid #ec0a0b;
 `;
 
-const MainInnerStyle = styled.section`
-  padding-top: 40px;
+const MainInnerStyle = styled.section<{ $hasPadding: boolean }>`
+  padding-top: ${({ $hasPadding }) => ($hasPadding ? "40px" : "0px")};
   width: 100%;
   height: 100%;
   display: flex;
