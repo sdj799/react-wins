@@ -1,7 +1,7 @@
 import { NavDescType, NavPathType, NavType } from "@customTypes/layout";
+import navData from "@data/nav.json";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
-import navData from "../../../data/nav.json";
 import TabList from "./tab/TabList";
 
 const Banner = () => {

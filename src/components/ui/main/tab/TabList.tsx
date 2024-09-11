@@ -1,8 +1,8 @@
 import { NavType } from "@customTypes/layout";
+import navData from "@data/nav.json";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import navData from "../../../../data/nav.json";
 import TabItem from "./TabItem";
 
 const TabList = () => {
