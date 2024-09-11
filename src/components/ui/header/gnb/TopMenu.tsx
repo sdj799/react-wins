@@ -1,24 +1,24 @@
+import { NavEventType } from "@customTypes/layout";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { NavEventType } from "@customTypes/layout";
 
 const TopMenu = ({ $isShowNav }: NavEventType) => {
   return (
     <TopMenuStyle $isShowNav={$isShowNav}>
       <li>
-        <Link to="/ktwiz">kt wiz</Link>
+        <Link to="/ktwiz/about">kt wiz</Link>
       </li>
       <li>
-        <Link to="/wizpark">wiz park</Link>
+        <Link to="/wizpark/intro">wiz park</Link>
       </li>
       <li>
-        <Link to="/game">Game</Link>
+        <Link to="/game/schedule">Game</Link>
       </li>
       <li>
-        <Link to="/player">Player</Link>
+        <Link to="/player/coach">Player</Link>
       </li>
       <li>
-        <Link to="/media">Media</Link>
+        <Link to="/media/wiznews">Media</Link>
       </li>
       <li>
         <Link to="#">Shop</Link>
@@ -27,7 +27,7 @@ const TopMenu = ({ $isShowNav }: NavEventType) => {
         <Link to="#">스폰서</Link>
       </li>
       <li className="redText">
-        <Link to="#">티켓구매</Link>
+        <Link to="/ticket/reservation">티켓구매</Link>
       </li>
     </TopMenuStyle>
   );

@@ -1,24 +1,44 @@
-import styled from "styled-components";
-import navList from "../../../data/nav.json";
+import { NavDescType, NavPathType, NavType } from "@customTypes/layout";
 import { useLocation } from "react-router-dom";
+import styled from "styled-components";
+import navData from "../../../data/nav.json";
 import TabList from "./tab/TabList";
 
 const Banner = () => {
-  const path = useLocation().pathname;
+  const currentPath = useLocation().pathname;
+
+  const navList: NavType[] = navData as NavType[];
 
   return (
     <BannerStyle>
-      {navList.map((nav) => (
-        <>
-          {path === nav.path && (
-            <div key={nav.id}>
-              <h3>{nav.title}</h3>
-              <p>{nav.desc}</p>
-              <TabList />
-            </div>
-          )}
-        </>
-      ))}
+      {navList.map((nav: NavType) => {
+        let isPathMatch = false;
+        let matchedDesc: string | undefined;
+
+        if (typeof nav.path === "string") {
+          isPathMatch = nav.path === currentPath;
+        } else if (Array.isArray(nav.path)) {
+          const matchedPathItem = nav.path.find((pathItem: NavPathType) => pathItem.path === currentPath);
+
+          isPathMatch = !!matchedPathItem;
+
+          if (isPathMatch && Array.isArray(nav.desc)) {
+            const matchedDescItem = nav.desc.find((descItem: NavDescType) => descItem.id === matchedPathItem?.id);
+
+            matchedDesc = matchedDescItem?.desc;
+          }
+        }
+
+        if (!isPathMatch) return null;
+
+        return (
+          <div key={nav.id}>
+            <h3>{nav.title}</h3>
+            {typeof nav.desc === "string" ? <p>{nav.desc}</p> : matchedDesc && <p>{matchedDesc}</p>}
+            <TabList />
+          </div>
+        );
+      })}
     </BannerStyle>
   );
 };
