@@ -1,0 +1,20 @@
+export type HitterRecentType = {
+  ab: number;
+  bb: number;
+  bra: string;
+  cs: number;
+  displayDate: string;
+  gd: number;
+  h2: number;
+  h3: number;
+  hit: number;
+  hp: number;
+  hr: number;
+  hra: string;
+  kk: number;
+  matchTeamCode: string;
+  matchTeamName: string;
+  rbi: number;
+  run: number;
+  sb: number;
+};

@@ -1,3 +1,4 @@
+import { TPlayer } from "@customTypes/player";
 import styled from "styled-components";
 
 const PlayerLi = styled.li`
@@ -21,12 +22,10 @@ const CardDiv = styled.div`
   width: 100%;
   padding-bottom: 101.56%;
   position: relative;
-  vertical-align: middle;
   overflow: hidden;
 `;
 
 const CardImg = styled.img`
-  ertical-align: baseline;
   position: absolute;
   width: 100%;
   top: 0;

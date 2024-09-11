@@ -1,3 +1,4 @@
+import { TLocationGuide } from "@customTypes/locationGuide";
 import { FaBus, FaSubway } from "react-icons/fa";
 import { ImLocation2 } from "react-icons/im";
 import styled from "styled-components";
