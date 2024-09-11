@@ -16,5 +16,18 @@ export type PitcherRecentType = {
   sv: number;
   wl: string;
   wls: string;
+};
+
+export type FilterPitRecentType = {
+  displayDate: string;
+  matchTeamName: string;
+  wls: string;
   era: string;
+  pa: number;
+  innDisplay: string;
+  hit: number;
+  hr: number;
+  bb: number;
+  kk: number;
+  er: number;
 };

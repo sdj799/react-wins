@@ -18,3 +18,22 @@ export type HitterRecentType = {
   run: number;
   sb: number;
 };
+
+export type FilterHitRecentType = {
+  displayDate: string;
+  matchTeamName: string;
+  hra: string;
+  ab: number;
+  run: number;
+  hit: number;
+  h2: number;
+  h3: number;
+  hr: number;
+  rbi: number;
+  sb: number;
+  cs: number;
+  bb: number;
+  hp: number;
+  kk: number;
+  gd: number;
+};

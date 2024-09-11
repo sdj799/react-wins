@@ -37,3 +37,36 @@ export type HitterType = {
   wraa: string;
   xbhrun: string;
 };
+
+export type FilterHitterType = {
+  hra: string;
+  gamenum: number;
+  pa: number;
+  ab: number;
+  run: number;
+  hit: number;
+  h2: number;
+  h3: number;
+  hr: number;
+  rbi: number;
+  sb: number;
+  cs: number;
+  sh: number;
+  sf: number;
+};
+
+export type FilterHitterType2 = {
+  bb: number;
+  ib: number;
+  hp: number;
+  kk: number;
+  gd: number;
+  slg: string;
+  bra: string;
+  cs: number;
+  sba: string;
+  bbkk: string;
+  xbhrun: string;
+  ops: string;
+  spHra: string;
+};
