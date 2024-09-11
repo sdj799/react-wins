@@ -1,0 +1,22 @@
+export type HitterTotalType = {
+  ab: number;
+  bb: number;
+  bra: string;
+  cs: number;
+  gamenum: number;
+  gd: number;
+  gyear: string;
+  h2: number;
+  h3: number;
+  hit: number;
+  hp: number;
+  hr: number;
+  hra: string;
+  kk: number;
+  rbi: number;
+  run: number;
+  sb: number;
+  slg: string;
+  teamCode: string;
+  teamName: string;
+};

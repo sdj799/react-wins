@@ -1,7 +1,7 @@
 import PlayerDetail from "@components/Player/PlayerDetail";
 import PlayerInfo from "@components/Player/PlayerInfo";
 import TopButton from "@components/TopButton";
-import { PlayerContentsWrapper } from "./Coach";
+import { PlayerContentsWrapper } from "@styles/PlayerTable";
 
 const response = {
   backnum: "99",

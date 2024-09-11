@@ -1,15 +1,17 @@
+import PlayerDetail from "@components/Player/PlayerDetail";
 import PlayerInfo from "@components/Player/PlayerInfo";
 import TopButton from "@components/TopButton";
 import { PlayerContentsWrapper } from "@styles/PlayerTable";
 
-const CoachDetail = () => {
+const CatcherDetail = () => {
   return (
     <>
       <PlayerContentsWrapper>
-        <PlayerInfo />
+        <PlayerInfo isCatcher={true} />
+        <PlayerDetail isPitcher={false} />
         <TopButton />
       </PlayerContentsWrapper>
     </>
   );
 };
-export default CoachDetail;
+export default CatcherDetail;
