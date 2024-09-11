@@ -1,29 +1,12 @@
 import { HitterType } from "@customTypes/playerHitter";
+import { TableCell, TableHeader } from "@styles/PlayerTable";
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { useState } from "react";
 import styled from "styled-components";
 
 const TableBtd = styled.table`
   margin-top: 15px;
-  width: 1100px;
-`;
-
-const TableHeader = styled.th`
-  background-color: #f6f6f6;
-  font-size: 12px;
-  line-height: 16px;
-  padding: 5px;
-  box-sizing: border-box;
-  text-align: center;
-  border: 1px solid #cfcfcf;
-`;
-const TableCell = styled.td`
-  font-size: 12px;
-  line-height: 16px;
-  padding: 5px;
-  box-sizing: border-box;
-  text-align: center;
-  border: 1px solid #cfcfcf;
+  width: 100%;
 `;
 
 const columnHelper = createColumnHelper<HitterType>();

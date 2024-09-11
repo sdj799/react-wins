@@ -31,6 +31,12 @@ const MenuA = styled.a`
   line-height: 60px;
 `;
 
+const TableWrapper = styled.div`
+  margin-top: 15px;
+  width: 1100px;
+  border-top: 2px solid #d7161b;
+`;
+
 const PlayerDetail = ({ isPitcher }: { isPitcher: boolean }) => {
   const [menu, setMenu] = useState("league");
   const [title, setTitle] = useState("2024 시즌 정규리그 기록");
@@ -76,20 +82,22 @@ const PlayerDetail = ({ isPitcher }: { isPitcher: boolean }) => {
       <div style={{ marginTop: "40px" }}>
         <Title title={title} />
       </div>
-      {menu === "league" &&
-        (isPitcher ? (
-          <>
-            <PitcherTable />
-            <PitcherTable2 />
-          </>
-        ) : (
-          <>
-            <HitterTable />
-            <HitterTable2 />
-          </>
-        ))}
-      {menu === "recent" && (isPitcher ? <PitcherRecent /> : <HitterRecent />)}
-      {menu === "total" && (isPitcher ? <PitcherTotal /> : <HitterTotal />)}
+      <TableWrapper>
+        {menu === "league" &&
+          (isPitcher ? (
+            <>
+              <PitcherTable />
+              <PitcherTable2 />
+            </>
+          ) : (
+            <>
+              <HitterTable />
+              <HitterTable2 />
+            </>
+          ))}
+        {menu === "recent" && (isPitcher ? <PitcherRecent /> : <HitterRecent />)}
+        {menu === "total" && (isPitcher ? <PitcherTotal /> : <HitterTotal />)}
+      </TableWrapper>
     </>
   );
 };
