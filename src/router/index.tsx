@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
             path: "bi",
             children: [
               {
-                index: true,
+                path: "symbol",
                 element: "심볼마크 component", // 컴포넌트 삽입
               },
               {
@@ -68,7 +68,7 @@ export const router = createBrowserRouter([
             path: "policy",
             children: [
               {
-                index: true,
+                path: "regular",
                 element: "일반회원 component", // 컴포넌트 삽입
               },
               {
@@ -91,15 +91,14 @@ export const router = createBrowserRouter([
       // wiz park
       {
         path: "/wizpark",
-<<<<<<< feature/layout
         children: [
           {
             path: "intro",
-            element: "구장소개 component", // 컴포넌트 삽입
+            element: <WizParkIntro />,
           },
           {
             path: "guide",
-            element: "구장안내도 component", // 컴포넌트 삽입
+            element: <WizParkGuide />,
           },
           {
             path: "parking",
@@ -111,27 +110,12 @@ export const router = createBrowserRouter([
           },
           {
             path: "iksan",
-            element: "익산야구장 component", // 컴포넌트 삽입
+            element: <Iksan />,
           },
         ],
-=======
-        element: <WizParkIntro />, // 컴포넌트 삽입
-      },
-      {
-        path: "/wizpark/guide",
-        element: <WizParkGuide />, // 컴포넌트 삽입
-      },
-      {
-        path: "/wizpark/location",
-        element: <Location />,
->>>>>>> development
       },
 
       // Game
-      {
-        path: "/wizpark/iksan",
-        element: <Iksan />,
-      },
       {
         path: "/game",
         children: [
@@ -156,50 +140,78 @@ export const router = createBrowserRouter([
 
       // Player
       {
-<<<<<<< feature/layout
         path: "/player",
         children: [
           {
             path: "coach",
-            element: <Coach />,
+            children: [
+              {
+                index: true,
+                element: <Coach />,
+              },
+              {
+                path: "detail",
+                element: <CoachDetail />,
+              },
+            ],
           },
           {
             path: "pitcher",
-            element: "투수 component", // 컴포넌트 삽입
+            children: [
+              {
+                index: true,
+                element: <Pitcher />,
+              },
+              {
+                path: "detail",
+                element: <PitcherDetail />,
+              },
+            ],
           },
           {
             path: "catcher",
-            element: "타자_포수 component", // 컴포넌트 삽입
+            children: [
+              {
+                index: true,
+                element: "타자_포수 component", // 컴포넌트 삽입
+              },
+              {
+                path: "detail",
+                element: "타자_포수 디테일 component", // 컴포넌트 삽입
+              },
+            ],
           },
           {
             path: "infielder",
-            element: "타자_내야수 component", // 컴포넌트 삽입
+            children: [
+              {
+                index: true,
+                element: "타자_내야수 component", // 컴포넌트 삽입
+              },
+              {
+                path: "detail",
+                element: "타자_내야수 디테일 component", // 컴포넌트 삽입
+              },
+            ],
           },
           {
             path: "outfielder",
-            element: "타자_외야수 component", // 컴포넌트 삽입
+            children: [
+              {
+                index: true,
+                element: "타자_외야수 component", // 컴포넌트 삽입
+              },
+              {
+                path: "detail",
+                element: "타자_외야수 디테일 component", // 컴포넌트 삽입
+              },
+            ],
           },
           {
             path: "cheer",
             element: "응원단 component", // 컴포넌트 삽입
           },
         ],
-=======
-        path: "/player/coach",
-        element: <Coach />,
-      },
-      {
-        path: "/player/coach/detail",
-        element: <CoachDetail />,
-      },
-      {
-        path: "/player/pitcher",
-        element: <Pitcher />,
-      },
-      {
-        path: "/player/pitcher/detail",
-        element: <PitcherDetail />,
->>>>>>> development
       },
 
       // Media
@@ -208,11 +220,11 @@ export const router = createBrowserRouter([
         children: [
           {
             path: "wiznews",
-            element: "wiz소식 component", // 컴포넌트 삽입
+            element: <News />,
           },
           {
             path: "wizpress",
-            element: "wiz보도자료 component", // 컴포넌트 삽입
+            element: <Press />,
           },
           {
             path: "wizstory",
@@ -274,24 +286,14 @@ export const router = createBrowserRouter([
 
       // Login
       {
-<<<<<<< feature/layout
         path: "/login",
         element: "로그인 component", // 컴포넌트 삽입
-=======
-        path: "/media",
-        element: <News />, // 컴포넌트 삽입
->>>>>>> development
       },
 
       // Signup
       {
-<<<<<<< feature/layout
         path: "/signup",
         element: "회원가입 component", // 컴포넌트 삽입
-=======
-        path: "/media/wizpress",
-        element: <Press />, // 컴포넌트 삽입
->>>>>>> development
       },
     ],
   },

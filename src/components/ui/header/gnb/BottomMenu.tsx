@@ -41,13 +41,9 @@ const BottomMenu = ({ $isShowNav }: NavEventType) => {
           <li>
             <Link to="/wizpark/location">찾아오기</Link>
           </li>
-<<<<<<< feature/layout
           <li>
             <Link to="/wizpark/iksan">익산야구장</Link>
           </li>
-=======
-          <Link to="/wizpark/iksan">익산야구장</Link>
->>>>>>> development
         </ul>
       </li>
       <li>
