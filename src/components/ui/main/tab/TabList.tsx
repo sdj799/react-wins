@@ -1,4 +1,4 @@
-import { NavPathType, NavType } from "@customTypes/layout";
+import { NavType } from "@customTypes/layout";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -11,10 +11,8 @@ const TabList = () => {
   const navigate = useNavigate();
 
   const tabList = (navData as NavType[]).flatMap((el) => {
-    const paths: NavPathType[] = Array.isArray(el.path) ? el.path : [{ id: 1, path: el.path }];
-
+    const paths = el.path;
     const matchingPath = paths.find((p) => p.path === currentPath);
-    console.log(matchingPath);
 
     if (matchingPath && Array.isArray(el.tab)) {
       return el.tab.map((tab) => {

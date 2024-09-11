@@ -21,7 +21,7 @@ export type NavType = {
   id: number;
   title: string;
   desc: NavDescType[] | string;
-  path: NavPathType[] | string;
+  path: NavPathType[];
   tab?: NavTabType[];
 };
 

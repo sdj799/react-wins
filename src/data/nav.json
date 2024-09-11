@@ -102,13 +102,23 @@
     "id": 4,
     "title": "스폰서",
     "desc": "kt wiz와 함께하는 스폰서를 소개합니다.",
-    "path": "/ktwiz/sponsor"
+    "path": [
+      {
+        "id": 1,
+        "path": "/ktwiz/sponsor"
+      }
+    ]
   },
   {
     "id": 5,
     "title": "월페이퍼",
     "desc": "kt wiz 팬들을 위한 월페이퍼 다운로드 서비스",
-    "path": "/ktwiz/wallpaper"
+    "path": [
+      {
+        "id": 1,
+        "path": "/ktwiz/wallpaper"
+      }
+    ]
   },
   {
     "id": 6,
@@ -139,19 +149,34 @@
     "id": 7,
     "title": "주차예약",
     "desc": "사전 주차 예약을 안내드립니다.",
-    "path": "/wizpark/parking"
+    "path": [
+      {
+        "id": 1,
+        "path": "/wizpark/parking"
+      }
+    ]
   },
   {
     "id": 8,
     "title": "찾아오기",
     "desc": "오시는 길을 상세하게 알려드립니다.",
-    "path": "/wizpark/location"
+    "path": [
+      {
+        "id": 1,
+        "path": "/wizpark/location"
+      }
+    ]
   },
   {
     "id": 9,
     "title": "익산야구장",
     "desc": "kt wiz의 둥지 '익산야구장'을 소개합니다.",
-    "path": "/wizpark/iksan"
+    "path": [
+      {
+        "id": 1,
+        "path": "/wizpark/iksan"
+      }
+    ]
   },
   {
     "id": 10,
@@ -215,13 +240,23 @@
     "id": 11,
     "title": "코칭스텝",
     "desc": "최고의 kt wiz 코칭스탭을 소개합니다.",
-    "path": "/player/coach"
+    "path": [
+      {
+        "id": 1,
+        "path": "/player/coach"
+      }
+    ]
   },
   {
     "id": 12,
     "title": "투수",
     "desc": "kt wiz의 자랑스런 ‘첫 번째 선수단’을 소개합니다.",
-    "path": "/player/pitcher"
+    "path": [
+      {
+        "id": 1,
+        "path": "/player/pitcher"
+      }
+    ]
   },
   {
     "id": 13,
@@ -260,7 +295,12 @@
     "id": 14,
     "title": "응원단",
     "desc": "kt wiz꽃! kt wiz의 응원단",
-    "path": "/player/cheer"
+    "path": [
+      {
+        "id": 1,
+        "path": "/player/cheer"
+      }
+    ]
   },
   {
     "id": 15,
@@ -291,31 +331,56 @@
     "id": 16,
     "title": "wiz 스토리",
     "desc": "kt wiz 팬이 전하는 생생한 스토리를 만나보세요.",
-    "path": "/media/wizstory"
+    "path": [
+      {
+        "id": 1,
+        "path": "/media/wizstory"
+      }
+    ]
   },
   {
     "id": 17,
     "title": "시구자 정보",
     "desc": "경기의 또다른 하이라이트 시구자 정보를 안내해 드립니다.",
-    "path": "/media/firstpitch"
+    "path": [
+      {
+        "id": 1,
+        "path": "/media/firstpitch"
+      }
+    ]
   },
   {
     "id": 18,
     "title": "wiz 포토",
     "desc": "kt wiz의 생생한 역사적 순간을 담았습니다.",
-    "path": "/media/wizphoto"
+    "path": [
+      {
+        "id": 1,
+        "path": "/media/wizphoto"
+      }
+    ]
   },
   {
     "id": 19,
     "title": "하이라이트",
     "desc": "생생한 경기 하이라이트를 담았습니다.",
-    "path": "/media/highlight"
+    "path": [
+      {
+        "id": 1,
+        "path": "/media/highlight"
+      }
+    ]
   },
   {
     "id": 20,
     "title": "live 영상 모음",
     "desc": "kt wiz의 생생한 영상을 만나보세요.",
-    "path": "/media/live"
+    "path": [
+      {
+        "id": 1,
+        "path": "/media/live"
+      }
+    ]
   },
   {
     "id": 21,
@@ -346,7 +411,7 @@
       },
       {
         "id": 3,
-        "path": "할인 혜택"
+        "tab": "할인 혜택"
       }
     ]
   },
@@ -354,7 +419,12 @@
     "id": 22,
     "title": "스카이박스/단체 관람",
     "desc": "스카이 박스 및 단체 관람에 대해 안내드립니다.",
-    "path": "/ticket/group"
+    "path": [
+      {
+        "id": 1,
+        "path": "/ticket/group"
+      }
+    ]
   },
   {
     "id": 23,
@@ -385,7 +455,7 @@
       },
       {
         "id": 3,
-        "path": "구장 내 매장정보"
+        "tab": "구장 내 매장정보"
       }
     ]
   },
@@ -393,12 +463,22 @@
     "id": 24,
     "title": "로그인",
     "desc": "로그인 후 kt wiz 사이트를 더욱 다양하게 이용해 보세요. 더욱 다양하게 이용해 보세요.",
-    "path": "/login"
+    "path": [
+      {
+        "id": 1,
+        "path": "/login"
+      }
+    ]
   },
   {
     "id": 25,
     "title": "회원가입",
     "desc": "",
-    "path": "/signup"
+    "path": [
+      {
+        "id": 1,
+        "path": "/signup"
+      }
+    ]
   }
 ]
