@@ -1,3 +1,4 @@
+import { TKakaoMapp } from "@customTypes/kakaomap";
 import { Map, MapMarker, useKakaoLoader } from "react-kakao-maps-sdk";
 
 const KakaoMap = ({ lat, lng, location }: TKakaoMapp) => {

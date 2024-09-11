@@ -1,6 +1,6 @@
+import { NavEventType } from "@customTypes/layout";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { NavEventType } from "@customTypes/layout";
 
 const BottomMenu = ({ $isShowNav }: NavEventType) => {
   return (
@@ -29,7 +29,7 @@ const BottomMenu = ({ $isShowNav }: NavEventType) => {
           <li>
             <Link to="/wizpark/location">찾아오기</Link>
           </li>
-          <li>익산야구장</li>
+          <Link to="/wizpark/iksan">익산야구장</Link>
         </ul>
       </li>
       <li>
@@ -43,7 +43,7 @@ const BottomMenu = ({ $isShowNav }: NavEventType) => {
       <li>
         <ul>
           <li>
-            <Link to="/player">코칭스텝</Link>
+            <Link to="/player/coach">코칭스텝</Link>
           </li>
           <li>
             <Link to="/player/pitcher">투수</Link>

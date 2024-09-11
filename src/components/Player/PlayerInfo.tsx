@@ -1,3 +1,4 @@
+import { FaChevronRight } from "react-icons/fa6";
 import styled from "styled-components";
 
 const InfoArti = styled.article`
@@ -91,10 +92,7 @@ const PlayerRecordDd = styled.dd`
   line-height: 53px;
 `;
 
-const PlayerInfo = () => {
-  const isPitcher = true;
-  // todo : 어디 페이지에서 요청 받았는지 확인해야함
-
+const PlayerInfo = ({ isPitcher, isCatcher }: { isPitcher?: boolean; isCatcher?: boolean }) => {
   return (
     <>
       <InfoArti>
@@ -102,47 +100,64 @@ const PlayerInfo = () => {
           <InfoImg src="https://wizzap.ktwiz.co.kr/files/playerImg/ktImg2/77733_2024-03-06_110511.jpg" />
           <dl>
             <InfoDt>
-              <InfoNumber>No. 72</InfoNumber>
-              김강
-              <InfoEng>KIM KANG</InfoEng>
+              <InfoNumber>No. {72}</InfoNumber>
+              {"김강"}
+              <InfoEng>{"KIM KANG"}</InfoEng>
             </InfoDt>
             <InfoListWrapper>
               <ul>
                 <li>
                   <dl>
                     <InfoListDt>포지션</InfoListDt>
-                    <InfoListDd>타격보조 코치</InfoListDd>
+                    <InfoListDd>{"타격보조 코치"}</InfoListDd>
                   </dl>
                 </li>
                 <li>
                   <dl>
                     <InfoListDt>생년월일</InfoListDt>
-                    <InfoListDd>1988.10.16</InfoListDd>
+                    <InfoListDd>{"1988.10.16"}</InfoListDd>
                   </dl>
                 </li>
                 <li>
                   <dl>
                     <InfoListDt>체격</InfoListDt>
-                    <InfoListDd>188 cm, 92 kg</InfoListDd>
+                    <InfoListDd>
+                      {188} cm, {92} kg
+                    </InfoListDd>
                   </dl>
                 </li>
                 <li>
                   <dl>
                     <InfoListDt>출신교</InfoListDt>
                     <InfoListDd>
-                      <span>광주화정초-무등중-</span>광주제일고
+                      <span>{"광주화정초-무등중-"}</span>
+                      {"광주제일고"}
                     </InfoListDd>
                   </dl>
                 </li>
               </ul>
-              <PictureButton href={`/media/photos/1?searchWord=김강&search.sort=400`}>사진 보기</PictureButton>
+              <PictureButton href={`/media/photos/1?searchWord=김강&search.sort=400`}>
+                {(isCatcher || isPitcher) && "선수 "}사진 보기 <FaChevronRight fontSize={"0.8em"} />
+              </PictureButton>
             </InfoListWrapper>
           </dl>
           {isPitcher && (
             <PlayerRecord>
               <dl>
+                <PlayerRecordDt>{2024} 정규리그 성적 : </PlayerRecordDt>
+                <PlayerRecordDd>
+                  평균자책점 {11.25} / {0} 승 / {1} 패 / {0} 세이브
+                </PlayerRecordDd>
+              </dl>
+            </PlayerRecord>
+          )}
+          {isCatcher && (
+            <PlayerRecord>
+              <dl>
                 <PlayerRecordDt>2024 정규리그 성적 : </PlayerRecordDt>
-                <PlayerRecordDd>평균자책점 11.25 / 0 승 / 1 패 / 0 세이브</PlayerRecordDd>
+                <PlayerRecordDd>
+                  타율 {0.24} / 안타 {6} / 타점 {3} / 홈런 {0}
+                </PlayerRecordDd>
               </dl>
             </PlayerRecord>
           )}

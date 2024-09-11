@@ -1,4 +1,4 @@
-type TPlayer = {
+export type TPlayer = {
   playerName: string;
   playerNum: number;
   imgSrc: string;

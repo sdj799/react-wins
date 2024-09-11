@@ -2,7 +2,7 @@ import PlayerInfo from "@components/Player/PlayerInfo";
 import TopButton from "@components/TopButton";
 import { PlayerContentsWrapper } from "./Coach";
 
-const Detail = () => {
+const CoachDetail = () => {
   return (
     <>
       <PlayerContentsWrapper>
@@ -12,4 +12,4 @@ const Detail = () => {
     </>
   );
 };
-export default Detail;
+export default CoachDetail;
