@@ -2,7 +2,6 @@ import { TMedia } from "@customTypes/media";
 import styled from "styled-components";
 import TitleInfo from "./TitleInfo";
 
-//media카테고리 공통 컴포넌트(소식,보도자료)
 const MediaItem = ({ media }: { media: TMedia }) => {
   return (
     <ArticleContainer>

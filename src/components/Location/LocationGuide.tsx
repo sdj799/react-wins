@@ -31,7 +31,6 @@ const BusType = styled.span`
 
 const GuideLi = styled.li`
   line-height: 2;
-  list-style-type: none;
 `;
 
 const LocationBtn = styled.a`

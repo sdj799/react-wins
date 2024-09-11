@@ -82,7 +82,6 @@ const LabelStyle = styled.label`
 
 const SelectOptionsStyle = styled.ul<{ $isOptionsVisible: boolean }>`
   position: absolute;
-  list-style: none;
   top: 40px;
   left: 0;
   width: 100%;

@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const BottomMenu = ({ $isShowNav }: NavEventType) => {
-  // const { page } = useParams();
-
   return (
     <BottomMenuStyle $isShowNav={$isShowNav}>
       <li>
@@ -84,7 +82,6 @@ const BottomMenu = ({ $isShowNav }: NavEventType) => {
             <Link to="/media/firstpitch">시구자 정보</Link>
           </li>
           <li>
-            {/* <Link to={`/media/wizphoto/${page}`}>wiz 포토</Link> */}
             <Link to="media/wizphoto">wiz 포토</Link>
           </li>
           <li>

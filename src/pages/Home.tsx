@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import emblem from "@assets/emblem.svg";
+import styled from "styled-components";
 
 const Home = () => {
   return (
