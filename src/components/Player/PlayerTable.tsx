@@ -7,7 +7,7 @@ type TableProps<T extends object> = {
   headers: string[];
 };
 
-function Test<T extends object>({ resData, headers }: TableProps<T>) {
+const PlayerTable = <T extends object>({ resData, headers }: TableProps<T>) => {
   const [data, _setData] = useState(() => [...resData]);
 
   // 컬럼 헬퍼 생성
@@ -57,5 +57,5 @@ function Test<T extends object>({ resData, headers }: TableProps<T>) {
       <div className="h-4" />
     </div>
   );
-}
-export default Test;
+};
+export default PlayerTable;

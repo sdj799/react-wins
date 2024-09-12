@@ -28,7 +28,7 @@ import {
 } from "data/playerHeaders";
 import { useState } from "react";
 import styled from "styled-components";
-import Table from "./Table";
+import PlayerTable from "./PlayerTable";
 
 const DetailMenuWrapper = styled.div`
   height: 60px;
@@ -119,17 +119,17 @@ const PlayerDetail = ({ isPitcher }: { isPitcher: boolean }) => {
         {menu === "league" &&
           (isPitcher ? (
             <>
-              <Table<FilterPitcherType> resData={filteredPitchers} headers={pitcherHeaders} />
+              <PlayerTable<FilterPitcherType> resData={filteredPitchers} headers={pitcherHeaders} />
               <div style={{ marginTop: "15px" }}></div>
-              <Table<FilterPitcherType2> resData={filteredPitchers2} headers={pitcherHeaders2} />
+              <PlayerTable<FilterPitcherType2> resData={filteredPitchers2} headers={pitcherHeaders2} />
               {/* <PitcherTable />
               <PitcherTable2 /> */}
             </>
           ) : (
             <>
-              <Table<FilterHitterType> resData={filteredHitters} headers={hitterHeaders} />
+              <PlayerTable<FilterHitterType> resData={filteredHitters} headers={hitterHeaders} />
               <div style={{ marginTop: "15px" }}></div>
-              <Table<FilterHitterType2> resData={filteredHitters2} headers={hitterHeaders2} />
+              <PlayerTable<FilterHitterType2> resData={filteredHitters2} headers={hitterHeaders2} />
 
               {/* <HitterTable />
               <HitterTable2 /> */}
@@ -137,15 +137,15 @@ const PlayerDetail = ({ isPitcher }: { isPitcher: boolean }) => {
           ))}
         {menu === "recent" &&
           (isPitcher ? (
-            <Table<FilterPitRecentType> resData={filteredPitRecents} headers={pitRecentHeaders} />
+            <PlayerTable<FilterPitRecentType> resData={filteredPitRecents} headers={pitRecentHeaders} />
           ) : (
-            <Table<FilterHitRecentType> resData={filteredHitRecents} headers={hitRecentHeaders} />
+            <PlayerTable<FilterHitRecentType> resData={filteredHitRecents} headers={hitRecentHeaders} />
           ))}
         {menu === "total" &&
           (isPitcher ? (
-            <Table<FilterPitTotalType> resData={filteredPitTotals} headers={pitTotalHeaders} />
+            <PlayerTable<FilterPitTotalType> resData={filteredPitTotals} headers={pitTotalHeaders} />
           ) : (
-            <Table<FilterHitTotalType> resData={filteredHitTotals} headers={hitTotalHeaders} />
+            <PlayerTable<FilterHitTotalType> resData={filteredHitTotals} headers={hitTotalHeaders} />
           ))}
       </TableWrapper>
     </>
