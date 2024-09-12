@@ -1,6 +1,4 @@
-import WizParkGuide from "@components/WizPark/WPGuide";
 import styled from "styled-components";
-import Iksan from "./Iksan";
 
 const HomeStyle = styled.div`
   width: 100%;
@@ -13,11 +11,6 @@ const HomeStyle = styled.div`
 `;
 
 const Home = () => {
-  return (
-    <HomeStyle>
-      <Iksan />
-      <WizParkGuide />
-    </HomeStyle>
-  );
+  return <HomeStyle>{/* Home 페이지 섹션 삽입*/}</HomeStyle>;
 };
 export default Home;
