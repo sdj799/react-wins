@@ -1,4 +1,4 @@
-import { TableBtd, TableCell, TableHeader } from "@styles/PlayerTable";
+import { TableBtd, TableCell, TableHeader } from "@styles/PlayerTable.style";
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { useState } from "react";
 

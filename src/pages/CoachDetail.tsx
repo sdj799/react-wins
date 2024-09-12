@@ -1,6 +1,6 @@
 import PlayerInfo from "@components/Player/PlayerInfo";
 import TopButton from "@components/TopButton";
-import { PlayerContentsWrapper } from "@styles/PlayerTable";
+import { PlayerContentsWrapper } from "@styles/PlayerTable.style";
 
 const CoachDetail = () => {
   return (
