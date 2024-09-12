@@ -7,6 +7,7 @@ const SearchFormStyle = styled.form`
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+  height: 30px;
   gap: 5px;
 `;
 
@@ -14,27 +15,25 @@ const SearchFormInnerStyle = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  width: 100%;
-  max-width: 270px;
+  width: 265px;
 
   & > input {
-    width: 100%;
+    width: 220px;
+    height: 30px;
     padding: 5px 10px;
-  }
+    border: 1px solid rgb(118, 118, 118);
 
-  & > input::placeholder {
-    color: rgba(0, 0, 0, 0.3);
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.3);
+    }
   }
 
   & > button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    max-width: 45px;
+    width: 50px;
     background-color: #333;
     color: #fff;
     padding: 7px 10px;
+    margin-left: -3px;
     font-size: 12px;
   }
 `;

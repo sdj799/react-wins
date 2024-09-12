@@ -1,5 +1,4 @@
 import PlayerCard from "@components/Player/PlayerCard";
-import SearchForm from "@components/SearchForm";
 import { PlayerContentsWrapper } from "@styles/PlayerTable.style";
 import { useState } from "react";
 
@@ -206,7 +205,6 @@ const Pitcher = () => {
   const [playerList, setPlayerList] = useState(dataList);
   return (
     <>
-      <SearchForm />
       <PlayerContentsWrapper>
         <ul>
           {playerList.map((data) => (
