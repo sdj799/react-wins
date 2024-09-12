@@ -4,8 +4,10 @@ import Coach from "@pages/Coach";
 import CoachDetail from "@pages/CoachDetail";
 import Home from "@pages/Home";
 import Iksan from "@pages/Iksan";
+import Infielder from "@pages/Infielder";
 import Location from "@pages/Location";
 import News from "@pages/News";
+import Outfielder from "@pages/Outfielder";
 import Pitcher from "@pages/Pitcher";
 import PitcherDetail from "@pages/PitcherDetail";
 import Press from "@pages/Press";
@@ -180,7 +182,7 @@ export const router = createBrowserRouter([
             children: [
               {
                 index: true,
-                element: "타자_내야수 component",
+                element: <Infielder />,
               },
               {
                 path: "detail",
@@ -193,7 +195,7 @@ export const router = createBrowserRouter([
             children: [
               {
                 index: true,
-                element: "타자_외야수 component",
+                element: <Outfielder />,
               },
               {
                 path: "detail",

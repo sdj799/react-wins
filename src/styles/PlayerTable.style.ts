@@ -27,3 +27,7 @@ export const PlayerContentsWrapper = styled.section`
   padding: 25px 0;
   overflow-x: hidden;
 `;
+
+export const TableMargin = styled.div`
+  margin-top: 15px;
+`;

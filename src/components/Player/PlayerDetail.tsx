@@ -5,6 +5,7 @@ import { FilterPitRecentType } from "@customTypes/pitcherRecent";
 import { FilterPitTotalType } from "@customTypes/pitcherTotal";
 import { FilterHitterType, FilterHitterType2 } from "@customTypes/playerHitter";
 import { FilterPitcherType, FilterPitcherType2 } from "@customTypes/playerPitcher";
+import { TableMargin } from "@styles/PlayerTable.style";
 import {
   filterHitRecentData,
   filterHitterData,
@@ -120,7 +121,7 @@ const PlayerDetail = ({ isPitcher }: { isPitcher: boolean }) => {
           (isPitcher ? (
             <>
               <PlayerTable<FilterPitcherType> resData={filteredPitchers} headers={pitcherHeaders} />
-              <div style={{ marginTop: "15px" }}></div>
+              <TableMargin />
               <PlayerTable<FilterPitcherType2> resData={filteredPitchers2} headers={pitcherHeaders2} />
               {/* <PitcherTable />
               <PitcherTable2 /> */}
@@ -128,7 +129,7 @@ const PlayerDetail = ({ isPitcher }: { isPitcher: boolean }) => {
           ) : (
             <>
               <PlayerTable<FilterHitterType> resData={filteredHitters} headers={hitterHeaders} />
-              <div style={{ marginTop: "15px" }}></div>
+              <TableMargin />
               <PlayerTable<FilterHitterType2> resData={filteredHitters2} headers={hitterHeaders2} />
 
               {/* <HitterTable />
