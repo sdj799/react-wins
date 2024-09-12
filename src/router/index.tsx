@@ -1,3 +1,5 @@
+import Catcher from "@pages/Catcher";
+import CatcherDetail from "@pages/CatcherDetail";
 import Coach from "@pages/Coach";
 import CoachDetail from "@pages/CoachDetail";
 import Home from "@pages/Home";
@@ -173,11 +175,11 @@ export const router = createBrowserRouter([
             children: [
               {
                 index: true,
-                element: "타자_포수 component", // 컴포넌트 삽입
+                element: <Catcher />,
               },
               {
                 path: "detail",
-                element: "타자_포수 디테일 component", // 컴포넌트 삽입
+                element: <CatcherDetail />,
               },
             ],
           },

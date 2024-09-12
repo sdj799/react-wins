@@ -47,3 +47,38 @@ export type PitcherType = {
   wp: number;
   wra: string;
 };
+
+export type FilterPitcherType = {
+  era: string;
+  gamenum: number;
+  wCg: number;
+  sho: number;
+  w: number;
+  l: number;
+  sv: number;
+  hold: number;
+  wra: string;
+  bf: number;
+  tugucount: number;
+  innDisplay: string;
+  hit: number;
+  hr: number;
+};
+
+export type FilterPitcherType2 = {
+  sf: number;
+  sh: number;
+  bb: number;
+  ib: number;
+  hp: number;
+  kk: number;
+  wp: number;
+  bk: number;
+  r: number;
+  er: number;
+  bs: number;
+  whip: string;
+  oavg: string;
+  qs: number;
+  kbb: string;
+};

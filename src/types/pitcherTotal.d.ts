@@ -22,3 +22,24 @@ export type PitcherTotalType = {
   wCg: number;
   wra: string;
 };
+
+export type FilterPitTotalType = {
+  gyear: string;
+  teamName: string;
+  era: string;
+  gamenum: number;
+  wCg: number;
+  sho: number;
+  w: number;
+  l: number;
+  sv: number;
+  hold: number;
+  wra: string;
+  bf: number;
+  innDisplay: string;
+  hit: number;
+  hr: number;
+  bb: number;
+  kk: number;
+  er: number;
+};

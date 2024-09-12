@@ -1,4 +1,4 @@
-import { TPlayer } from "@customTypes/player";
+import { PlayerType } from "@customTypes/player";
 import styled from "styled-components";
 
 const PlayerLi = styled.li`
@@ -43,14 +43,14 @@ const CardDetail = styled.p`
   text-align: right;
 `;
 
-const PlayerCard = ({ playerName, playerNum, imgSrc, href }: TPlayer) => {
+const PlayerCard = ({ playerName, playerNum, imgSrc, href }: PlayerType) => {
   return (
     <>
       <PlayerLi>
         <CardArti>
           <a href={href}>
             <CardDiv>
-              <CardImg src={imgSrc} alt="" />
+              <CardImg src={imgSrc} alt="player img" />
               <CardDetail>
                 <span style={{ color: "red", fontSize: "16px" }}>{`No.${playerNum}`}</span>
                 <br />
