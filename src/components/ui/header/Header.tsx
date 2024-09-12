@@ -6,36 +6,6 @@ import Nav from "./gnb/Nav";
 import Logo from "./Logo";
 import Utils from "./Utils";
 
-const Header = () => {
-  const $path = useLocation().pathname;
-  const [$isShowNav, setIsShowNav] = useState(false);
-  const { $scrollHeight } = useDetectScroll();
-
-  const onMouseOverHandler = () => {
-    setIsShowNav(true);
-  };
-
-  const onMouseOutHandler = () => {
-    setIsShowNav((prev) => !prev);
-  };
-
-  return (
-    <HeaderStyle
-      onMouseOver={onMouseOverHandler}
-      onMouseOut={onMouseOutHandler}
-      $isShowNav={$isShowNav}
-      $path={$path}
-      $scrollHeight={$scrollHeight}>
-      <HeaderInnerStyle $isShowNav={$isShowNav}>
-        <Logo $isShowNav={$isShowNav} />
-        <Nav $isShowNav={$isShowNav} />
-        <Utils $isShowNav={$isShowNav} />
-      </HeaderInnerStyle>
-    </HeaderStyle>
-  );
-};
-export default Header;
-
 const HeaderStyle = styled.header<{ $isShowNav: boolean; $path: string; $scrollHeight: number }>`
   position: fixed;
   top: 0;
@@ -75,6 +45,7 @@ const HeaderInnerStyle = styled.div<{ $isShowNav: boolean }>`
 const Header = () => {
   const $path = useLocation().pathname;
   const [$isShowNav, setIsShowNav] = useState(false);
+  const { $scrollHeight } = useDetectScroll();
 
   const onMouseOverHandler = () => {
     setIsShowNav(true);
@@ -85,7 +56,12 @@ const Header = () => {
   };
 
   return (
-    <HeaderStyle onMouseOver={onMouseOverHandler} onMouseOut={onMouseOutHandler} $isShowNav={$isShowNav} $path={$path}>
+    <HeaderStyle
+      onMouseOver={onMouseOverHandler}
+      onMouseOut={onMouseOutHandler}
+      $isShowNav={$isShowNav}
+      $path={$path}
+      $scrollHeight={$scrollHeight}>
       <HeaderInnerStyle $isShowNav={$isShowNav}>
         <Logo $isShowNav={$isShowNav} />
         <Nav $isShowNav={$isShowNav} />
