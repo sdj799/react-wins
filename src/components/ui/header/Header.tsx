@@ -1,3 +1,4 @@
+import useDetectScroll from "hooks/useDetectScroll";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
@@ -5,7 +6,37 @@ import Nav from "./gnb/Nav";
 import Logo from "./Logo";
 import Utils from "./Utils";
 
-const HeaderStyle = styled.header<{ $isShowNav: boolean; $path: string }>`
+const Header = () => {
+  const $path = useLocation().pathname;
+  const [$isShowNav, setIsShowNav] = useState(false);
+  const { $scrollHeight } = useDetectScroll();
+
+  const onMouseOverHandler = () => {
+    setIsShowNav(true);
+  };
+
+  const onMouseOutHandler = () => {
+    setIsShowNav((prev) => !prev);
+  };
+
+  return (
+    <HeaderStyle
+      onMouseOver={onMouseOverHandler}
+      onMouseOut={onMouseOutHandler}
+      $isShowNav={$isShowNav}
+      $path={$path}
+      $scrollHeight={$scrollHeight}>
+      <HeaderInnerStyle $isShowNav={$isShowNav}>
+        <Logo $isShowNav={$isShowNav} />
+        <Nav $isShowNav={$isShowNav} />
+        <Utils $isShowNav={$isShowNav} />
+      </HeaderInnerStyle>
+    </HeaderStyle>
+  );
+};
+export default Header;
+
+const HeaderStyle = styled.header<{ $isShowNav: boolean; $path: string; $scrollHeight: number }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -16,7 +47,8 @@ const HeaderStyle = styled.header<{ $isShowNav: boolean; $path: string }>`
   align-items: baseline;
   z-index: 2;
   overflow-y: hidden;
-  background-color: ${(props) => (props.$isShowNav ? "#fff" : props.$path !== "/" ? "#000" : "transparent")};
+  background-color: ${(props) =>
+    props.$isShowNav ? "#fff" : props.$path !== "/" ? "#000" : props.$scrollHeight > 100 ? "#000" : "transparent"};
   transition:
     height 0.25s ease-in-out,
     background-color 0.25s ease-in-out;
