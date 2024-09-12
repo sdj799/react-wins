@@ -23,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
         font-optical-sizing: auto;
         font-style: normal;
     }
-    ol, ul{
+    ol, ul, li{
         list-style: none;
     }
     button {

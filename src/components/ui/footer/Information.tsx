@@ -1,5 +1,28 @@
 import styled from "styled-components";
 
+const FooterInfoStyle = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 13px;
+  & > li {
+    display: flex;
+    & > span:last-child {
+      color: #111111;
+    }
+  }
+  & > li:first-child {
+    line-height: 1.5;
+    & > span:last-child {
+      color: rgba(0, 0, 0, 0.3);
+      & > strong {
+        color: #000000;
+        font-weight: 500;
+      }
+    }
+  }
+`;
+
 const Information = () => {
   return (
     <FooterInfoStyle>
@@ -19,31 +42,3 @@ const Information = () => {
   );
 };
 export default Information;
-
-const FooterInfoStyle = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  font-size: 13px;
-
-  & > li {
-    display: flex;
-
-    & > span:last-child {
-      color: #111111;
-    }
-  }
-
-  & > li:first-child {
-    line-height: 1.5;
-
-    & > span:last-child {
-      color: rgba(0, 0, 0, 0.3);
-
-      & > strong {
-        color: #000000;
-        font-weight: 500;
-      }
-    }
-  }
-`;

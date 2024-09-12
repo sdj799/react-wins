@@ -8,15 +8,6 @@ interface TabItemProps {
   onClick: () => void;
 }
 
-const TabItem = ({ tab, $activeTabId, onClick }: TabItemProps) => {
-  return (
-    <TabItemStyle $isActive={$activeTabId} onClick={onClick}>
-      {tab}
-    </TabItemStyle>
-  );
-};
-export default TabItem;
-
 const TabItemStyle = styled.li<{ $isActive: boolean }>`
   width: 150px;
   height: 60px;
@@ -28,3 +19,12 @@ const TabItemStyle = styled.li<{ $isActive: boolean }>`
   font-weight: ${({ $isActive }) => ($isActive ? "500" : "300")};
   border-bottom: ${({ $isActive }) => ($isActive ? "4px solid #000" : "none")};
 `;
+
+const TabItem = ({ tab, $activeTabId, onClick }: TabItemProps) => {
+  return (
+    <TabItemStyle $isActive={$activeTabId} onClick={onClick}>
+      {tab}
+    </TabItemStyle>
+  );
+};
+export default TabItem;
