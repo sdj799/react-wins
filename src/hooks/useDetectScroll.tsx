@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const useDetectScroll = () => {
-  const [scrollHeight, setScrollHeight] = useState(0);
+  const [$scrollHeight, setScrollHeight] = useState(0);
 
   useEffect(() => {
     const scrollHandler = () => {
@@ -14,6 +14,6 @@ const useDetectScroll = () => {
       window.removeEventListener("scroll", scrollHandler);
     };
   }, []);
-  return { scrollHeight };
+  return { $scrollHeight };
 };
 export default useDetectScroll;

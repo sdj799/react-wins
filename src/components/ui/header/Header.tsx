@@ -9,7 +9,7 @@ import Utils from "./Utils";
 const Header = () => {
   const $path = useLocation().pathname;
   const [$isShowNav, setIsShowNav] = useState(false);
-  const { scrollHeight } = useDetectScroll();
+  const { $scrollHeight } = useDetectScroll();
 
   const onMouseOverHandler = () => {
     setIsShowNav(true);
@@ -25,7 +25,7 @@ const Header = () => {
       onMouseOut={onMouseOutHandler}
       $isShowNav={$isShowNav}
       $path={$path}
-      scrollHeight={scrollHeight}>
+      $scrollHeight={$scrollHeight}>
       <HeaderInnerStyle $isShowNav={$isShowNav}>
         <Logo $isShowNav={$isShowNav} />
         <Nav $isShowNav={$isShowNav} />
@@ -36,7 +36,7 @@ const Header = () => {
 };
 export default Header;
 
-const HeaderStyle = styled.header<{ $isShowNav: boolean; $path: string; scrollHeight: number }>`
+const HeaderStyle = styled.header<{ $isShowNav: boolean; $path: string; $scrollHeight: number }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -48,7 +48,7 @@ const HeaderStyle = styled.header<{ $isShowNav: boolean; $path: string; scrollHe
   z-index: 2;
   overflow-y: hidden;
   background-color: ${(props) =>
-    props.$isShowNav ? "#fff" : props.$path !== "/" ? "#000" : props.scrollHeight > 100 ? "#000" : "transparent"};
+    props.$isShowNav ? "#fff" : props.$path !== "/" ? "#000" : props.$scrollHeight > 100 ? "#000" : "transparent"};
   transition:
     height 0.25s ease-in-out,
     background-color 0.25s ease-in-out;
