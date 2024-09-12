@@ -2,24 +2,6 @@ import { formatDate } from "@utils/date";
 import { FaCalendarAlt, FaRegCheckCircle } from "react-icons/fa";
 import styled from "styled-components";
 
-const TitleInfo = ({ date, view }: { date: number | undefined; view: number | undefined }) => {
-  return (
-    <>
-      <InfoDisplayList>
-        <li>
-          <span>{date && formatDate(new Date(date))}</span>
-          <FaCalendarAlt className="icon" />
-        </li>
-        <li>
-          <span>{view}</span>
-          <FaRegCheckCircle className="icon" />
-        </li>
-      </InfoDisplayList>
-    </>
-  );
-};
-export default TitleInfo;
-
 const InfoDisplayList = styled.ul`
   width: 140px;
   display: flex;
@@ -37,7 +19,24 @@ const InfoDisplayList = styled.ul`
     height: 16px;
     margin-left: 5px;
   }
-
   padding: 0;
   margin: 0;
 `;
+
+const TitleInfo = ({ date, view }: { date: number | undefined; view: number | undefined }) => {
+  return (
+    <>
+      <InfoDisplayList>
+        <li>
+          <span>{date && formatDate(new Date(date))}</span>
+          <FaCalendarAlt className="icon" />
+        </li>
+        <li>
+          <span>{view}</span>
+          <FaRegCheckCircle className="icon" />
+        </li>
+      </InfoDisplayList>
+    </>
+  );
+};
+export default TitleInfo;

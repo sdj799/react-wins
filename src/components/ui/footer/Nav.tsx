@@ -1,5 +1,19 @@
 import styled from "styled-components";
 
+const FooterNavStyle = styled.ul`
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-bottom: 10px;
+
+  & > li {
+    & > button {
+      font-size: 15px;
+      font-weight: 500;
+    }
+  }
+`;
+
 const Nav = () => {
   return (
     <FooterNavStyle>
@@ -19,17 +33,3 @@ const Nav = () => {
   );
 };
 export default Nav;
-
-const FooterNavStyle = styled.ul`
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  padding-bottom: 10px;
-
-  & > li {
-    & > button {
-      font-size: 15px;
-      font-weight: 500;
-    }
-  }
-`;

@@ -6,6 +6,46 @@ import MediaLayout from "./MediaLayout";
 import NavigationControls from "./NavigationControls";
 import TitleInfo from "./TitleInfo";
 
+const ArticleContainer = styled.article`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const ContentHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #f5f5f5;
+  & > h1 {
+    font-size: 22px;
+    line-height: 28px;
+    margin: 0;
+  }
+`;
+
+const MainContent = styled.div`
+  padding: 20px 10px;
+`;
+
+const ArticleFooter = styled.div`
+  margin: 0 20px 15px;
+`;
+
+const SnsList = styled.ul`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+`;
+
+const SnsIcon = styled.img`
+  width: 40px;
+  height: 40px;
+  margin-left: 5px;
+`;
+
 const MediaDetail = ({ media }: { media: TMedia | undefined }) => {
   return (
     <>
@@ -33,41 +73,3 @@ const MediaDetail = ({ media }: { media: TMedia | undefined }) => {
   );
 };
 export default MediaDetail;
-
-const ArticleContainer = styled.article`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-`;
-const ContentHeader = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-  background-color: #f5f5f5;
-
-  & > h1 {
-    font-size: 22px;
-    line-height: 28px;
-    margin: 0;
-  }
-`;
-const MainContent = styled.div`
-  padding: 20px 10px;
-`;
-
-const ArticleFooter = styled.div`
-  margin: 0 20px 15px;
-`;
-
-const SnsList = styled.ul`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-`;
-const SnsIcon = styled.img`
-  width: 40px;
-  height: 40px;
-  margin-left: 5px;
-`;

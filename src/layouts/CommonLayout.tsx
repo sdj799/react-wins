@@ -6,34 +6,6 @@ import Search from "@components/ui/main/Search";
 import { Outlet, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
-const CommonLayout = () => {
-  const { pathname } = useLocation();
-  const currentPath = pathname.split("/").filter((element) => element);
-
-  return (
-    <CommonLayoutStyle>
-      <Header />
-      <Banner />
-      <MainStyle>
-        <MainUtilsStyle>
-          {(currentPath[1] === "coach" ||
-            currentPath[1] === "pitcher" ||
-            currentPath[1] === "catcher" ||
-            currentPath[1] === "infielder" ||
-            currentPath[1] === "outfielder" ||
-            currentPath[0] === "media") && <Search />}
-          <Breadcrumb />
-        </MainUtilsStyle>
-        <MainInnerStyle $hasPadding={!(currentPath[0] === "game" || currentPath[0] === "media")}>
-          <Outlet />
-        </MainInnerStyle>
-      </MainStyle>
-      <Footer />
-    </CommonLayoutStyle>
-  );
-};
-export default CommonLayout;
-
 const CommonLayoutStyle = styled.div`
   width: 100%;
   display: flex;
@@ -69,3 +41,31 @@ const MainInnerStyle = styled.section<{ $hasPadding: boolean }>`
   flex-direction: column;
   align-items: center;
 `;
+
+const CommonLayout = () => {
+  const { pathname } = useLocation();
+  const currentPath = pathname.split("/").filter((element) => element);
+
+  return (
+    <CommonLayoutStyle>
+      <Header />
+      <Banner />
+      <MainStyle>
+        <MainUtilsStyle>
+          {(currentPath[1] === "coach" ||
+            currentPath[1] === "pitcher" ||
+            currentPath[1] === "catcher" ||
+            currentPath[1] === "infielder" ||
+            currentPath[1] === "outfielder" ||
+            currentPath[0] === "media") && <Search />}
+          <Breadcrumb />
+        </MainUtilsStyle>
+        <MainInnerStyle $hasPadding={!(currentPath[0] === "game" || currentPath[0] === "media")}>
+          <Outlet />
+        </MainInnerStyle>
+      </MainStyle>
+      <Footer />
+    </CommonLayoutStyle>
+  );
+};
+export default CommonLayout;

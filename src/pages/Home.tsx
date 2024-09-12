@@ -1,17 +1,6 @@
 import emblem from "@assets/emblem.svg";
 import styled from "styled-components";
 
-const Home = () => {
-  return (
-    <HomeStyle>
-      <div>
-        <img src={emblem} alt="emblem" />
-      </div>
-    </HomeStyle>
-  );
-};
-export default Home;
-
 const HomeStyle = styled.div`
   width: 100%;
   height: 100vh;
@@ -32,3 +21,14 @@ const HomeStyle = styled.div`
     }
   }
 `;
+
+const Home = () => {
+  return (
+    <HomeStyle>
+      <div>
+        <img src={emblem} alt="emblem" />
+      </div>
+    </HomeStyle>
+  );
+};
+export default Home;
