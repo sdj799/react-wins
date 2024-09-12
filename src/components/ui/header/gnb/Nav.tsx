@@ -1,13 +1,12 @@
-import styled from "styled-components";
 import { NavEventType } from "@customTypes/layout";
-import TopMenu from "./TopMenu";
+import styled from "styled-components";
 import BottomMenu from "./BottomMenu";
+import TopMenu from "./TopMenu";
 
 const Nav = ({ $isShowNav }: NavEventType) => {
   return (
     <MainNavStyle $isShowNav={$isShowNav}>
       <TopMenu $isShowNav={$isShowNav} />
-      {/* <BottomMenu isShowNav={isShowNav} /> */}
       {$isShowNav && <BottomMenu $isShowNav={$isShowNav} />}
     </MainNavStyle>
   );

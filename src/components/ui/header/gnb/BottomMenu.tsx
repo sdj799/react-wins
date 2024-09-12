@@ -3,39 +3,53 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const BottomMenu = ({ $isShowNav }: NavEventType) => {
+  // const { page } = useParams();
+
   return (
     <BottomMenuStyle $isShowNav={$isShowNav}>
       <li>
         <ul>
           <li>
-            <Link to="/ktwiz">kt wiz는?</Link>
+            <Link to="/ktwiz/about">kt wiz는?</Link>
           </li>
-          <li>구단 BI</li>
-          <li>회원 정책</li>
-          <li>스폰서</li>
-          <li>월페이퍼</li>
+          <li>
+            <Link to="/ktwiz/bi">구단 BI</Link>
+          </li>
+          <li>
+            <Link to="/ktwiz/policy">회원 정책</Link>
+          </li>
+          <li>
+            <Link to="/ktwiz/sponsor">스폰서</Link>
+          </li>
+          <li>
+            <Link to="/ktwiz/wallpaper">월페이퍼</Link>
+          </li>
         </ul>
       </li>
       <li>
         <ul>
           <li>
-            <Link to="/wizpark">
+            <Link to="/wizpark/intro">
               수원 kt wiz
               <br />
               park
             </Link>
           </li>
-          <li>주차 예약</li>
+          <li>
+            <Link to="/wizpark/parking">주차 예약</Link>
+          </li>
           <li>
             <Link to="/wizpark/location">찾아오기</Link>
           </li>
-          <Link to="/wizpark/iksan">익산야구장</Link>
+          <li>
+            <Link to="/wizpark/iksan">익산야구장</Link>
+          </li>
         </ul>
       </li>
       <li>
         <ul>
           <li>
-            <Link to="/game">정규리그</Link>
+            <Link to="/game/schedule">정규리그</Link>
           </li>
           <li>퓨처스리그</li>
         </ul>
@@ -61,22 +75,39 @@ const BottomMenu = ({ $isShowNav }: NavEventType) => {
       <li>
         <ul>
           <li>
-            <Link to="/media">wiz 뉴스</Link>
+            <Link to="/media/wiznews">wiz 뉴스</Link>
           </li>
-          <li>wiz 스토리</li>
-          <li>시구자 정보</li>
-          <li>wiz 포토</li>
-          <li>하이라이트</li>
-          <li>Live 영상모음</li>
+          <li>
+            <Link to="/media/wizstory">wiz 스토리</Link>
+          </li>
+          <li>
+            <Link to="/media/firstpitch">시구자 정보</Link>
+          </li>
+          <li>
+            {/* <Link to={`/media/wizphoto/${page}`}>wiz 포토</Link> */}
+            <Link to="media/wizphoto">wiz 포토</Link>
+          </li>
+          <li>
+            <Link to="/media/highlight">하이라이트</Link>
+          </li>
+          <li>
+            <Link to="/media/live">Live 영상모음</Link>
+          </li>
         </ul>
       </li>
       <li></li>
       <li></li>
       <li>
         <ul>
-          <li>티켓예매</li>
-          <li>단체관람</li>
-          <li>입장 및 좌석 정보</li>
+          <li>
+            <Link to="/ticket/reservation">티켓예매</Link>
+          </li>
+          <li>
+            <Link to="/ticket/group">단체관람</Link>
+          </li>
+          <li>
+            <Link to="/ticket/seatmap">입장 및 좌석 정보</Link>
+          </li>
         </ul>
       </li>
     </BottomMenuStyle>
