@@ -3,6 +3,30 @@ import { RiNotionFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+const SocialStyle = styled.ul`
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  padding-top: 40px;
+  & > li {
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    & > a {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      & > svg {
+        font-size: 20px;
+        color: #717781;
+      }
+    }
+  }
+`;
+
 const Social = () => {
   return (
     <SocialStyle>
@@ -27,30 +51,3 @@ const Social = () => {
   );
 };
 export default Social;
-
-const SocialStyle = styled.ul`
-  width: 100%;
-  display: flex;
-  gap: 10px;
-  padding-top: 40px;
-
-  & > li {
-    width: 38px;
-    height: 38px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-
-    & > a {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      & > svg {
-        font-size: 20px;
-        color: #717781;
-      }
-    }
-  }
-`;

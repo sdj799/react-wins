@@ -1,33 +1,9 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
-import Logo from "./Logo";
 import Nav from "./gnb/Nav";
+import Logo from "./Logo";
 import Utils from "./Utils";
-
-const Header = () => {
-  const $path = useLocation().pathname;
-  const [$isShowNav, setIsShowNav] = useState(false);
-
-  const onMouseOverHandler = () => {
-    setIsShowNav(true);
-  };
-
-  const onMouseOutHandler = () => {
-    setIsShowNav((prev) => !prev);
-  };
-
-  return (
-    <HeaderStyle onMouseOver={onMouseOverHandler} onMouseOut={onMouseOutHandler} $isShowNav={$isShowNav} $path={$path}>
-      <HeaderInnerStyle $isShowNav={$isShowNav}>
-        <Logo $isShowNav={$isShowNav} />
-        <Nav $isShowNav={$isShowNav} />
-        <Utils $isShowNav={$isShowNav} />
-      </HeaderInnerStyle>
-    </HeaderStyle>
-  );
-};
-export default Header;
 
 const HeaderStyle = styled.header<{ $isShowNav: boolean; $path: string }>`
   position: fixed;
@@ -53,7 +29,6 @@ const HeaderInnerStyle = styled.div<{ $isShowNav: boolean }>`
   align-items: baseline;
   justify-content: space-around;
   gap: 20px;
-
   &::after {
     content: "";
     position: absolute;
@@ -64,3 +39,27 @@ const HeaderInnerStyle = styled.div<{ $isShowNav: boolean }>`
     border-bottom: ${(props) => (props.$isShowNav ? "1px solid rgba(0, 0, 0, 0.1)" : "0")};
   }
 `;
+
+const Header = () => {
+  const $path = useLocation().pathname;
+  const [$isShowNav, setIsShowNav] = useState(false);
+
+  const onMouseOverHandler = () => {
+    setIsShowNav(true);
+  };
+
+  const onMouseOutHandler = () => {
+    setIsShowNav((prev) => !prev);
+  };
+
+  return (
+    <HeaderStyle onMouseOver={onMouseOverHandler} onMouseOut={onMouseOutHandler} $isShowNav={$isShowNav} $path={$path}>
+      <HeaderInnerStyle $isShowNav={$isShowNav}>
+        <Logo $isShowNav={$isShowNav} />
+        <Nav $isShowNav={$isShowNav} />
+        <Utils $isShowNav={$isShowNav} />
+      </HeaderInnerStyle>
+    </HeaderStyle>
+  );
+};
+export default Header;

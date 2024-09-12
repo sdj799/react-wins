@@ -1,5 +1,24 @@
-import styled from "styled-components";
 import { MdKeyboardArrowRight, MdKeyboardDoubleArrowRight } from "react-icons/md";
+import styled from "styled-components";
+
+const PagenationWrapper = styled.div`
+  margin-top: 54px;
+  text-align: center;
+`;
+
+const PageButton = styled.button`
+  width: 26px;
+  height: 26px;
+  background-color: #fff;
+  border: 1px solid #c3c3c3;
+  border-radius: 2px;
+  margin: 0 2px;
+  padding: 0px;
+  font-size: 12px;
+  line-height: 26px;
+  color: #999;
+  vertical-align: middle;
+`;
 
 const PaginationButtons = () => {
   return (
@@ -24,22 +43,3 @@ const PaginationButtons = () => {
   );
 };
 export default PaginationButtons;
-
-const PagenationWrapper = styled.div`
-  margin-top: 54px;
-  text-align: center;
-`;
-
-const PageButton = styled.button`
-  width: 26px;
-  height: 26px;
-  background-color: #fff;
-  border: 1px solid #c3c3c3;
-  border-radius: 2px;
-  margin: 0 2px;
-  padding: 0px;
-  font-size: 12px;
-  line-height: 26px;
-  color: #999;
-  vertical-align: middle;
-`;

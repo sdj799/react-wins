@@ -2,22 +2,6 @@ import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Select from "./Select";
 
-const Search = () => {
-  const { pathname } = useLocation();
-  const currentPath = pathname.split("/").filter((element) => element);
-
-  return (
-    <SearchFormStyle>
-      {currentPath[0] === "media" && <Select />}
-      <SearchFormInnerStyle>
-        <input type="text" placeholder="검색어를 입력해주세요." />
-        <button type="button">검색</button>
-      </SearchFormInnerStyle>
-    </SearchFormStyle>
-  );
-};
-export default Search;
-
 const SearchFormStyle = styled.form`
   display: flex;
   justify-content: flex-start;
@@ -54,3 +38,19 @@ const SearchFormInnerStyle = styled.div`
     font-size: 12px;
   }
 `;
+
+const Search = () => {
+  const { pathname } = useLocation();
+  const currentPath = pathname.split("/").filter((element) => element);
+
+  return (
+    <SearchFormStyle>
+      {currentPath[0] === "media" && <Select />}
+      <SearchFormInnerStyle>
+        <input type="text" placeholder="검색어를 입력해주세요." />
+        <button type="button">검색</button>
+      </SearchFormInnerStyle>
+    </SearchFormStyle>
+  );
+};
+export default Search;

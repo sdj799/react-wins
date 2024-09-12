@@ -2,9 +2,33 @@ import { NavEventType } from "@customTypes/layout";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const BottomMenu = ({ $isShowNav }: NavEventType) => {
-  // const { page } = useParams();
+const BottomMenuStyle = styled.ul<{ $isShowNav: boolean }>`
+  display: contents;
+  & > li {
+    color: #000;
+    cursor: pointer;
+    line-height: 1.2;
+    font-size: 14px;
+    font-weight: 400;
+    transition: font-weight 0.1s;
+    padding-top: 20px;
+    & > ul {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+  }
+  & > li {
+    & > ul {
+      & > li:hover {
+        font-weight: 500;
+        transition: font-weight 0.1s;
+      }
+    }
+  }
+`;
 
+const BottomMenu = ({ $isShowNav }: NavEventType) => {
   return (
     <BottomMenuStyle $isShowNav={$isShowNav}>
       <li>
@@ -84,7 +108,6 @@ const BottomMenu = ({ $isShowNav }: NavEventType) => {
             <Link to="/media/firstpitch">시구자 정보</Link>
           </li>
           <li>
-            {/* <Link to={`/media/wizphoto/${page}`}>wiz 포토</Link> */}
             <Link to="media/wizphoto">wiz 포토</Link>
           </li>
           <li>
@@ -114,32 +137,3 @@ const BottomMenu = ({ $isShowNav }: NavEventType) => {
   );
 };
 export default BottomMenu;
-
-const BottomMenuStyle = styled.ul<{ $isShowNav: boolean }>`
-  display: contents;
-
-  & > li {
-    color: #000;
-    cursor: pointer;
-    line-height: 1.2;
-    font-size: 14px;
-    font-weight: 400;
-    transition: font-weight 0.1s;
-    padding-top: 20px;
-
-    & > ul {
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-    }
-  }
-
-  & > li {
-    & > ul {
-      & > li:hover {
-        font-weight: 500;
-        transition: font-weight 0.1s;
-      }
-    }
-  }
-`;

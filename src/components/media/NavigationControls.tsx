@@ -1,19 +1,7 @@
 import styled from "styled-components";
 
-const NavigationControls = () => {
-  return (
-    <NavigationWrapper>
-      <NavigationBtn className="prev">이전</NavigationBtn>
-      <NavigationBtn className="next">다음</NavigationBtn>
-      <NavigationBtn className="list">목록보기</NavigationBtn>
-    </NavigationWrapper>
-  );
-};
-export default NavigationControls;
-
 const NavigationWrapper = styled.div`
   padding: 15px 20px;
-
   .next {
     margin-left: 10px;
   }
@@ -34,3 +22,14 @@ const NavigationBtn = styled.button`
   background-color: #282828;
   border-radius: 10%;
 `;
+
+const NavigationControls = () => {
+  return (
+    <NavigationWrapper>
+      <NavigationBtn className="prev">이전</NavigationBtn>
+      <NavigationBtn className="next">다음</NavigationBtn>
+      <NavigationBtn className="list">목록보기</NavigationBtn>
+    </NavigationWrapper>
+  );
+};
+export default NavigationControls;

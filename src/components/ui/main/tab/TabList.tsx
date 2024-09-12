@@ -5,6 +5,16 @@ import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import TabItem from "./TabItem";
 
+const TabListStyle = styled.ul`
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const TabList = () => {
   const [$activeTabId, setActiveTabId] = useState(1);
   const currentPath = useLocation().pathname;
@@ -52,13 +62,3 @@ const TabList = () => {
   );
 };
 export default TabList;
-
-const TabListStyle = styled.ul`
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;

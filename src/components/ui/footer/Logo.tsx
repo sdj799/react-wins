@@ -1,5 +1,11 @@
-import styled from "styled-components";
 import footerLogo from "@assets/footerLogo.svg";
+import styled from "styled-components";
+
+const FooterLogoStyle = styled.h2`
+  & > img {
+    width: 125px;
+  }
+`;
 
 const Logo = () => {
   return (
@@ -9,9 +15,3 @@ const Logo = () => {
   );
 };
 export default Logo;
-
-const FooterLogoStyle = styled.h2`
-  & > img {
-    width: 125px;
-  }
-`;

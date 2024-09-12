@@ -7,7 +7,6 @@ const PlayerLi = styled.li`
   width: 23.273%;
   max-width: 23.273%;
   margin-right: 1.72%;
-  list-style: none;
 `;
 
 const CardArti = styled.article`

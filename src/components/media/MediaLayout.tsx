@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+const ContentContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  border-bottom: 2px solid #ec0a0b;
+`;
+
 const MediaLayout = ({ children }: { children: React.ReactNode[] }) => {
   return (
     <section>
@@ -9,9 +15,3 @@ const MediaLayout = ({ children }: { children: React.ReactNode[] }) => {
   );
 };
 export default MediaLayout;
-
-const ContentContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  border-bottom: 2px solid #ec0a0b;
-`;
