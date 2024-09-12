@@ -1,10 +1,5 @@
 import styled from "styled-components";
 
-const Article = () => {
-  return <ArticleStyle>{/* article 메인 슬라이드 삽입 */}</ArticleStyle>;
-};
-export default Article;
-
 const ArticleStyle = styled.article`
   width: 100%;
   height: 100vh;
@@ -13,3 +8,8 @@ const ArticleStyle = styled.article`
   background-repeat: no-repeat;
   background-position: center center;
 `;
+
+const Article = () => {
+  return <ArticleStyle>{/* article 메인 슬라이드 삽입 */}</ArticleStyle>;
+};
+export default Article;
