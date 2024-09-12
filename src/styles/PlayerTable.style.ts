@@ -21,3 +21,9 @@ export const TableCell = styled.td`
   text-align: center;
   border: 1px solid #cfcfcf;
 `;
+
+export const PlayerContentsWrapper = styled.section`
+  width: 100%;
+  padding: 25px 0;
+  overflow-x: hidden;
+`;

@@ -1,14 +1,34 @@
 import Title from "@components/Location/LocationTitle";
+import { FilterHitRecentType } from "@customTypes/hitterRecent";
+import { FilterHitTotalType } from "@customTypes/hitterTotal";
+import { FilterPitRecentType } from "@customTypes/pitcherRecent";
+import { FilterPitTotalType } from "@customTypes/pitcherTotal";
+import { FilterHitterType, FilterHitterType2 } from "@customTypes/playerHitter";
+import { FilterPitcherType, FilterPitcherType2 } from "@customTypes/playerPitcher";
+import {
+  filterHitRecentData,
+  filterHitterData,
+  filterHitterData2,
+  filterHitTotalData,
+  filterPitcherData,
+  filterPitcherData2,
+  filterPitRecentData,
+  filterPitTotalData,
+} from "@utils/fiterPlayerData";
+import { hitRecentData, hitterData, hitTotalData, pitcherData, pitRecentData, pitTotalData } from "data/playerData";
+import {
+  hitRecentHeaders,
+  hitterHeaders,
+  hitterHeaders2,
+  hitTotalHeaders,
+  pitcherHeaders,
+  pitcherHeaders2,
+  pitRecentHeaders,
+  pitTotalHeaders,
+} from "data/playerHeaders";
 import { useState } from "react";
 import styled from "styled-components";
-import HitterRecent from "./HitterRecent";
-import HitterTable from "./HitterTable";
-import HitterTable2 from "./HitterTable2";
-import HitterTotal from "./HitterTotal";
-import PitcherRecent from "./PitcherRecent";
-import PitcherTable from "./PitcherTable";
-import PitcherTable2 from "./PitcherTable2";
-import PitcherTotal from "./PitcherTotal";
+import PlayerTable from "./PlayerTable";
 
 const DetailMenuWrapper = styled.div`
   height: 60px;
@@ -40,6 +60,19 @@ const TableWrapper = styled.div`
 const PlayerDetail = ({ isPitcher }: { isPitcher: boolean }) => {
   const [menu, setMenu] = useState("league");
   const [title, setTitle] = useState("2024 시즌 정규리그 기록");
+
+  // 필터링된 데이터
+  const filteredPitchers: FilterPitcherType[] = pitcherData.map(filterPitcherData);
+  const filteredPitchers2: FilterPitcherType2[] = pitcherData.map(filterPitcherData2);
+  const filteredHitters: FilterHitterType[] = hitterData.map(filterHitterData);
+  const filteredHitters2: FilterHitterType2[] = hitterData.map(filterHitterData2);
+
+  const filteredPitRecents: FilterPitRecentType[] = pitRecentData.map(filterPitRecentData);
+  const filteredPitTotals: FilterPitTotalType[] = pitTotalData.map(filterPitTotalData);
+
+  const filteredHitRecents: FilterHitRecentType[] = hitRecentData.map(filterHitRecentData);
+  const filteredHitTotals: FilterHitTotalType[] = hitTotalData.map(filterHitTotalData);
+
   return (
     <>
       <DetailMenuWrapper>
@@ -86,17 +119,34 @@ const PlayerDetail = ({ isPitcher }: { isPitcher: boolean }) => {
         {menu === "league" &&
           (isPitcher ? (
             <>
-              <PitcherTable />
-              <PitcherTable2 />
+              <PlayerTable<FilterPitcherType> resData={filteredPitchers} headers={pitcherHeaders} />
+              <div style={{ marginTop: "15px" }}></div>
+              <PlayerTable<FilterPitcherType2> resData={filteredPitchers2} headers={pitcherHeaders2} />
+              {/* <PitcherTable />
+              <PitcherTable2 /> */}
             </>
           ) : (
             <>
-              <HitterTable />
-              <HitterTable2 />
+              <PlayerTable<FilterHitterType> resData={filteredHitters} headers={hitterHeaders} />
+              <div style={{ marginTop: "15px" }}></div>
+              <PlayerTable<FilterHitterType2> resData={filteredHitters2} headers={hitterHeaders2} />
+
+              {/* <HitterTable />
+              <HitterTable2 /> */}
             </>
           ))}
-        {menu === "recent" && (isPitcher ? <PitcherRecent /> : <HitterRecent />)}
-        {menu === "total" && (isPitcher ? <PitcherTotal /> : <HitterTotal />)}
+        {menu === "recent" &&
+          (isPitcher ? (
+            <PlayerTable<FilterPitRecentType> resData={filteredPitRecents} headers={pitRecentHeaders} />
+          ) : (
+            <PlayerTable<FilterHitRecentType> resData={filteredHitRecents} headers={hitRecentHeaders} />
+          ))}
+        {menu === "total" &&
+          (isPitcher ? (
+            <PlayerTable<FilterPitTotalType> resData={filteredPitTotals} headers={pitTotalHeaders} />
+          ) : (
+            <PlayerTable<FilterHitTotalType> resData={filteredHitTotals} headers={hitTotalHeaders} />
+          ))}
       </TableWrapper>
     </>
   );

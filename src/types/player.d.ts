@@ -1,6 +1,6 @@
-export type TPlayer = {
+export type PlayerType = {
   playerName: string;
-  playerNum: number;
+  playerNum: string;
   imgSrc: string;
   href: string;
 };
