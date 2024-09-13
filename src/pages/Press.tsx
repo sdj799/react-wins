@@ -1,4 +1,4 @@
-import MediaList from "@components/media/MediaList";
+import MediaList from "@components/Media/MediaList";
 import { TMedia } from "@customTypes/media";
 import dummy from "@data/media.json";
 import { useEffect, useState } from "react";

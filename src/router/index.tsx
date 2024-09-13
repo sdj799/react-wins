@@ -7,10 +7,12 @@ import Iksan from "@pages/Iksan";
 import Infielder from "@pages/Infielder";
 import Location from "@pages/Location";
 import News from "@pages/News";
+import NewsDetail from "@pages/NewsDetail";
 import Outfielder from "@pages/Outfielder";
 import Pitcher from "@pages/Pitcher";
 import PitcherDetail from "@pages/PitcherDetail";
 import Press from "@pages/Press";
+import PressDetail from "@pages/PressDetail";
 import WizParkGuide from "@pages/WizParkGuide.tsx";
 import WizParkIntro from "@pages/WizParkIntro.tsx";
 import BasicLayout from "layouts/BasicLayout";
@@ -214,11 +216,17 @@ export const router = createBrowserRouter([
         children: [
           {
             path: "wiznews",
-            element: <News />,
+            children: [
+              { index: true, element: <News /> },
+              { path: ":artcSeq", element: <NewsDetail /> },
+            ],
           },
           {
             path: "wizpress",
-            element: <Press />,
+            children: [
+              { index: true, element: <Press /> },
+              { path: ":artcSeq", element: <PressDetail /> },
+            ],
           },
           {
             path: "wizstory",
