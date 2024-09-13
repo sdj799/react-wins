@@ -1,4 +1,7 @@
+import { formatCareer } from "@utils/career";
+import { stringToDate } from "@utils/date";
 import { FaChevronRight } from "react-icons/fa6";
+import { usePlayerStore } from "store/actions/usePlayerStore";
 import styled from "styled-components";
 
 const InfoArti = styled.article`
@@ -93,36 +96,39 @@ const PlayerRecordDd = styled.dd`
 `;
 
 const PlayerInfo = ({ isPitcher, isCatcher }: { isPitcher?: boolean; isCatcher?: boolean }) => {
+  const player = usePlayerStore((state) => state.player);
+  const pitcherSeasonSummary = usePlayerStore((state) => state.pitcherSeasonSummary);
+  const hitterSeasonSummary = usePlayerStore((state) => state.hitterSeasonSummary);
   return (
     <>
       <InfoArti>
         <div>
-          <InfoImg src="https://wizzap.ktwiz.co.kr/files/playerImg/ktImg2/77733_2024-03-06_110511.jpg" />
+          <InfoImg src={player?.playerPrvwImg2} />
           <dl>
             <InfoDt>
-              <InfoNumber>No. {72}</InfoNumber>
-              {"김강"}
-              <InfoEng>{"KIM KANG"}</InfoEng>
+              <InfoNumber>No. {player?.backnum}</InfoNumber>
+              {player?.playerName}
+              <InfoEng>{player?.engName}</InfoEng>
             </InfoDt>
             <InfoListWrapper>
               <ul>
                 <li>
                   <dl>
                     <InfoListDt>포지션</InfoListDt>
-                    <InfoListDd>{"타격보조 코치"}</InfoListDd>
+                    <InfoListDd>{player?.position}</InfoListDd>
                   </dl>
                 </li>
                 <li>
                   <dl>
                     <InfoListDt>생년월일</InfoListDt>
-                    <InfoListDd>{"1988.10.16"}</InfoListDd>
+                    <InfoListDd>{player && stringToDate(player.birth)}</InfoListDd>
                   </dl>
                 </li>
                 <li>
                   <dl>
                     <InfoListDt>체격</InfoListDt>
                     <InfoListDd>
-                      {188} cm, {92} kg
+                      {player?.height} cm, {player?.weight} kg
                     </InfoListDd>
                   </dl>
                 </li>
@@ -130,13 +136,12 @@ const PlayerInfo = ({ isPitcher, isCatcher }: { isPitcher?: boolean; isCatcher?:
                   <dl>
                     <InfoListDt>출신교</InfoListDt>
                     <InfoListDd>
-                      <span>{"광주화정초-무등중-"}</span>
-                      {"광주제일고"}
+                      <span>{formatCareer(player?.career)}</span>
                     </InfoListDd>
                   </dl>
                 </li>
               </ul>
-              <PictureButton href={`/media/photos/1?searchWord=김강&search.sort=400`}>
+              <PictureButton href={`/media/photos/1?searchWord=${player?.playerName}&search.sort=400`}>
                 {(isCatcher || isPitcher) && "선수 "}사진 보기 <FaChevronRight fontSize={"0.8em"} />
               </PictureButton>
             </InfoListWrapper>
@@ -144,9 +149,14 @@ const PlayerInfo = ({ isPitcher, isCatcher }: { isPitcher?: boolean; isCatcher?:
           {isPitcher && (
             <PlayerRecord>
               <dl>
-                <PlayerRecordDt>{2024} 정규리그 성적 : </PlayerRecordDt>
+                <PlayerRecordDt>
+                  {pitcherSeasonSummary ? pitcherSeasonSummary.gyear : "-"} 정규리그 성적 :{" "}
+                </PlayerRecordDt>
                 <PlayerRecordDd>
-                  평균자책점 {11.25} / {0} 승 / {1} 패 / {0} 세이브
+                  평균자책점 {pitcherSeasonSummary ? pitcherSeasonSummary.era : "-"} /{" "}
+                  {pitcherSeasonSummary ? pitcherSeasonSummary.w : "-"} 승 /{" "}
+                  {pitcherSeasonSummary ? pitcherSeasonSummary.l : "-"} 패 /{" "}
+                  {pitcherSeasonSummary ? pitcherSeasonSummary.sv : "-"} 세이브
                 </PlayerRecordDd>
               </dl>
             </PlayerRecord>
@@ -154,9 +164,14 @@ const PlayerInfo = ({ isPitcher, isCatcher }: { isPitcher?: boolean; isCatcher?:
           {isCatcher && (
             <PlayerRecord>
               <dl>
-                <PlayerRecordDt>2024 정규리그 성적 : </PlayerRecordDt>
+                <PlayerRecordDt>
+                  {hitterSeasonSummary ? hitterSeasonSummary.gyear : "-"} 정규리그 성적 :{" "}
+                </PlayerRecordDt>
                 <PlayerRecordDd>
-                  타율 {0.24} / 안타 {6} / 타점 {3} / 홈런 {0}
+                  타율 {hitterSeasonSummary ? hitterSeasonSummary.hra : "-"} / 안타{" "}
+                  {hitterSeasonSummary ? hitterSeasonSummary.hit : "-"} / 타점{" "}
+                  {hitterSeasonSummary ? hitterSeasonSummary.rbi : "-"} / 홈런{" "}
+                  {hitterSeasonSummary ? hitterSeasonSummary.hr : "-"}
                 </PlayerRecordDd>
               </dl>
             </PlayerRecord>

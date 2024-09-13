@@ -5,9 +5,11 @@ import CoachDetail from "@pages/CoachDetail";
 import Home from "@pages/Home";
 import Iksan from "@pages/Iksan";
 import Infielder from "@pages/Infielder";
+import InfielderDetail from "@pages/InfielderDetail";
 import Location from "@pages/Location";
 import News from "@pages/News";
 import Outfielder from "@pages/Outfielder";
+import OutfielderDetail from "@pages/OutfielderDetail";
 import Pitcher from "@pages/Pitcher";
 import PitcherDetail from "@pages/PitcherDetail";
 import Press from "@pages/Press";
@@ -186,7 +188,7 @@ export const router = createBrowserRouter([
               },
               {
                 path: "detail",
-                element: "타자_내야수 디테일 component",
+                element: <InfielderDetail />,
               },
             ],
           },
@@ -199,7 +201,7 @@ export const router = createBrowserRouter([
               },
               {
                 path: "detail",
-                element: "타자_외야수 디테일 component",
+                element: <OutfielderDetail />,
               },
             ],
           },
