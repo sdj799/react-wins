@@ -1,3 +1,4 @@
+import WizGallery from "@components/Home/WizGallery";
 import styled from "styled-components";
 
 const HomeStyle = styled.div`
@@ -11,6 +12,10 @@ const HomeStyle = styled.div`
 `;
 
 const Home = () => {
-  return <HomeStyle>{/* Home 페이지 섹션 삽입*/}</HomeStyle>;
+  return (
+    <HomeStyle>
+      <WizGallery />
+    </HomeStyle>
+  );
 };
 export default Home;
