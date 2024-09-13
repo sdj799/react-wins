@@ -1,6 +1,5 @@
 import teamRankingData from "@data/teamRanking.json";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Container from "../Common/Container";
 import Image from "../Common/Image";
@@ -17,7 +16,7 @@ type TeamRankingType = {
   wra: string;
 };
 
-const TeamRankingStyle = styled(Link)`
+const TeamRankingStyle = styled.div`
   position: relative;
   display: flex;
   padding: 40px 50px;
@@ -51,7 +50,7 @@ const TeamRanking = () => {
     <>
       {data.map((rank, index) => (
         <Container key={index} to="#" target="_self" $bgColor="to right, #ec3e57, #c767dd, #4aa9c8">
-          <TeamRankingStyle to="#">
+          <TeamRankingStyle>
             <TeamRankingInnerStyle>
               <Text
                 text="팀 순위"
