@@ -1,221 +1,29 @@
 import PlayerCard from "@components/Player/PlayerCard";
 import { PlayerContentsWrapper } from "@styles/PlayerTable.style";
-import { useState } from "react";
-
-const dataList = [
-  {
-    backnum: "99",
-    energybar: 368,
-    energybarName: "368 점",
-    gyear: "2024",
-    hasFanpage: "N",
-    hittype: "우투우타",
-    mobilePlayerImg: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/53006_2024-03-06_113058.jpg",
-    mobilePlayerImg1: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/53006_2024-03-06_113231.jpg",
-    mobilePlayerImg2: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/53006_2024-03-06_113244.jpg",
-    pcode: "53006",
-    playerName: "강건",
-    playerPrvwImg: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/53006_2024-03-06_113012.jpg",
-    position: "투수",
-    rank: 13,
-    rankName: "13 위",
-    teamName: "KT",
-  },
-  {
-    backnum: "1",
-    energybar: 344,
-    energybarName: "344 점",
-    gyear: "2024",
-    hasFanpage: "Y",
-    hittype: "우언우타",
-    mobilePlayerImg: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/64001_2024-03-06_113337.jpg",
-    mobilePlayerImg1: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/64001_2024-03-06_113347.jpg",
-    mobilePlayerImg2: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/64001_2024-03-06_113402.jpg",
-    pcode: "64001",
-    playerName: "고영표",
-    playerPrvwImg: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/64001_2024-03-06_113300.jpg",
-    position: "투수",
-    rank: 14,
-    rankName: "14 위",
-    teamName: "KT",
-  },
-  {
-    backnum: "49",
-    energybar: 7,
-    energybarName: "7 점",
-    gyear: "2024",
-    hasFanpage: "N",
-    hittype: "좌투우타",
-    mobilePlayerImg: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/53049_2024-03-06_113455.jpg",
-    mobilePlayerImg1: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/53049_2024-03-06_113510.jpg",
-    mobilePlayerImg2: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/53049_2024-03-06_113525.jpg",
-    pcode: "53049",
-    playerName: "김건웅",
-    playerPrvwImg: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/53049_2024-03-06_113419.jpg",
-    position: "투수",
-    rank: 61,
-    rankName: "61 위",
-    teamName: "KT",
-  },
-  {
-    backnum: "11",
-    energybar: 430,
-    energybarName: "430 점",
-    gyear: "2024",
-    hasFanpage: "N",
-    hittype: "우투우타",
-    mobilePlayerImg: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/68043_2024-03-06_113652.jpg",
-    mobilePlayerImg1: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/68043_2024-03-06_113705.jpg",
-    mobilePlayerImg2: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/68043_2024-03-06_113719.jpg",
-    pcode: "68043",
-    playerName: "김민",
-    playerPrvwImg: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/68043_2024-03-06_113601.jpg",
-    position: "투수",
-    rank: 10,
-    rankName: "10 위",
-    teamName: "KT",
-  },
-  {
-    backnum: "94",
-    energybar: 68,
-    energybarName: "68 점",
-    gyear: "2024",
-    hasFanpage: "N",
-    hittype: "우투우타",
-    mobilePlayerImg: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/54094_2024-03-06_113813.jpg",
-    mobilePlayerImg1: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/54094_2024-03-06_113823.jpg",
-    mobilePlayerImg2: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/54094_2024-03-06_113835.jpg",
-    pcode: "54094",
-    playerName: "김민성",
-    playerPrvwImg: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/54094_2024-03-06_113737.jpg",
-    position: "투수",
-    rank: 33,
-    rankName: "33 위",
-    teamName: "KT",
-  },
-  {
-    backnum: "26",
-    energybar: 88,
-    energybarName: "88 점",
-    gyear: "2024",
-    hasFanpage: "Y",
-    hittype: "우투우타",
-    mobilePlayerImg: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/65048_2024-03-06_113936.jpg",
-    mobilePlayerImg1: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/65048_2024-03-06_113946.jpg",
-    mobilePlayerImg2: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/65048_2024-03-06_113958.jpg",
-    pcode: "65048",
-    playerName: "김민수",
-    playerPrvwImg: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/65048_2024-03-06_113857.jpg",
-    position: "투수",
-    rank: 29,
-    rankName: "29 위",
-    teamName: "KT",
-  },
-  {
-    backnum: "48",
-    energybar: 36,
-    energybarName: "36 점",
-    gyear: "2024",
-    hasFanpage: "N",
-    hittype: "우투우타",
-    mobilePlayerImg: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/51097_2024-03-06_114106.jpg",
-    mobilePlayerImg1: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/51097_2024-03-06_114115.jpg",
-    mobilePlayerImg2: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/51097_2024-03-06_114130.jpg",
-    pcode: "51097",
-    playerName: "김영현",
-    playerPrvwImg: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/51097_2024-03-06_114019.jpg",
-    position: "투수",
-    rank: 42,
-    rankName: "42 위",
-    teamName: "KT",
-  },
-  {
-    backnum: "98",
-    energybar: 7,
-    energybarName: "7 점",
-    gyear: "2024",
-    hasFanpage: "N",
-    hittype: "좌투좌타",
-    mobilePlayerImg2: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/51299_2024-07-31_180745.jpg",
-    pcode: "51299",
-    playerName: "김주완",
-    playerPrvwImg: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/51299_2024-07-31_180639.jpg",
-    position: "투수",
-    rank: 61,
-    rankName: "61 위",
-    teamName: "KT",
-  },
-  {
-    backnum: "13",
-    energybar: 11,
-    energybarName: "11 점",
-    gyear: "2024",
-    hasFanpage: "N",
-    hittype: "우투우타",
-    mobilePlayerImg: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/67419_2024-03-06_114354.jpg",
-    mobilePlayerImg1: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/67419_2024-03-06_114406.jpg",
-    mobilePlayerImg2: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/67419_2024-03-06_114416.jpg",
-    pcode: "67419",
-    playerName: "문용익",
-    playerPrvwImg: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/67419_2024-03-06_114322.jpg",
-    position: "투수",
-    rank: 51,
-    rankName: "51 위",
-    teamName: "KT",
-  },
-  {
-    backnum: "33",
-    energybar: 15,
-    energybarName: "15 점",
-    gyear: "2024",
-    hasFanpage: "N",
-    hittype: "좌투좌타",
-    mobilePlayerImg: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/66047_2024-03-06_114732.jpg",
-    mobilePlayerImg1: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/66047_2024-03-06_114746.jpg",
-    mobilePlayerImg2: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/66047_2024-03-06_114756.jpg",
-    pcode: "66047",
-    playerName: "박세진",
-    playerPrvwImg: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/66047_2024-03-06_114436.jpg",
-    position: "투수",
-    rank: 48,
-    rankName: "48 위",
-    teamName: "KT",
-  },
-  {
-    backnum: "46",
-    energybar: 8,
-    energybarName: "8 점",
-    gyear: "2024",
-    hasFanpage: "N",
-    hittype: "우투우타",
-    mobilePlayerImg: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/60559_2024-03-06_114857.jpg",
-    mobilePlayerImg1: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/60559_2024-03-06_114909.jpg",
-    mobilePlayerImg2: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/60559_2024-03-06_114925.jpg",
-    pcode: "60559",
-    playerName: "박시영",
-    playerPrvwImg: "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/60559_2024-03-06_114816.jpg",
-    position: "투수",
-    rank: 58,
-    rankName: "58 위",
-    teamName: "KT",
-  },
-];
+import { useEffect } from "react";
+import { usePlayerStore } from "store/actions/usePlayerStore";
 
 const Pitcher = () => {
-  const [playerList, setPlayerList] = useState(dataList);
+  const fetchPlayer = usePlayerStore((state) => state.fetchPlayerList);
+  const playerList = usePlayerStore((state) => state.playerList);
+  useEffect(() => {
+    fetchPlayer("pitcherlist");
+  }, []);
+
   return (
     <>
       <PlayerContentsWrapper>
         <ul>
-          {playerList.map((data) => (
-            <PlayerCard
-              key={data.pcode}
-              playerName={data.playerName}
-              playerNum={data.backnum}
-              imgSrc={data.playerPrvwImg}
-              href={`/player/pitcher/detail?pcode=${data.pcode}`}
-            />
-          ))}
+          {playerList &&
+            playerList.map((data) => (
+              <PlayerCard
+                key={data.pcode}
+                playerName={data.playerName}
+                playerNum={data.backnum}
+                imgSrc={data.playerPrvwImg}
+                href={`/player/pitcher/detail?pcode=${data.pcode}`}
+              />
+            ))}
         </ul>
       </PlayerContentsWrapper>
     </>

@@ -42,6 +42,11 @@ const CardDetail = styled.p`
   text-align: right;
 `;
 
+const CardNum = styled.span`
+  color: red;
+  font-size: 16px;
+`;
+
 const PlayerCard = ({ playerName, playerNum, imgSrc, href }: PlayerType) => {
   return (
     <>
@@ -51,7 +56,7 @@ const PlayerCard = ({ playerName, playerNum, imgSrc, href }: PlayerType) => {
             <CardDiv>
               <CardImg src={imgSrc} alt="player img" />
               <CardDetail>
-                <span style={{ color: "red", fontSize: "16px" }}>{`No.${playerNum}`}</span>
+                <CardNum>{`No.${playerNum}`}</CardNum>
                 <br />
                 <span>{playerName}</span>
               </CardDetail>

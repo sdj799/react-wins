@@ -13,7 +13,7 @@ const PlayerTable = <T extends object>({ resData, headers }: TableProps<T>) => {
   // 컬럼 헬퍼 생성
   const columnHelper = createColumnHelper<T>();
 
-  // keyof Person을 사용하여 Person 타입의 모든 키를 추출
+  // keyof T를 사용하여 T 타입의 모든 키를 추출
   const personKeys = Object.keys(data[0]) as Array<keyof T>;
 
   // 반복문을 사용해 columns 배열 생성
@@ -24,6 +24,7 @@ const PlayerTable = <T extends object>({ resData, headers }: TableProps<T>) => {
       header: headers[index], // headerList의 각 요소와 매칭
     })
   );
+
   const table = useReactTable({
     data,
     columns,
@@ -31,7 +32,7 @@ const PlayerTable = <T extends object>({ resData, headers }: TableProps<T>) => {
   });
 
   return (
-    <div className="p-2">
+    <div>
       <TableBtd>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -54,7 +55,6 @@ const PlayerTable = <T extends object>({ resData, headers }: TableProps<T>) => {
           ))}
         </tbody>
       </TableBtd>
-      <div className="h-4" />
     </div>
   );
 };

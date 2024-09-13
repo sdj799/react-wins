@@ -3,11 +3,11 @@ import { PlayerContentsWrapper } from "@styles/PlayerTable.style";
 import { useEffect } from "react";
 import { usePlayerStore } from "store/actions/usePlayerStore";
 
-const Catcher = () => {
+const Outfielder = () => {
   const fetchPlayer = usePlayerStore((state) => state.fetchPlayerList);
   const playerList = usePlayerStore((state) => state.playerList);
   useEffect(() => {
-    fetchPlayer("catcherlist");
+    fetchPlayer("outfielderlist");
   }, []);
 
   return (
@@ -21,7 +21,7 @@ const Catcher = () => {
                 playerName={data.playerName}
                 playerNum={data.backnum}
                 imgSrc={data.playerPrvwImg}
-                href={`/player/catcher/detail?pcode=${data.pcode}`}
+                href={`/player/outfileder/detail?pcode=${data.pcode}`}
               />
             ))}
         </ul>
@@ -29,4 +29,4 @@ const Catcher = () => {
     </>
   );
 };
-export default Catcher;
+export default Outfielder;
