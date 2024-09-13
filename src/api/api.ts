@@ -1,6 +1,12 @@
 import axios from "axios";
 
-const BASE_URL = "http://43.201.249.197";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
+const instance = axios.create({
+  baseURL: `${BASE_URL}/api/`,
+  timeout: 1000,
+  headers: { "Content-Type": "application/json" },
+});
 export const api = async (
   path: string,
   options?: {
@@ -13,15 +19,19 @@ export const api = async (
 ) => {
   try {
     const requestOptions = {
+      ...options,
       method: options?.method || "GET",
-      headers: {
-        "Content-Type": "application/json",
-        ...(options?.headers || {}),
-      },
       data: options?.body,
     };
 
-    const response = await axios(`${BASE_URL}/api/${path}`, requestOptions);
+    if (options?.headers) {
+      requestOptions.headers = {
+        ...instance.defaults.headers,
+        ...options.headers,
+      };
+    }
+
+    const response = await instance(path, requestOptions);
     return response.data;
   } catch (error) {
     throw new Error("Failed to Fetch");
