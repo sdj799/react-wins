@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import RecentMatchList from "./GameSchedule/RecentMatchList";
+import Parking from "./GameSchedule/Parking";
+import RecentMatchList from "./GameSchedule/RecentMatch/RecentMatchList";
 import TeamRanking from "./GameSchedule/TeamRanking";
 import Video from "./GameSchedule/Video";
-import Information from "./Information";
 
 const GameScheduleStyle = styled.section`
   width: 100%;
@@ -54,13 +54,7 @@ const GameSchedule = () => {
       </GameScheduleInnerStyle>
       <GameScheduleOuterStyle>
         <TeamRanking />
-        <Information
-          link="#"
-          title="수원 케이티 위즈 파크"
-          desc="사전 주차 예약제"
-          shortcut="사전주차 예약하기"
-          bgImage="https://cdn.pixabay.com/photo/2016/08/02/15/47/baseball-1563851_1280.jpg"
-        />
+        <Parking />
       </GameScheduleOuterStyle>
     </GameScheduleStyle>
   );

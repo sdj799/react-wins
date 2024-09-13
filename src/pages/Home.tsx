@@ -1,5 +1,5 @@
+import Etc from "@components/Home/Etc";
 import GameSchedule from "@components/Home/GameSchedule";
-import LinkBox from "@components/Home/LinkBox";
 import styled from "styled-components";
 
 const HomeStyle = styled.div`
@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <HomeStyle>
       <GameSchedule />
-      <LinkBox />
+      <Etc />
     </HomeStyle>
   );
 };
