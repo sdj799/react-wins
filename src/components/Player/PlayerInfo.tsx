@@ -149,9 +149,7 @@ const PlayerInfo = ({ isPitcher, isCatcher }: { isPitcher?: boolean; isCatcher?:
           {isPitcher && (
             <PlayerRecord>
               <dl>
-                <PlayerRecordDt>
-                  {pitcherSeasonSummary ? pitcherSeasonSummary.gyear : "-"} 정규리그 성적 :{" "}
-                </PlayerRecordDt>
+                <PlayerRecordDt>{player?.gyear} 정규리그 성적 : </PlayerRecordDt>
                 <PlayerRecordDd>
                   평균자책점 {pitcherSeasonSummary ? pitcherSeasonSummary.era : "-"} /{" "}
                   {pitcherSeasonSummary ? pitcherSeasonSummary.w : "-"} 승 /{" "}
@@ -164,9 +162,7 @@ const PlayerInfo = ({ isPitcher, isCatcher }: { isPitcher?: boolean; isCatcher?:
           {isCatcher && (
             <PlayerRecord>
               <dl>
-                <PlayerRecordDt>
-                  {hitterSeasonSummary ? hitterSeasonSummary.gyear : "-"} 정규리그 성적 :{" "}
-                </PlayerRecordDt>
+                <PlayerRecordDt>{player?.gyear} 정규리그 성적 : </PlayerRecordDt>
                 <PlayerRecordDd>
                   타율 {hitterSeasonSummary ? hitterSeasonSummary.hra : "-"} / 안타{" "}
                   {hitterSeasonSummary ? hitterSeasonSummary.hit : "-"} / 타점{" "}
