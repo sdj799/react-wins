@@ -1,8 +1,8 @@
+import Search from "@components/common/Search";
 import Footer from "@components/ui/footer/Footer";
 import Header from "@components/ui/header/Header";
 import Banner from "@components/ui/main/Banner";
 import Breadcrumb from "@components/ui/main/Breadcrumb";
-import Search from "@components/ui/main/Search";
 import { Outlet, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
