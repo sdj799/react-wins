@@ -1,7 +1,8 @@
 import { MdKeyboardArrowRight, MdKeyboardDoubleArrowRight } from "react-icons/md";
 import styled from "styled-components";
 
-const PagenationWrapper = styled.div`
+const PagenationWrapper = styled.nav`
+  width: 100%;
   margin-top: 54px;
   text-align: center;
 `;

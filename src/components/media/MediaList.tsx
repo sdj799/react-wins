@@ -1,12 +1,12 @@
 import { TMedia } from "@customTypes/media";
+import { MediaContainer } from "@styles/Media.style";
 import MediaItem from "./MediaItem";
-import MediaLayout from "./MediaLayout";
 import PaginationButtons from "./PaginationButtons";
 
 const MediaList = ({ mediaList }: { mediaList: TMedia[] }) => {
   return (
     <>
-      <MediaLayout>
+      <MediaContainer>
         <ul>
           {mediaList.map((media) => (
             <li key={media.artcSeq}>
@@ -14,8 +14,8 @@ const MediaList = ({ mediaList }: { mediaList: TMedia[] }) => {
             </li>
           ))}
         </ul>
-        <PaginationButtons />
-      </MediaLayout>
+      </MediaContainer>
+      <PaginationButtons />
     </>
   );
 };

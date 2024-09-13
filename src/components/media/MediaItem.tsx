@@ -1,4 +1,5 @@
 import { TMedia } from "@customTypes/media";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import TitleInfo from "./TitleInfo";
 
@@ -28,6 +29,7 @@ const ArticleBox = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 23px 15px;
+  cursor: pointer;
 `;
 
 const MainContent = styled.div`
@@ -40,8 +42,6 @@ const MediaTitle = styled.h1`
   font-size: 20px;
   font-weight: 700;
   line-height: 1.4rem;
-
-  margin: 0;
 `;
 
 const ContentBox = styled.div`
@@ -52,10 +52,15 @@ const ContentBox = styled.div`
 `;
 
 const MediaItem = ({ media }: { media: TMedia }) => {
+  const navigate = useNavigate();
+
   return (
     <ArticleContainer>
       {media.imgFilePath && <Thumbnail src={media.imgFilePath}></Thumbnail>}
-      <ArticleBox>
+      <ArticleBox
+        onClick={() => {
+          navigate(`${media.artcSeq}`);
+        }}>
         <MainContent>
           <MediaTitle>{media.artcTitle}</MediaTitle>
           <ContentBox dangerouslySetInnerHTML={{ __html: media.artcContents }}></ContentBox>
