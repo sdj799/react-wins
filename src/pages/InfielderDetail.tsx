@@ -6,24 +6,23 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { usePlayerStore } from "store/actions/usePlayerStore";
 
-const PitcherDetail = () => {
+const InfielderDetail = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const pcode = searchParams.get("pcode");
-
   const fetchPlayerDetail = usePlayerStore((state) => state.fetchPlayerDetail);
   useEffect(() => {
-    pcode && fetchPlayerDetail("pitcher", pcode);
+    pcode && fetchPlayerDetail("catcher", pcode);
   }, [pcode]);
 
   return (
     <>
       <PlayerContentsWrapper>
-        <PlayerInfo isPitcher={true} />
-        <PlayerDetail isPitcher={true} />
+        <PlayerInfo isCatcher={true} />
+        <PlayerDetail isPitcher={false} />
         <TopButton />
       </PlayerContentsWrapper>
     </>
   );
 };
-export default PitcherDetail;
+export default InfielderDetail;
