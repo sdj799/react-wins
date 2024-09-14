@@ -1,3 +1,5 @@
+import ClubDescription from "@components/About/ClubDescription";
+import ClubHistory from "@components/About/ClubHistory";
 import Catcher from "@pages/Catcher";
 import CatcherDetail from "@pages/CatcherDetail";
 import Coach from "@pages/Coach";
@@ -39,11 +41,11 @@ export const router = createBrowserRouter([
         children: [
           {
             path: "about",
-            element: "구단소개 component",
+            element: <ClubDescription />,
           },
           {
             path: "history",
-            element: "구단연혁 component",
+            element: <ClubHistory />,
           },
           {
             path: "bi",
