@@ -2,7 +2,7 @@ import { TMedia } from "@customTypes/media";
 import { MediaContainer } from "@styles/Media.style";
 import styled from "styled-components";
 import NavigationControls from "./NavigationControls";
-import SnsButtons from "./SNSButtons";
+import SnsButtons from "./SnsButtons";
 import TitleInfo from "./TitleInfo";
 
 const ContentHeader = styled.section`
