@@ -99,6 +99,13 @@ const PlayerInfo = ({ isPitcher, isCatcher }: { isPitcher?: boolean; isCatcher?:
   const player = usePlayerStore((state) => state.player);
   const pitcherSeasonSummary = usePlayerStore((state) => state.pitcherSeasonSummary);
   const hitterSeasonSummary = usePlayerStore((state) => state.hitterSeasonSummary);
+
+  const infoList = [
+    { title: "포지션", text: player?.position },
+    { title: "생년월일", text: player?.heightWeight ? player.birth : player && stringToDate(player?.birth) },
+    { title: "체격", text: player?.heightWeight ? player.heightWeight : `${player?.height} cm, ${player?.weight} kg` },
+    { title: "출신교", text: formatCareer(player?.career) },
+  ];
   return (
     <>
       <InfoArti>
@@ -112,34 +119,14 @@ const PlayerInfo = ({ isPitcher, isCatcher }: { isPitcher?: boolean; isCatcher?:
             </InfoDt>
             <InfoListWrapper>
               <ul>
-                <li>
-                  <dl>
-                    <InfoListDt>포지션</InfoListDt>
-                    <InfoListDd>{player?.position}</InfoListDd>
-                  </dl>
-                </li>
-                <li>
-                  <dl>
-                    <InfoListDt>생년월일</InfoListDt>
-                    <InfoListDd>{player && stringToDate(player.birth)}</InfoListDd>
-                  </dl>
-                </li>
-                <li>
-                  <dl>
-                    <InfoListDt>체격</InfoListDt>
-                    <InfoListDd>
-                      {player?.height} cm, {player?.weight} kg
-                    </InfoListDd>
-                  </dl>
-                </li>
-                <li>
-                  <dl>
-                    <InfoListDt>출신교</InfoListDt>
-                    <InfoListDd>
-                      <span>{formatCareer(player?.career)}</span>
-                    </InfoListDd>
-                  </dl>
-                </li>
+                {infoList.map((info, index) => (
+                  <li key={index}>
+                    <dl>
+                      <InfoListDt>{info.title}</InfoListDt>
+                      <InfoListDd>{info.text}</InfoListDd>
+                    </dl>
+                  </li>
+                ))}
               </ul>
               <PictureButton href={`/media/photos/1?searchWord=${player?.playerName}&search.sort=400`}>
                 {(isCatcher || isPitcher) && "선수 "}사진 보기 <FaChevronRight fontSize={"0.8em"} />
