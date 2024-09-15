@@ -1,13 +1,13 @@
 import { TKakaoMapp } from "@customTypes/kakaomap";
-import { getEnv } from "@utils/getEnv";
 import { Map, MapMarker, useKakaoLoader } from "react-kakao-maps-sdk";
 import { useLocation } from "react-router-dom";
 import iksanMap from "../../assets/images/iksan_map.png";
 import locationMap from "../../assets/images/map_img.png";
 
+declare const __KAKAOMAP_APP_KEY__: string;
 const KakaoMap = ({ lat, lng, location }: TKakaoMapp) => {
   const [loading, error] = useKakaoLoader({
-    appkey: getEnv("KAKAOMAP_APP_KEY"), // 발급 받은 APPKEY, .env에서 가져옴
+    appkey: __KAKAOMAP_APP_KEY__, // 발급 받은 APPKEY, .env에서 가져옴
   });
   const { pathname } = useLocation();
 
