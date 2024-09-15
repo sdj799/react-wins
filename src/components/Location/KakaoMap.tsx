@@ -1,11 +1,20 @@
 import { TKakaoMapp } from "@customTypes/kakaomap";
+import { getEnv } from "@utils/getEnv";
 import { Map, MapMarker, useKakaoLoader } from "react-kakao-maps-sdk";
+import { useLocation } from "react-router-dom";
+import iksanMap from "../../assets/images/iksan_map.png";
+import locationMap from "../../assets/images/map_img.png";
 
 const KakaoMap = ({ lat, lng, location }: TKakaoMapp) => {
   const [loading, error] = useKakaoLoader({
-    appkey: import.meta.env.VITE_KAKAOMAP_APP_KEY, // 발급 받은 APPKEY, .env에서 가져옴
+    appkey: getEnv("KAKAOMAP_APP_KEY"), // 발급 받은 APPKEY, .env에서 가져옴
   });
-  console.log(loading, error);
+  const { pathname } = useLocation();
+
+  if (loading || error) {
+    if (pathname.includes("iksan")) return <img src={iksanMap} alt="야구장 지도" />;
+    else return <img src={locationMap} alt="야구장 지도" />;
+  }
   return (
     <>
       <Map center={{ lat: lat, lng: lng }} style={{ width: "100%", height: "662px" }} level={2}>
