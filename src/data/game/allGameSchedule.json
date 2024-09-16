@@ -1,0 +1,63 @@
+{
+  "data": {
+    "list": [
+      {
+        "broadcast": "MS-T",
+        "displayDate": "20240901",
+        "gameDate": 20240901,
+        "gmkey": "20240901HTSS0",
+        "gtime": "14:00",
+        "home": "삼성",
+        "homeKey": "SS",
+        "homeScore": 5,
+        "matchTeamCode": "",
+        "matchTeamName": "",
+        "outcome": "",
+        "stadium": "대구",
+        "stadiumKey": "DK",
+        "status": "3",
+        "visit": "KIA",
+        "visitKey": "HT",
+        "visitScore": 6
+      },
+      {
+        "broadcast": "SPO-T,SPO-2T",
+        "displayDate": "20240901",
+        "gameDate": 20240901,
+        "gmkey": "20240901LTOB0",
+        "gtime": "14:00",
+        "home": "두산",
+        "homeKey": "OB",
+        "homeScore": 3,
+        "matchTeamCode": "",
+        "matchTeamName": "",
+        "outcome": "",
+        "stadium": "잠실",
+        "stadiumKey": "JS",
+        "status": "3",
+        "visit": "롯데",
+        "visitKey": "LT",
+        "visitScore": 4
+      },
+      {
+        "broadcast": "KN-T,SS-T",
+        "displayDate": "20240901",
+        "gameDate": 20240901,
+        "gmkey": "20240901NCSK0",
+        "gtime": "14:00",
+        "home": "SSG",
+        "homeKey": "SK",
+        "homeScore": 2,
+        "matchTeamCode": "",
+        "matchTeamName": "",
+        "outcome": "",
+        "stadium": "문학",
+        "stadiumKey": "MH",
+        "status": "3",
+        "visit": "NC",
+        "visitKey": "NC",
+        "visitScore": 8
+      }
+    ]
+  }
+}
