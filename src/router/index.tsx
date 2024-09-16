@@ -1,14 +1,22 @@
+import ClubDescription from "@components/About/ClubDescription";
+import ClubHistory from "@components/About/ClubHistory";
 import Catcher from "@pages/Catcher";
 import CatcherDetail from "@pages/CatcherDetail";
 import Coach from "@pages/Coach";
 import CoachDetail from "@pages/CoachDetail";
 import Home from "@pages/Home";
 import Iksan from "@pages/Iksan";
+import Infielder from "@pages/Infielder";
+import InfielderDetail from "@pages/InfielderDetail";
 import Location from "@pages/Location";
 import News from "@pages/News";
+import NewsDetail from "@pages/NewsDetail";
+import Outfielder from "@pages/Outfielder";
+import OutfielderDetail from "@pages/OutfielderDetail";
 import Pitcher from "@pages/Pitcher";
 import PitcherDetail from "@pages/PitcherDetail";
 import Press from "@pages/Press";
+import PressDetail from "@pages/PressDetail";
 import WizParkGuide from "@pages/WizParkGuide.tsx";
 import WizParkIntro from "@pages/WizParkIntro.tsx";
 import BasicLayout from "layouts/BasicLayout";
@@ -33,11 +41,11 @@ export const router = createBrowserRouter([
         children: [
           {
             path: "about",
-            element: "구단소개 component",
+            element: <ClubDescription />,
           },
           {
             path: "history",
-            element: "구단연혁 component",
+            element: <ClubHistory />,
           },
           {
             path: "bi",
@@ -180,11 +188,11 @@ export const router = createBrowserRouter([
             children: [
               {
                 index: true,
-                element: "타자_내야수 component",
+                element: <Infielder />,
               },
               {
                 path: "detail",
-                element: "타자_내야수 디테일 component",
+                element: <InfielderDetail />,
               },
             ],
           },
@@ -193,11 +201,11 @@ export const router = createBrowserRouter([
             children: [
               {
                 index: true,
-                element: "타자_외야수 component",
+                element: <Outfielder />,
               },
               {
                 path: "detail",
-                element: "타자_외야수 디테일 component",
+                element: <OutfielderDetail />,
               },
             ],
           },
@@ -212,11 +220,17 @@ export const router = createBrowserRouter([
         children: [
           {
             path: "wiznews",
-            element: <News />,
+            children: [
+              { index: true, element: <News /> },
+              { path: ":artcSeq", element: <NewsDetail /> },
+            ],
           },
           {
             path: "wizpress",
-            element: <Press />,
+            children: [
+              { index: true, element: <Press /> },
+              { path: ":artcSeq", element: <PressDetail /> },
+            ],
           },
           {
             path: "wizstory",

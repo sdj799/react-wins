@@ -1,4 +1,7 @@
+import Etc from "@components/Home/Etc";
+import GameSchedule from "@components/Home/GameSchedule";
 import WizGallery from "@components/Home/WizGallery";
+
 import styled from "styled-components";
 
 const HomeStyle = styled.div`
@@ -14,7 +17,9 @@ const HomeStyle = styled.div`
 const Home = () => {
   return (
     <HomeStyle>
+      <GameSchedule />
       <WizGallery />
+      <Etc />
     </HomeStyle>
   );
 };

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-const NavigationWrapper = styled.div`
+const NavigationWrapper = styled.nav`
+  width: 100%;
   padding: 15px 20px;
   .next {
     margin-left: 10px;
