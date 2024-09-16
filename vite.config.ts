@@ -12,5 +12,13 @@ export default defineConfig(({ mode }) => {
       __BASE_URL__: JSON.stringify(env.BASE_URL),
       __KAKAOMAP_APP_KEY__: JSON.stringify(env.KAKAOMAP_APP_KEY),
     },
+    server: {
+      proxy: {
+        "/api": {
+          target: JSON.stringify(env.BASE_URL),
+          changeOrigin: true,
+        },
+      },
+    },
   };
 });
