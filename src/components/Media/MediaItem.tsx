@@ -1,4 +1,5 @@
 import { TMedia } from "@customTypes/media";
+import { htmlToString } from "@utils/stringParsing";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import TitleInfo from "./TitleInfo";
@@ -35,7 +36,6 @@ const ArticleBox = styled.div`
 const MainContent = styled.div`
   width: 100%;
   height: 100%;
-  overflow: hidden;
 `;
 
 const MediaTitle = styled.h1`
@@ -44,16 +44,21 @@ const MediaTitle = styled.h1`
   line-height: 1.4rem;
 `;
 
-const ContentBox = styled.div`
-  width: 100%;
-  height: calc(100% - 23px);
-  margin-top: 10px;
+const ContentBox = styled.p`
+  font-size: 16px;
+  line-height: 1.4em;
+  height: 2.8em;
+  color: #666;
+  text-align: left;
   overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 `;
 
 const MediaItem = ({ media }: { media: TMedia }) => {
   const navigate = useNavigate();
-
   return (
     <ArticleContainer>
       {media.imgFilePath && <Thumbnail src={media.imgFilePath}></Thumbnail>}
@@ -63,7 +68,7 @@ const MediaItem = ({ media }: { media: TMedia }) => {
         }}>
         <MainContent>
           <MediaTitle>{media.artcTitle}</MediaTitle>
-          <ContentBox dangerouslySetInnerHTML={{ __html: media.artcContents }}></ContentBox>
+          <ContentBox>{htmlToString(media.artcContents)}</ContentBox>
         </MainContent>
         <TitleInfo date={media.regDttm} view={media.viewCnt} />
       </ArticleBox>
