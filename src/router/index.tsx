@@ -18,6 +18,7 @@ import Pitcher from "@pages/Pitcher";
 import PitcherDetail from "@pages/PitcherDetail";
 import Press from "@pages/Press";
 import PressDetail from "@pages/PressDetail";
+import WatchPoint from "@pages/WatchPoint";
 import TeamRanking from "@pages/TeamRanking";
 import WizParkGuide from "@pages/WizParkGuide.tsx";
 import WizParkIntro from "@pages/WizParkIntro.tsx";
@@ -142,7 +143,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "watchPoint",
-            element: "관전포인트 component",
+            element: <WatchPoint />,
           },
         ],
       },
