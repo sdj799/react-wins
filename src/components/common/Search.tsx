@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
+import SearchButton from "./SearchButton";
 import Select from "./Select";
 
 const SearchFormStyle = styled.form`
@@ -27,15 +28,6 @@ const SearchFormInnerStyle = styled.div`
       color: rgba(0, 0, 0, 0.3);
     }
   }
-
-  & > button {
-    width: 50px;
-    background-color: #333;
-    color: #fff;
-    padding: 7px 10px;
-    margin-left: -3px;
-    font-size: 12px;
-  }
 `;
 
 const Search = () => {
@@ -47,7 +39,7 @@ const Search = () => {
       {currentPath[0] === "media" && <Select />}
       <SearchFormInnerStyle>
         <input type="text" placeholder="검색어를 입력해주세요." />
-        <button type="button">검색</button>
+        <SearchButton />
       </SearchFormInnerStyle>
     </SearchFormStyle>
   );
