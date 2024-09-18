@@ -133,6 +133,10 @@ export const router = createBrowserRouter([
             element: <BoxScore />,
           },
           {
+            path: "boxscore/:gameDate/:gmkey",
+            element: <BoxScore />,
+          },
+          {
             path: "ranking",
             element: "순위 component",
           },
