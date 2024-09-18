@@ -1,5 +1,6 @@
 import ClubDescription from "@components/About/ClubDescription";
 import ClubHistory from "@components/About/ClubHistory";
+import BoxScore from "@pages/BoxScore";
 import Catcher from "@pages/Catcher";
 import CatcherDetail from "@pages/CatcherDetail";
 import Coach from "@pages/Coach";
@@ -130,7 +131,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "boxscore",
-            element: "박스스코어 component",
+            element: <BoxScore />,
           },
           {
             path: "ranking",
