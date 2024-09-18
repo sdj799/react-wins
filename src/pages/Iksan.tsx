@@ -35,21 +35,21 @@ const Iksan = () => {
           address2="(구 : 전라북도 익산시 부송동 180번지)"
           href="https://kko.to/PRUms-dkQh"
           busList={[
-            { color: "green", busType: "일반", busNumber: "102-1, 102-2, 103, 103-1" },
+            { color: "#3aac16", busType: "일반", busNumber: "102-1, 102-2, 103, 103-1" },
             {
-              color: "green",
+              color: "#3aac16",
               busType: "일반",
               busNumber:
                 "1, 40, 58, 59, 59-1, 60, 60-1, 60-2, 60-3, 61, 62, 63, 63-1, 64, 65, 65-1, 102-1, 102-2, 103, 105",
             },
-            { color: "blue", busType: "좌석", busNumber: "222, 222-1 , 222-2, 222-3, 555" },
-            { color: "green", busType: "일반", busNumber: "40, 55, 56, 58, 102-2, 103" },
+            { color: "#3864ca", busType: "좌석", busNumber: "222, 222-1 , 222-2, 222-3, 555" },
+            { color: "#3aac16", busType: "일반", busNumber: "40, 55, 56, 58, 102-2, 103" },
             {
-              color: "green",
+              color: "#3aac16",
               busType: "일반",
               busNumber: "55, 56, 58, 59, 60, 60-1, 60-2, 60-3, 61, 62, 63, 63-1, 64, 65, 65-1, 103",
             },
-            { color: "blue", busType: "좌석", busNumber: "222, 222-1 , 222-2, 222-3, 555" },
+            { color: "#3864ca", busType: "좌석", busNumber: "222, 222-1 , 222-2, 222-3, 555" },
           ]}
         />
       </LocationWrapper>

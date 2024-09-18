@@ -19,10 +19,10 @@ const Location = () => {
           address2="케이티 위즈 파크 (구 : 경기도 수원시 장안구 조원동 775)"
           href="https://kko.to/2Xmot-8Sx5"
           busList={[
-            { color: "green", busType: "일반", busNumber: "25, 25-2, 27, 36, 55, 62-1, 99, 99-2, 300-1" },
-            { color: "green", busType: "일반", busNumber: "310, 777" },
+            { color: "#3aac16", busType: "일반", busNumber: "25, 25-2, 27, 36, 55, 62-1, 99, 99-2, 300-1" },
+            { color: "#3aac16", busType: "일반", busNumber: "310, 777" },
             { color: "red", busType: "직행", busNumber: "2007, 3000, 7770" },
-            { color: "blue", busType: "좌석", busNumber: "300, 900" },
+            { color: "#3864ca", busType: "좌석", busNumber: "300, 900" },
           ]}
           subway={[
             "화서역 하차 (택시로 10분)",
