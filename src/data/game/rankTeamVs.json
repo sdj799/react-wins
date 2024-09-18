@@ -1,0 +1,30 @@
+{
+  "data": {
+    "list": [
+      {
+        "drawn": 0,
+        "lose": 11,
+        "teamCode": "HH",
+        "teamName": "한화",
+        "vsTeamCode": "HT",
+        "win": 4
+      },
+      {
+        "drawn": 0,
+        "lose": 6,
+        "teamCode": "HH",
+        "teamName": "한화",
+        "vsTeamCode": "KT",
+        "win": 10
+      },
+      {
+        "drawn": 0,
+        "lose": 8,
+        "teamCode": "HH",
+        "teamName": "한화",
+        "vsTeamCode": "LG",
+        "win": 7
+      }
+    ]
+  }
+}

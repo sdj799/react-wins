@@ -1,8 +1,9 @@
 import { TMedia } from "@customTypes/media";
 import { MediaContainer } from "@styles/Media.style";
+import parse from "html-react-parser";
 import styled from "styled-components";
 import NavigationControls from "./NavigationControls";
-import SnsButtons from "./SNSButtons";
+import SnsButtons from "./SnsButtons";
 import TitleInfo from "./TitleInfo";
 
 const ContentHeader = styled.section`
@@ -31,7 +32,7 @@ const MediaDetail = ({ media }: { media: TMedia | undefined }) => {
           <h4>{media?.artcTitle}</h4>
           <TitleInfo date={media && media?.regDttm} view={media?.viewCnt} />
         </ContentHeader>
-        <MainContent dangerouslySetInnerHTML={media && { __html: media?.artcContents }}></MainContent>
+        <MainContent>{media && parse(media?.artcContents)}</MainContent>
         <SnsButtons />
       </MediaContainer>
       <NavigationControls />

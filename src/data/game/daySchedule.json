@@ -1,0 +1,35 @@
+{
+  "data": {
+    "ktwiztodaygame": [
+      {
+        "displayDate": "09 월 16 일 14:00",
+        "gameDate": 20240916,
+        "gmkey": "20240916HTKT0",
+        "gtime": "14:00",
+        "home": "KT",
+        "homeKey": "KT",
+        "homeLogo": "http://3.35.51.214/api/static/KT.png",
+        "stadium": "수원",
+        "stadiumKey": "SW",
+        "visit": "KIA",
+        "visitKey": "HT",
+        "visitLogo": "http://3.35.51.214/api/static/HT.png"
+      }
+    ],
+    "otherteamlist": [
+      {
+        "displayDate": "09.16  (월) 14:00",
+        "gameDate": 20240916,
+        "gmkey": "20240916WOOB0",
+        "home": "두산",
+        "homeKey": "OB",
+        "homeLogo": "http://3.35.51.214/api/static/OB.png",
+        "stadium": "잠실",
+        "stadiumKey": "JS",
+        "visit": "키움",
+        "visitKey": "WO",
+        "visitLogo": "http://3.35.51.214/api/static/WO.png"
+      }
+    ]
+  }
+}
