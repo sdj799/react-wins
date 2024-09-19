@@ -11,7 +11,7 @@
 3. [주요 기능](#-주요-기능)
 4. [설치 및 실행방법](#%EF%B8%8F-설치-및-실행방법)
 5. [바로 가기](#%EF%B8%8F-바로-가기)
-6. [팀원 소개](#-팀원-소개)
+6. [팀원 소개 및 개발 내용](#-팀원-소개-및-개발-내용)
 7. [기술 스택](#%EF%B8%8F-기술-스택)
 8. [디렉토리 구조](#-디렉토리-구조)
 9. [컨벤션](#-컨벤션)
@@ -57,10 +57,11 @@
 
 <br/>
 
-## 🧑🏻‍💻 팀원 소개
+## 🧑🏻‍💻 팀원 소개 및 개발 내용
 |<img width="150" height="150" src="https://avatars.githubusercontent.com/u/77402599?v=4" alt="이승미" />|<img width="150" height="150" src="https://avatars.githubusercontent.com/u/57988006?v=4" alt="손지은" />|<img width="150" height="150" src="https://avatars.githubusercontent.com/u/87024406?v=4" alt="박지은" />|<img width="150" height="150" src="https://avatars.githubusercontent.com/u/125543808?v=4" alt="신동준" />|<img width="150" height="150" src="https://avatars.githubusercontent.com/u/127510746?v=4" alt="조보라" />|
 |:---:|:---:|:---:|:---:|:---:|
 |<a href="https://github.com/mya413" target="_blank">👑 이승미<br/>(Front-end)</a>|<a href="https://github.com/handje" target="_blank">💵 손지은<br/>(Front-end)</a>|<a href="https://github.com/Jieuneenee" target="_blank">박지은<br/>(Front-end)</a>|<a href="https://github.com/sdj799" target="_blank">신동준<br/>(Front-end)</a>|<a href="https://github.com/snsqhfk" target="_blank">조보라<br/>(Front-end)</a>|
+|  1. 프로젝트 초기세팅(ESLint, Prettier, 필요 패키지 설치)<br/>2. 초기 라우터 설정<br/>3. 공통 레이아웃(Header, nav, footer, main, tab, breadcrumb) 초기 설계 및 마크업<br/>4. Home 공통 컴포넌트 설계 및 마크업<br/>5. [Home]-[gameSchedule] 섹션 마크업 및 데이터 패칭<br/>6. [Game]-[관전포인트] 페이지 마크업 및 데이터 패칭  |  1. [Media]-[wiz소식], [wiz보도자료] 페이지, 상세페이지 마크업 및 데이터 패칭<br/>2. 페이지네이션 구현<br/>3. mock data 구현<br/>4. 공통 컴포넌트 리팩토링<br/>5. 네비게이션 로직 리팩토링<br/>6. 탭메뉴 로직 리팩토링  |  1. [Wiz park]-[수원 kt wiz park] 페이지 마크업<br/>2. [Player]-[응원단] 페이지 마크업 및 데이터 패칭  |  1. [Wiz park]-[찾아오기],[익산야구장] 페이지 마크업<br/>2. kakaomap API 연동 및 지도 구현<br/>3. [Player]-[코칭스텝], [투수], [타자] 선수리스트 페이지, 상세페이지 마크업 및 데이터 패칭<br/>4. axios api 로직 모듈화  |  1. [Kt wiz]-[구단소개], [구단연혁] 페이지 마크업<br/>2. [Home]-[하이라이트] 섹션 마크업 및 데이터 패칭  |
 
 <br/>
 
