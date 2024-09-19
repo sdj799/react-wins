@@ -21,7 +21,7 @@ const Outfielder = () => {
                 playerName={data.playerName}
                 playerNum={data.backnum}
                 imgSrc={data.playerPrvwImg}
-                href={`/player/outfileder/detail?pcode=${data.pcode}`}
+                href={`/player/outfielder/detail?pcode=${data.pcode}`}
               />
             ))}
         </ul>

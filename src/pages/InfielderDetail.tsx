@@ -12,7 +12,7 @@ const InfielderDetail = () => {
   const pcode = searchParams.get("pcode");
   const fetchPlayerDetail = usePlayerStore((state) => state.fetchPlayerDetail);
   useEffect(() => {
-    pcode && fetchPlayerDetail("catcher", pcode);
+    pcode && fetchPlayerDetail("infielder", pcode);
   }, [pcode]);
 
   return (
