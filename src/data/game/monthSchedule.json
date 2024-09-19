@@ -1,0 +1,69 @@
+{
+  "data": {
+    "list": [
+      {
+        "broadcast": "MS-T",
+        "displayDate": "20240904",
+        "gameDate": 20240904,
+        "gmkey": "20240904KTLT0",
+        "gtime": "18:30",
+        "home": "롯데",
+        "homeKey": "LT",
+        "homeLogo": "http://3.35.51.214/api/static/LT.png",
+        "homeScore": 7,
+        "matchTeamCode": "LT",
+        "matchTeamName": "롯데",
+        "outcome": "패",
+        "stadium": "사직",
+        "stadiumKey": "SJ",
+        "status": "3",
+        "visit": "KT",
+        "visitKey": "KT",
+        "visitLogo": "http://3.35.51.214/api/static/KT.png",
+        "visitScore": 5
+      },
+      {
+        "broadcast": "SS-T",
+        "displayDate": "20240905",
+        "gameDate": 20240905,
+        "gmkey": "20240905KTLT0",
+        "gtime": "18:30",
+        "home": "롯데",
+        "homeKey": "LT",
+        "homeLogo": "http://3.35.51.214/api/static/LT.png",
+        "homeScore": 2,
+        "matchTeamCode": "LT",
+        "matchTeamName": "롯데",
+        "outcome": "승",
+        "stadium": "사직",
+        "stadiumKey": "SJ",
+        "status": "3",
+        "visit": "KT",
+        "visitKey": "KT",
+        "visitLogo": "http://3.35.51.214/api/static/KT.png",
+        "visitScore": 12
+      },
+      {
+        "broadcast": "KN-T,SS-T",
+        "displayDate": "20240906",
+        "gameDate": 20240906,
+        "gmkey": "20240906KTNC0",
+        "gtime": "18:30",
+        "home": "NC",
+        "homeKey": "NC",
+        "homeLogo": "http://3.35.51.214/api/static/NC.png",
+        "homeScore": 3,
+        "matchTeamCode": "NC",
+        "matchTeamName": "NC",
+        "outcome": "승",
+        "stadium": "창원",
+        "stadiumKey": "CW",
+        "status": "3",
+        "visit": "KT",
+        "visitKey": "KT",
+        "visitLogo": "http://3.35.51.214/api/static/KT.png",
+        "visitScore": 9
+      }
+    ]
+  }
+}

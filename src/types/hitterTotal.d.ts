@@ -1,0 +1,42 @@
+export type HitterTotalType = {
+  ab: number;
+  bb: number;
+  bra: string;
+  cs: number;
+  gamenum: number;
+  gd: number;
+  gyear: string;
+  h2: number;
+  h3: number;
+  hit: number;
+  hp: number;
+  hr: number;
+  hra: string;
+  kk: number;
+  rbi: number;
+  run: number;
+  sb: number;
+  slg: string;
+  teamCode: string;
+  teamName: string;
+};
+
+export type FilterHitTotalType = {
+  gyear: string;
+  teamName: string;
+  hra: string;
+  gamenum: number;
+  ab: number;
+  run: number;
+  hit: number;
+  h2: number;
+  h3: number;
+  hr: number;
+  rbi: number;
+  sb: number;
+  cs: number;
+  bb: number;
+  hp: number;
+  kk: number;
+  gd: number;
+};

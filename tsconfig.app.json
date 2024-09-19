@@ -25,8 +25,10 @@
       "@components/*": ["components/*"],
       "@pages/*": ["pages/*"],
       "@utils/*": ["utils/*"],
-      "@types/*": ["types/*"],
-      "@styles/*": ["styles/*"]
+      "@styles/*": ["styles/*"],
+      "@assets/*": ["assets/*"],
+      "@customTypes/*": ["types/*"],
+      "@data/*": ["data/*"]
     }
   },
   "include": ["src"]
