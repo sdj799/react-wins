@@ -16,7 +16,7 @@ const ParkingStyle = styled.div`
 const Parking = () => {
   return (
     <Container
-      to="#"
+      to="wizpark/parking"
       $bgImage="https://cdn.pixabay.com/photo/2016/08/02/15/47/baseball-1563851_1280.jpg"
       target="_self">
       <ParkingStyle>
