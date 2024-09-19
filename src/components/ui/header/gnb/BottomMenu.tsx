@@ -53,11 +53,7 @@ const BottomMenu = ({ $isShowNav }: NavEventType) => {
       <li>
         <ul>
           <li>
-            <Link to="/wizpark/intro">
-              수원 kt wiz
-              <br />
-              park
-            </Link>
+            <Link to="/wizpark/intro">수원 kt wiz park</Link>
           </li>
           <li>
             <Link to="/wizpark/parking">주차 예약</Link>
