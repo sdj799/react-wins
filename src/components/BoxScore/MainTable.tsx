@@ -1,6 +1,6 @@
 import { EtcGames } from "@customTypes/boxScore";
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useGameStore } from "store/actions/useGameStore";
 import styled from "styled-components";
 
@@ -46,13 +46,17 @@ const MainTable = () => {
 
   const ectGames = useGameStore((state) => state.etcGames);
 
-  const [data, _setData] = useState(() => [...ectGames]);
+  const [data, _setData] = useState(() => (ectGames ? [...ectGames] : []));
 
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
+
+  useEffect(() => {
+    ectGames && _setData(() => [...ectGames]);
+  }, [ectGames]);
 
   return (
     <div className="p-2">

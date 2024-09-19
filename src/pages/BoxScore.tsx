@@ -1,5 +1,9 @@
 import BoxScoreInfo from "@components/BoxScore/BoxScoreInfo";
 import MainTable from "@components/BoxScore/MainTable";
+import PlayerTable from "@components/Player/PlayerTable";
+import { FilterGameBatterType, FilterGamePitcherType } from "@customTypes/boxScore";
+import { gameBatterHeaders, gamePitcherHeaders } from "@data/gameHeaders";
+import { filterGameBatterData, filterGamePitcherData } from "@utils/filterBoxScoreData";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useGameStore } from "store/actions/useGameStore";
@@ -17,6 +21,11 @@ const ArticleWrapper = styled.article`
 const BoxScore = () => {
   const fetchDaySchedule = useGameStore((state) => state.fetchDaySchedule);
   const fetchBoxScore = useGameStore((state) => state.fetchBoxScore);
+  const hBatters = useGameStore((state) => state.hBatters);
+  const hPitchers = useGameStore((state) => state.hPitchers);
+  const vBatters = useGameStore((state) => state.vBatters);
+  const vPitchers = useGameStore((state) => state.vPitchers);
+  const schedule = useGameStore((state) => state.schedule);
 
   const { gameDate, gmkey } = useParams<{ gameDate: string; gmkey: string }>();
 
@@ -24,12 +33,17 @@ const BoxScore = () => {
   useEffect(() => {
     if (!gameDate || !gmkey) {
       fetchDaySchedule();
+      console.log(schedule);
     }
   }, []);
 
   useEffect(() => {
     if (gameDate && gmkey) fetchBoxScore(gameDate, gmkey);
   }, [gameDate, gmkey]);
+  const filteredHBatters: FilterGameBatterType[] | undefined = hBatters?.map(filterGameBatterData);
+  const filteredHPitchers: FilterGamePitcherType[] | undefined = hPitchers?.map(filterGamePitcherData);
+  const filteredVBatters: FilterGameBatterType[] | undefined = vBatters?.map(filterGameBatterData);
+  const filteredVPitchers: FilterGamePitcherType[] | undefined = vPitchers?.map(filterGamePitcherData);
 
   return (
     <>
@@ -40,17 +54,28 @@ const BoxScore = () => {
           <MainTable />
         </ArticleWrapper>
         <ArticleWrapper>
-          <LocationTitle title={`${"KIA"} 타자 기록`} />
-          {/* <PlayerTable /> */}
+          <LocationTitle title={`${schedule?.current.visit} 타자 기록`} />
+          {filteredVBatters && (
+            <PlayerTable<FilterGameBatterType> resData={filteredVBatters} headers={gameBatterHeaders} />
+          )}
         </ArticleWrapper>
         <ArticleWrapper>
-          <LocationTitle title={`${"KT"} 타자 기록`} />
+          <LocationTitle title={`${schedule?.current.home} 타자 기록`} />
+          {filteredHBatters && (
+            <PlayerTable<FilterGameBatterType> resData={filteredHBatters} headers={gameBatterHeaders} />
+          )}
         </ArticleWrapper>
         <ArticleWrapper>
-          <LocationTitle title={`${"KIA"} 투수 기록`} />
+          <LocationTitle title={`${schedule?.current.visit} 투수 기록`} />
+          {filteredVPitchers && (
+            <PlayerTable<FilterGamePitcherType> resData={filteredVPitchers} headers={gamePitcherHeaders} />
+          )}
         </ArticleWrapper>
         <ArticleWrapper>
-          <LocationTitle title={`${"KT"} 투수 기록`} />
+          <LocationTitle title={`${schedule?.current.home} 투수 기록`} />
+          {filteredHPitchers && (
+            <PlayerTable<FilterGamePitcherType> resData={filteredHPitchers} headers={gamePitcherHeaders} />
+          )}
         </ArticleWrapper>
       </BoxScoreWrapper>
     </>

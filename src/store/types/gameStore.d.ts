@@ -11,11 +11,11 @@ export type GameStoreType = {
   daySchedule: DayScheduleType | null;
   schedule: ScheduleListType | null;
   scoreBoard: ScoreboardType[] | null;
-  etcGames: EtcGames[];
-  hBatters: GameBattersType[];
-  hPitchers: GamePitchersType[];
-  vBatters: GameBattersType[];
-  vPitchers: GamePitchersType[];
+  etcGames: EtcGames[] | null;
+  hBatters: GameBattersType[] | null;
+  hPitchers: GamePitchersType[] | null;
+  vBatters: GameBattersType[] | null;
+  vPitchers: GamePitchersType[] | null;
   fetchDaySchedule: () => void;
   fetchBoxScore: (gameData: string, gmkey: string) => void;
 };

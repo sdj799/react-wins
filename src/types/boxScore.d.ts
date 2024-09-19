@@ -186,3 +186,46 @@ export type GamePitchersType = {
   w: number;
   wls: string;
 };
+
+export type FilterGameBatterType = {
+  oneturn: string;
+  position: string;
+  name: string;
+  inn1: string;
+  inn2: string;
+  inn3: string;
+  inn4: string;
+  inn5: string;
+  inn6: string;
+  inn7: string;
+  inn8: string;
+  inn9: string;
+  inn10: string;
+  inn11: string;
+  inn12: string;
+  ab: number;
+  run: number;
+  hit: number;
+  rbi: number;
+  ba: string;
+};
+
+export type FilterGamePitcherType = {
+  name: string;
+  changeinn: string;
+  wls: string;
+  w: number;
+  l: number;
+  s: number;
+  inn: string;
+  pa: number;
+  bf: number;
+  ab: number;
+  hit: number;
+  hr: number;
+  bbhp: number;
+  kk: number;
+  r: number;
+  er: number;
+  era: string;
+};
