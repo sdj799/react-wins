@@ -16,7 +16,6 @@ const ArticleWrapper = styled.article`
 
 const BoxScore = () => {
   const fetchDaySchedule = useGameStore((state) => state.fetchDaySchedule);
-  const daySchedule = useGameStore((state) => state.daySchedule);
   const fetchBoxScore = useGameStore((state) => state.fetchBoxScore);
 
   const { gameDate, gmkey } = useParams<{ gameDate: string; gmkey: string }>();
@@ -42,6 +41,7 @@ const BoxScore = () => {
         </ArticleWrapper>
         <ArticleWrapper>
           <LocationTitle title={`${"KIA"} 타자 기록`} />
+          {/* <PlayerTable /> */}
         </ArticleWrapper>
         <ArticleWrapper>
           <LocationTitle title={`${"KT"} 타자 기록`} />

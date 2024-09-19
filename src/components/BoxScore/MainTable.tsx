@@ -1,7 +1,7 @@
-import { EtcGames } from "@customTypes/etcgame";
-import boxScore from "@data/boxScore.json";
+import { EtcGames } from "@customTypes/boxScore";
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { useState } from "react";
+import { useGameStore } from "store/actions/useGameStore";
 import styled from "styled-components";
 
 const TableWrapper = styled.table`
@@ -44,7 +44,9 @@ const MainTable = () => {
     }),
   ];
 
-  const [data, _setData] = useState(() => [...boxScore.data.etcgames]);
+  const ectGames = useGameStore((state) => state.etcGames);
+
+  const [data, _setData] = useState(() => [...ectGames]);
 
   const table = useReactTable({
     data,
