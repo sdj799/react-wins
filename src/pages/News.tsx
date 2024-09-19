@@ -6,9 +6,9 @@ import { useSearchParams } from "react-router-dom";
 
 const News = () => {
   const [newsList, setNewsList] = useState<TMedia[]>([]);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const pageNum = searchParams.get("search.page") || 1;
-
+  console.log(pageNum);
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await api(`article/newslistpage?itemCount=5&pageNum=${pageNum}`);

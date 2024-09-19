@@ -6,7 +6,7 @@ import { useSearchParams } from "react-router-dom";
 
 const Press = () => {
   const [pressList, setPressList] = useState<TMedia[]>([]);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const pageNum = searchParams.get("search.page") || 1;
 
   useEffect(() => {

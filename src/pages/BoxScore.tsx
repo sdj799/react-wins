@@ -16,7 +16,7 @@ const ArticleWrapper = styled.article`
 
 const BoxScore = () => {
   const fetchDaySchedule = useGameStore((state) => state.fetchDaySchedule);
-  const daySchedule = useGameStore((state) => state.daySchedule);
+  //const daySchedule = useGameStore((state) => state.daySchedule);
   const fetchBoxScore = useGameStore((state) => state.fetchBoxScore);
 
   const { gameDate, gmkey } = useParams<{ gameDate: string; gmkey: string }>();
