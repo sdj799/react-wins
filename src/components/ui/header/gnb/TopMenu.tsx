@@ -48,10 +48,14 @@ const TopMenu = ({ $isShowNav }: NavEventType) => {
         <Link to="/media/wiznews">Media</Link>
       </li>
       <li>
-        <Link to="#">Shop</Link>
+        <a href="https://www.ktwizstore.co.kr/" target="_blank">
+          Shop
+        </a>
       </li>
       <li>
-        <Link to="#">스폰서</Link>
+        <a href="https://b2b.ktwiz.co.kr/" target="_blank">
+          스폰서
+        </a>
       </li>
       <li className="redText">
         <Link to="/ticket/reservation">티켓구매</Link>
