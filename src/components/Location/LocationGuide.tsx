@@ -30,13 +30,13 @@ const BusType = styled.span`
   background-color: ${(props) => props.color};
   color: #fff;
   margin: 2px 2px;
-  padding: 4px 18px 4px 17px;
+  padding: 3px 18px 3px 17px;
   border-radius: 20px;
 `;
 
 const GuideLi = styled.li`
   line-height: 2;
-
+  margin-top: 3px;
   .notice {
     display: block;
     margin-left: 5px;
