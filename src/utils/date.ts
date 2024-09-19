@@ -17,3 +17,15 @@ export const stringToDate = (input: string): string | null => {
 
   return `${year}.${month}.${day}`;
 };
+
+export const stringDate = (input: string): string | null => {
+  if (!input || input.length !== 8) {
+    return null;
+  }
+
+  const year = input.substring(0, 4);
+  const month = input.substring(4, 6);
+  const day = input.substring(6, 8);
+
+  return `${year}년 ${month}월 ${day}일`;
+};

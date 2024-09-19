@@ -136,6 +136,10 @@ export const router = createBrowserRouter([
             element: <BoxScore />,
           },
           {
+            path: "boxscore/:gameDate/:gmkey",
+            element: <BoxScore />,
+          },
+          {
             path: "ranking",
             children: [
               { index: true, element: <Navigate to="team" /> },
