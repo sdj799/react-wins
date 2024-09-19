@@ -43,9 +43,6 @@ const BottomMenu = ({ $isShowNav }: NavEventType) => {
             <Link to="/ktwiz/policy">회원 정책</Link>
           </li>
           <li>
-            <Link to="/ktwiz/sponsor">스폰서</Link>
-          </li>
-          <li>
             <Link to="/ktwiz/wallpaper">월페이퍼</Link>
           </li>
         </ul>

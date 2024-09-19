@@ -128,20 +128,6 @@
       {
         "id": 1,
         "path": "/wizpark/intro"
-      },
-      {
-        "id": 2,
-        "path": "/wizpark/guide"
-      }
-    ],
-    "tab": [
-      {
-        "id": 1,
-        "tab": "구장 소개"
-      },
-      {
-        "id": 2,
-        "tab": "구장 안내도"
       }
     ]
   },
