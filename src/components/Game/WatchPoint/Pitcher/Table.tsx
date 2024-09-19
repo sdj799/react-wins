@@ -1,3 +1,4 @@
+import { useWatchPointStore } from "store/actions/useWatchPointStore";
 import styled from "styled-components";
 
 const TableWrapper = styled.div`
@@ -47,6 +48,13 @@ const StyledRow = styled.tr`
 `;
 
 const Table = () => {
+  const gameScore = useWatchPointStore((state) => state.gameScore);
+  const visitPitcher = useWatchPointStore((state) => state.visitPitcher);
+  const homePitcher = useWatchPointStore((state) => state.homePitcher);
+  console.log(gameScore);
+  console.log(visitPitcher);
+  console.log(homePitcher);
+
   return (
     <TableWrapper>
       <StyledTable>
@@ -73,42 +81,42 @@ const Table = () => {
         </thead>
         <tbody>
           <StyledRow className="home">
-            <td>KT</td>
-            <td>고영표</td>
-            <td>5.26</td>
-            <td>16</td>
-            <td>5</td>
-            <td>7</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0.417</td>
-            <td>89</td>
-            <td>134</td>
-            <td>4</td>
-            <td>12</td>
-            <td>11</td>
-            <td>71</td>
-            <td>58</td>
-            <td>52</td>
+            <td>{gameScore?.visit}</td>
+            <td>{visitPitcher?.playerName}</td>
+            <td>{visitPitcher?.era}</td>
+            <td>{visitPitcher?.gamenum}</td>
+            <td>{visitPitcher?.w}</td>
+            <td>{visitPitcher?.l}</td>
+            <td>{visitPitcher?.sv}</td>
+            <td>{visitPitcher?.hold}</td>
+            <td>{visitPitcher?.wra}</td>
+            <td>{visitPitcher?.innDisplay}</td>
+            <td>{visitPitcher?.hit}</td>
+            <td>{visitPitcher?.hr}</td>
+            <td>{visitPitcher?.bb}</td>
+            <td>{visitPitcher?.hp}</td>
+            <td>{visitPitcher?.kk}</td>
+            <td>{visitPitcher?.r}</td>
+            <td>{visitPitcher?.er}</td>
           </StyledRow>
           <StyledRow>
-            <td>두산</td>
-            <td>곽빈</td>
-            <td>4.14</td>
-            <td>28</td>
-            <td>13</td>
-            <td>9</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0.591</td>
-            <td>156 1/3</td>
-            <td>129</td>
-            <td>10</td>
-            <td>72</td>
-            <td>5</td>
-            <td>145</td>
-            <td>76</td>
-            <td>72</td>
+            <td>{gameScore?.home}</td>
+            <td>{homePitcher?.playerName}</td>
+            <td>{homePitcher?.era}</td>
+            <td>{homePitcher?.gamenum}</td>
+            <td>{homePitcher?.w}</td>
+            <td>{homePitcher?.l}</td>
+            <td>{homePitcher?.sv}</td>
+            <td>{homePitcher?.hold}</td>
+            <td>{homePitcher?.wra}</td>
+            <td>{homePitcher?.innDisplay}</td>
+            <td>{homePitcher?.hit}</td>
+            <td>{homePitcher?.hr}</td>
+            <td>{homePitcher?.bb}</td>
+            <td>{homePitcher?.hp}</td>
+            <td>{homePitcher?.kk}</td>
+            <td>{homePitcher?.r}</td>
+            <td>{homePitcher?.er}</td>
           </StyledRow>
         </tbody>
       </StyledTable>

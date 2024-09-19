@@ -1,3 +1,4 @@
+import { useWatchPointStore } from "store/actions/useWatchPointStore";
 import styled from "styled-components";
 
 const TableWrapper = styled.div`
@@ -43,6 +44,11 @@ const StyledRow = styled.tr`
 `;
 
 const Table = () => {
+  const visitTeamRank = useWatchPointStore((state) => state.visitTeamRank);
+  const visitTeamWinLose = useWatchPointStore((state) => state.visitTeamWinLose);
+  const homeTeamRank = useWatchPointStore((state) => state.homeTeamRank);
+  const homeTeamWinLose = useWatchPointStore((state) => state.homeTeamWinLose);
+
   return (
     <TableWrapper>
       <StyledTable>
@@ -61,31 +67,31 @@ const Table = () => {
         </thead>
         <tbody>
           <StyledRow>
-            <td>67</td>
-            <td>67</td>
-            <td>2</td>
-            <td>0.500</td>
+            <td>{visitTeamRank?.win}</td>
+            <td>{visitTeamRank?.lose}</td>
+            <td>{visitTeamRank?.drawn}</td>
+            <td>{visitTeamRank?.wra}</td>
             <td className="bold rowTitle">시즌 성적</td>
-            <td>67</td>
-            <td>66</td>
-            <td>2</td>
-            <td>0.504</td>
+            <td>{homeTeamRank?.win}</td>
+            <td>{homeTeamRank?.lose}</td>
+            <td>{homeTeamRank?.drawn}</td>
+            <td>{homeTeamRank?.wra}</td>
           </StyledRow>
           <StyledRow>
-            <td>4</td>
-            <td>12</td>
-            <td>0</td>
+            <td>{visitTeamWinLose?.win}</td>
+            <td>{visitTeamWinLose?.lose}</td>
+            <td>{visitTeamWinLose?.drawn}</td>
             <td>0.25</td>
             <td className="bold rowTitle">시즌 상대 전적</td>
-            <td>12</td>
-            <td>4</td>
-            <td>0</td>
+            <td>{homeTeamWinLose?.win}</td>
+            <td>{homeTeamWinLose?.lose}</td>
+            <td>{homeTeamWinLose?.drawn}</td>
             <td>0.75</td>
           </StyledRow>
           <StyledRow>
-            <td colSpan={4}>5위</td>
+            <td colSpan={4}>{`${visitTeamRank?.rank}위`}</td>
             <td className="bold rowTitle">시즌 순위</td>
-            <td colSpan={4}>4위</td>
+            <td colSpan={4}>{`${homeTeamRank?.rank}위`}</td>
           </StyledRow>
         </tbody>
       </StyledTable>

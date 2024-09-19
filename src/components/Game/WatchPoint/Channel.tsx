@@ -1,6 +1,11 @@
+import { ScheduleElType } from "@customTypes/watchPoint";
 import styled from "styled-components";
 import Description from "./Description";
 import Title from "./Title";
+
+interface ChannelProps {
+  filteredData: ScheduleElType | null;
+}
 
 const ChannelStyle = styled.div`
   width: 100%;
@@ -8,11 +13,11 @@ const ChannelStyle = styled.div`
   flex-direction: column;
 `;
 
-const Channel = () => {
+const Channel = ({ filteredData }: ChannelProps) => {
   return (
     <ChannelStyle>
       <Title title="중계 채널" $marginBottom="20px;" />
-      <Description desc="KBS N SPORTS,MBC SPORTS+" isChannel />
+      <Description desc={`${filteredData?.broadcast}`} isChannel />
     </ChannelStyle>
   );
 };

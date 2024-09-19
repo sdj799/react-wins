@@ -3,8 +3,9 @@ import Lineup from "@components/Game/WatchPoint/Lineup";
 import Pitcher from "@components/Game/WatchPoint/Pitcher";
 import Record from "@components/Game/WatchPoint/Record";
 import Weather from "@components/Game/WatchPoint/Weather";
-// import { useEffect } from "react";
-// import { useWatchPointStore } from "store/actions/useWatchPointStore";
+
+import { useEffect, useState } from "react";
+import { useWatchPointStore } from "store/actions/useWatchPointStore";
 import styled from "styled-components";
 
 const WatchPointStyle = styled.div`
@@ -21,22 +22,35 @@ const WatchPointStyle = styled.div`
 `;
 
 const WatchPoint = () => {
-  // const fetchData = useWatchPointStore((state) => state.fetchdata);
-  // const data = useWatchPointStore((store) => store.gameScore);
+  const fetchData = useWatchPointStore((state) => state.fetchdata);
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
+  const schedule = useWatchPointStore((state) => state.schedule);
+  const scheduleArr = [schedule?.prev, schedule?.current, schedule?.next];
+  const [currentIndex, setCurrentIndex] = useState(1);
+  const filteredData = scheduleArr[currentIndex];
 
-  // console.log(data);
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    setCurrentIndex(1);
+  }, [schedule]);
+
+  if (!filteredData) return null;
 
   return (
     <WatchPointStyle>
-      <Record />
+      <Record
+        filteredData={filteredData}
+        currentIndex={currentIndex}
+        scheduleArr={scheduleArr}
+        setCurrentIndex={setCurrentIndex}
+      />
       <Pitcher />
       <Lineup />
       <div>
-        <Channel />
+        <Channel filteredData={filteredData} />
         <Weather />
       </div>
     </WatchPointStyle>
