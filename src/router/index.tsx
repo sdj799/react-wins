@@ -18,11 +18,13 @@ import Pitcher from "@pages/Pitcher";
 import PitcherDetail from "@pages/PitcherDetail";
 import Press from "@pages/Press";
 import PressDetail from "@pages/PressDetail";
+import WatchPoint from "@pages/WatchPoint";
+import TeamRanking from "@pages/TeamRanking";
 import WizParkGuide from "@pages/WizParkGuide.tsx";
 import WizParkIntro from "@pages/WizParkIntro.tsx";
 import BasicLayout from "layouts/BasicLayout";
 import CommonLayout from "layouts/CommonLayout";
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
   {
@@ -138,11 +140,14 @@ export const router = createBrowserRouter([
           },
           {
             path: "ranking",
-            element: "순위 component",
+            children: [
+              { index: true, element: <Navigate to="team" /> },
+              { path: "team", element: <TeamRanking /> },
+            ],
           },
           {
             path: "watchPoint",
-            element: "관전포인트 component",
+            element: <WatchPoint />,
           },
         ],
       },

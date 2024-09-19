@@ -11,14 +11,13 @@ const BannerStyle = styled.section`
   margin-top: 80px;
   display: flex;
   justify-content: center;
-  background-image: url("https://images.unsplash.com/photo-1519435887317-eabcf2ab8075?q=80&w=2500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background: url("https://www.ktwiz.co.kr/v2/imgs/sub_bg_2024_pc.png") 60% 0 no-repeat;
   background-size: cover;
-  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.6);
   & > div {
     position: relative;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     flex-direction: column;
     justify-content: center;

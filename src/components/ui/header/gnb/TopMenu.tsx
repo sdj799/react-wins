@@ -5,7 +5,6 @@ import styled from "styled-components";
 const TopMenuStyle = styled.ul<{ $isShowNav: boolean }>`
   display: ${(props) => (props.$isShowNav ? "contents" : "grid")};
   grid-template-columns: ${(props) => !props.$isShowNav && "repeat(8, 1fr)"};
-  width: 795px;
   & > li {
     color: ${(props) => (props.$isShowNav ? "#000" : "#fff")};
     font-size: 17px;

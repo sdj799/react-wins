@@ -1,13 +1,19 @@
 import MediaDetail from "@components/Media/MediaDetail";
 import { TMedia } from "@customTypes/media";
-import dummy from "@data/media.json";
+import { api } from "api/api";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const NewsDetail = () => {
+  const { artcSeq } = useParams();
   const [news, setNews] = useState<TMedia>();
 
   useEffect(() => {
-    setNews(dummy.news.list[0]);
+    const fetchData = async () => {
+      const { data } = await api(`article/newsdetail?artcSeq=${artcSeq}`);
+      data && setNews(data.article);
+    };
+    fetchData();
   }, []);
 
   return (
