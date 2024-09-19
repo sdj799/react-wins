@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 
 const StyledController = styled.div<{ $isFull: boolean }>`
@@ -20,10 +21,11 @@ const StyledButton = styled.button`
   font-size: 15px;
 `;
 
-const Controller = ({ $isFull, title }: { $isFull: boolean; title: string }) => {
+const Controller = ({ $isFull, title, path }: { $isFull: boolean; title: string; path: string }) => {
+  const navigate = useNavigate();
   return (
     <StyledController $isFull={$isFull}>
-      <StyledButton>{title}</StyledButton>
+      <StyledButton onClick={() => navigate(path)}>{title}</StyledButton>
     </StyledController>
   );
 };

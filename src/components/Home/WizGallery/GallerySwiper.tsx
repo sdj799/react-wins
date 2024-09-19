@@ -85,7 +85,7 @@ const GallerySwiper = ({ gallery }: { gallery: TPhoto[] }) => {
         className="mySwiper">
         {gallery &&
           gallery?.map((photo) => (
-            <StyledSwiperSlide key={photo.regDttm}>
+            <StyledSwiperSlide key={photo.artcSeq}>
               {({ isActive }) => (
                 <>
                   <img src={photo.imgFilePath} alt={photo.artcTitle} />

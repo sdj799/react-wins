@@ -1,6 +1,6 @@
 import Controller from "@components/common/Controller";
 import { TPhoto } from "@customTypes/gallery";
-import dummy from "@data/gallery.json";
+import { api } from "api/api";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import GallerySwiper from "./WizGallery/GallerySwiper";
@@ -19,14 +19,18 @@ const WizGallery = () => {
   const [gallery, setGallery] = useState<TPhoto[]>([]);
 
   useEffect(() => {
-    setGallery(dummy.gallery.list);
+    const fetchData = async () => {
+      const { data } = await api("media/photolist?count=10");
+      setGallery(data.list);
+    };
+    fetchData();
   }, []);
 
   return (
     <StyledSection>
       <GalleryTitle />
       <GallerySwiper gallery={gallery} />
-      <Controller $isFull={false} title="더 많은 사진보기" />
+      <Controller $isFull={false} title="더 많은 사진보기" path="/media/wizphoto" />
     </StyledSection>
   );
 };

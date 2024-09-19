@@ -1,5 +1,5 @@
 export type TPhoto = {
   artcTitle: string;
   imgFilePath: string;
-  regDttm: number;
+  artcSeq: number;
 };
