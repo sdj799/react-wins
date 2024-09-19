@@ -51,9 +51,6 @@ const Table = () => {
   const gameScore = useWatchPointStore((state) => state.gameScore);
   const visitPitcher = useWatchPointStore((state) => state.visitPitcher);
   const homePitcher = useWatchPointStore((state) => state.homePitcher);
-  console.log(gameScore);
-  console.log(visitPitcher);
-  console.log(homePitcher);
 
   return (
     <TableWrapper>
