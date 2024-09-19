@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import PlayerList from "./PlayerList";
 
+export interface TeamProps {
+  src?: string | undefined;
+  visit?: string;
+  home?: string;
+}
+
 const TeamStyle = styled.div`
   width: 100%;
   display: flex;
@@ -11,15 +17,15 @@ const TeamStyle = styled.div`
 
   & > img {
     width: 100%;
-    max-width: 72px;
+    max-width: 100px;
   }
 `;
 
-const Team = () => {
+const Team = ({ src, visit, home }: TeamProps) => {
   return (
     <TeamStyle>
-      <img src="" alt="teamLogo" />
-      <PlayerList />
+      <img src={src} alt="teamLogo" />
+      <PlayerList visit={visit} home={home} />
     </TeamStyle>
   );
 };

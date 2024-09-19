@@ -1,6 +1,14 @@
+import { ScheduleElType } from "@customTypes/watchPoint";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import styled from "styled-components";
 import Button from "./Button";
+
+interface HeaderProps {
+  currentIndex: number;
+  filteredData: ScheduleElType | null;
+  scheduleArr: (ScheduleElType | undefined)[];
+  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
+}
 
 const HeaderStyle = styled.div`
   width: 100%;
@@ -29,19 +37,39 @@ const HeaderStyle = styled.div`
   }
 `;
 
-const Header = () => {
+const Header = ({ filteredData, currentIndex, scheduleArr, setCurrentIndex }: HeaderProps) => {
+  const movePrevHandler = () => {
+    if (currentIndex > 0) setCurrentIndex(currentIndex - 1);
+  };
+
+  const moveNextHandler = () => {
+    if (currentIndex < scheduleArr.length - 1) setCurrentIndex(currentIndex + 1);
+  };
+
   return (
     <HeaderStyle>
       <div>
-        <Button $color="#fff" $fontSize="20px" $bgColor="rgba(0,0,0,0.7)" $rounded="50%">
+        <Button
+          $color="#fff"
+          $fontSize="20px"
+          $bgColor={`${currentIndex === 0 ? "rgba(0,0,0,0.4)" : "rgba(0,0,0,0.7)"}`}
+          $rounded="50%"
+          onClick={movePrevHandler}
+          $disabled={currentIndex === 0}>
           <IoIosArrowBack />
         </Button>
-        <span>09.14 (토) 17:00</span>
-        <Button $color="#fff" $fontSize="20px" $bgColor="rgba(0,0,0,0.7)" $rounded="50%">
+        <span>{`0${filteredData?.gmonth}.${filteredData?.gday} (토) ${filteredData?.gtime}`}</span>
+        <Button
+          $color="#fff"
+          $fontSize="20px"
+          $bgColor={`${currentIndex === 2 ? "rgba(0,0,0,0.4)" : "rgba(0,0,0,0.7)"}`}
+          $rounded="50%"
+          onClick={moveNextHandler}
+          $disabled={currentIndex === scheduleArr.length - 1}>
           <IoIosArrowForward />
         </Button>
       </div>
-      <span>17:00 잠실</span>
+      <span>{`${filteredData?.gtime} ${filteredData?.stadium}`}</span>
     </HeaderStyle>
   );
 };
