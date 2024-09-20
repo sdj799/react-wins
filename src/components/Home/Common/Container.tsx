@@ -23,6 +23,7 @@ const ContainerStyle = styled(Link)<{
   left: ${(props) => props.$left || "auto"};
   width: 100%;
   max-width: 540px;
+  min-height: 190px;
   background-image: ${({ $bgImage, $bgColor }) =>
     $bgImage ? `url(${$bgImage})` : $bgColor ? `linear-gradient(${$bgColor})` : "none"};
   background-position: center center;

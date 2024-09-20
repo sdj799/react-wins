@@ -28,7 +28,6 @@ const MontlyPlayer = () => {
   const [data, setData] = useState<MontlyPlayerType[]>([]);
 
   useEffect(() => {
-    // 데이터페칭 시 변경
     const playerData = [...montlyPlyerData];
     setData(playerData);
   }, []);
@@ -36,7 +35,7 @@ const MontlyPlayer = () => {
   return (
     <>
       {data.map((player, index) => (
-        <Container to="#" target="_self" $bgImage={player.imgFilePath} key={index}>
+        <Container to="player/infielder/detail?pcode=50054" target="_self" $bgImage={player.imgFilePath} key={index}>
           <MontlyPlayerStyle>
             <div>
               <Image src={whiteLogo} alt="logo" $maxWidth="81px" $marginBottom="5px" />

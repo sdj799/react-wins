@@ -10,27 +10,40 @@ const GuideWrapper = styled.table`
 `;
 
 const GuideTh = styled.th`
-  width: 78px;
+  width: 151px;
   border: 0.5px solid #cfcfcf;
   background-color: #f6f6f6;
-  padding: 35px 41px 35px 42px;
+  padding: 42px 41px 38px 42px;
+  font-size: 13.5px;
+  font-weight: 700;
   vertical-align: middle;
 `;
 
 const GuideTd = styled.td`
   border: 0.5px solid #cfcfcf;
+  padding: 30px 26px;
+  vertical-align: middle;
+  color: #5b5a5a;
 `;
 
 const BusType = styled.span`
   background-color: ${(props) => props.color};
   color: #fff;
   margin: 2px 2px;
-  padding: 6px 18px 6px 17px;
+  padding: 3px 18px 3px 17px;
   border-radius: 20px;
 `;
 
 const GuideLi = styled.li`
   line-height: 2;
+  margin-top: 3px;
+  .notice {
+    display: block;
+    margin-left: 5px;
+    color: #5b5a5a;
+    font-size: 12px;
+    line-height: 18px;
+  }
 `;
 
 const LocationBtn = styled.a`
@@ -53,7 +66,8 @@ const LocationGuide = ({ address1, address2, href, busList, subway }: TLocationG
         <tbody>
           <tr>
             <GuideTh>
-              <ImLocation2 color="red" fontSize={"1.5em"} /> 주소
+              <ImLocation2 color="red" fontSize={"1.5em"} />
+              주소
             </GuideTh>
             <GuideTd>
               <ul>
@@ -65,7 +79,9 @@ const LocationGuide = ({ address1, address2, href, busList, subway }: TLocationG
                   </LocationBtn>
                 </GuideLi>
                 <GuideLi>
-                  <small>※ 찾아오기 버튼을 누르시면, 출발지에서 야구장으로 가는 길을 쉽게 확인하실 수 있습니다.</small>
+                  <small className="notice">
+                    ※ 찾아오기 버튼을 누르시면, 출발지에서 야구장으로 가는 길을 쉽게 확인하실 수 있습니다.
+                  </small>
                 </GuideLi>
               </ul>
             </GuideTd>

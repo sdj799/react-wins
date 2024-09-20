@@ -3,8 +3,11 @@ import ClubHistory from "@components/About/ClubHistory";
 import BoxScore from "@pages/BoxScore";
 import Catcher from "@pages/Catcher";
 import CatcherDetail from "@pages/CatcherDetail";
+import Cheer from "@pages/Cheer.tsx";
 import Coach from "@pages/Coach";
 import CoachDetail from "@pages/CoachDetail";
+import Donation from "@pages/Donation";
+import Entrance from "@pages/Entrance";
 import Home from "@pages/Home";
 import Iksan from "@pages/Iksan";
 import Infielder from "@pages/Infielder";
@@ -16,11 +19,13 @@ import Outfielder from "@pages/Outfielder";
 import OutfielderDetail from "@pages/OutfielderDetail";
 import Pitcher from "@pages/Pitcher";
 import PitcherDetail from "@pages/PitcherDetail";
+import Policy from "@pages/Policy";
 import Press from "@pages/Press";
 import PressDetail from "@pages/PressDetail";
-import WatchPoint from "@pages/WatchPoint";
+import Store from "@pages/Store";
 import TeamRanking from "@pages/TeamRanking";
-import WizParkGuide from "@pages/WizParkGuide.tsx";
+import WatchPoint from "@pages/WatchPoint";
+import WizParkGuide from "@pages/WizParkGuide";
 import WizParkIntro from "@pages/WizParkIntro.tsx";
 import BasicLayout from "layouts/BasicLayout";
 import CommonLayout from "layouts/CommonLayout";
@@ -79,12 +84,12 @@ export const router = createBrowserRouter([
             path: "policy",
             children: [
               {
-                path: "regular",
-                element: "일반회원 component",
+                index: true,
+                element: <Policy />,
               },
               {
                 path: "donation",
-                element: "기부프로그램 component",
+                element: <Donation />,
               },
             ],
           },
@@ -104,10 +109,6 @@ export const router = createBrowserRouter([
           {
             path: "intro",
             element: <WizParkIntro />,
-          },
-          {
-            path: "guide",
-            element: <WizParkGuide />,
           },
           {
             path: "parking",
@@ -221,7 +222,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "cheer",
-            element: "응원단 component",
+            element: <Cheer />,
           },
         ],
       },
@@ -285,15 +286,15 @@ export const router = createBrowserRouter([
           },
           {
             path: "seatmap",
-            element: "좌석배치도 component",
+            element: <WizParkGuide />,
           },
           {
             path: "enterance",
-            element: "입장 시간 및 방법 component",
+            element: <Entrance />,
           },
           {
             path: "store",
-            element: "구장 내 매장정보 component",
+            element: <Store />,
           },
         ],
       },

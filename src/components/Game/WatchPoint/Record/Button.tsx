@@ -8,6 +8,8 @@ interface ButtonProps {
   $bgColor?: string;
   $border?: string;
   $rounded?: string;
+  onClick: () => void;
+  $disabled: boolean;
 }
 
 const ButtonStyle = styled.button<{
@@ -16,6 +18,7 @@ const ButtonStyle = styled.button<{
   $bgColor?: string;
   $border?: string;
   $rounded?: string;
+  $disabled: boolean;
 }>`
   width: 40px;
   height: 40px;
@@ -25,6 +28,7 @@ const ButtonStyle = styled.button<{
   background-color: ${(props) => props.$bgColor || "none"};
   border-radius: ${(props) => props.$rounded || "0"};
   border: ${(props) => props.$rounded || "none"};
+  cursor: ${(props) => (props.$disabled ? "not-allowed" : "pointer")};
 
   & > svg {
     font-size: ${(props) => props.$fontSize || "14px"};
@@ -32,9 +36,16 @@ const ButtonStyle = styled.button<{
   }
 `;
 
-const Button = ({ children, $fontSize, $color, $bgColor, $border, $rounded }: ButtonProps) => {
+const Button = ({ children, $fontSize, $color, $bgColor, $border, $rounded, onClick, $disabled }: ButtonProps) => {
   return (
-    <ButtonStyle $fontSize={$fontSize} $color={$color} $bgColor={$bgColor} $border={$border} $rounded={$rounded}>
+    <ButtonStyle
+      $fontSize={$fontSize}
+      $color={$color}
+      $bgColor={$bgColor}
+      $border={$border}
+      $rounded={$rounded}
+      onClick={onClick}
+      $disabled={$disabled}>
       {children}
     </ButtonStyle>
   );

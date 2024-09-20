@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 interface LogoProps {
-  src: string;
-  team: string;
+  src: string | undefined;
+  team: string | undefined;
 }
 
 const LogoStyle = styled.div`
@@ -13,7 +13,7 @@ const LogoStyle = styled.div`
 
   & > img {
     width: 100%;
-    max-width: 82px;
+    max-width: 164px;
     margin-bottom: 8px;
   }
 

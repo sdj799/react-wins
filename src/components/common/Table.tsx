@@ -1,7 +1,39 @@
-import { TableBtd, TableCell, TableHeader } from "@styles/PlayerTable.style";
+import { TableHeader } from "@styles/PlayerTable.style";
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { useState } from "react";
+import styled from "styled-components";
 
+const StyledTable = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  border: 1px solid #cfcfcf;
+  border-top: 2px solid #ec0a0b;
+`;
+const StyledTr = styled.tr`
+  & > th,
+  td {
+    width: 100px;
+    height: 40px;
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+    border-right: 1px solid #cfcfcf;
+  }
+  & > th {
+    padding: 8px 0;
+    background-color: #f6f6f6;
+    font-size: 14px;
+    color: #222;
+  }
+  & > td {
+    font-size: 12px;
+    border-top: 1px solid #cfcfcf;
+    color: #5b5a5a;
+    background-color: #fff;
+    padding: 8px 0;
+  }
+`;
 type TableProps<T extends object> = {
   resData: T[];
   headers: string[];
@@ -33,28 +65,28 @@ const Table = <T extends object>({ resData, headers }: TableProps<T>) => {
 
   return (
     <div>
-      <TableBtd>
+      <StyledTable>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
+            <StyledTr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
                 <TableHeader key={header.id}>
                   {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                 </TableHeader>
               ))}
-            </tr>
+            </StyledTr>
           ))}
         </thead>
         <tbody>
           {table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
+            <StyledTr key={row.id}>
               {row.getVisibleCells().map((cell) => (
-                <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
+                <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
               ))}
-            </tr>
+            </StyledTr>
           ))}
         </tbody>
-      </TableBtd>
+      </StyledTable>
     </div>
   );
 };

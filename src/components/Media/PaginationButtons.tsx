@@ -37,7 +37,7 @@ const PaginationButtons = () => {
   const maxGroup = Math.floor(MAX_PAGE / PAGE_COUNT);
 
   useEffect(() => {
-    const currentPage = searchParams.get("search.page");
+    const currentPage = searchParams.get("search.page") || "1";
     setPageGroup(Math.floor(Number(currentPage) / PAGE_COUNT));
     setSelectedNum(Number(currentPage));
   }, []);

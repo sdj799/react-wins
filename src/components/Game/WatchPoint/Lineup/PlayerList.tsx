@@ -1,5 +1,7 @@
+import { useWatchPointStore } from "store/actions/useWatchPointStore";
 import styled from "styled-components";
 import PlayerItem from "./PlayerItem";
+import { TeamProps } from "./Team";
 
 const PlayerListStyle = styled.ul`
   position: relative;
@@ -13,10 +15,20 @@ const PlayerListStyle = styled.ul`
   border-radius: 20px;
 `;
 
-const PlayerList = () => {
+const PlayerList = ({ visit, home }: TeamProps) => {
+  const visitLineup = useWatchPointStore((state) => state.visitLineup);
+  const homeLineup = useWatchPointStore((state) => state.homeLineup);
+
   return (
     <PlayerListStyle>
-      <PlayerItem />
+      {visitLineup?.map(
+        (player) =>
+          player.teamName === visit && <PlayerItem key={player.seq} pos={player.pos} name={player.playerName} />
+      )}
+      {homeLineup?.map(
+        (player) =>
+          player.teamName === home && <PlayerItem key={player.seq} pos={player.pos} name={player.playerName} />
+      )}
     </PlayerListStyle>
   );
 };

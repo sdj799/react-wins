@@ -1,5 +1,6 @@
 import versus from "@assets/images/watchPointImg2.png";
 
+import { useWatchPointStore } from "store/actions/useWatchPointStore";
 import styled from "styled-components";
 import Team from "./Lineup/Team";
 import Title from "./Title";
@@ -19,13 +20,15 @@ const LineupStyle = styled.div`
 `;
 
 const Lineup = () => {
+  const gameScore = useWatchPointStore((state) => state.gameScore);
+
   return (
     <LineupStyle>
       <Title title="라인업" />
       <div>
-        <Team />
+        <Team src={gameScore?.visitLogo} visit={gameScore?.visit} />
         <img src={versus} alt="versus" />
-        <Team />
+        <Team src={gameScore?.homeLogo} home={gameScore?.home} />
       </div>
     </LineupStyle>
   );

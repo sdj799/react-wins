@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const StyledHeader = styled.h4`
+export const StyledHeader = styled.h4<{ $isBold?: boolean }>`
+  width: 100%;
   margin-bottom: 10px;
   font-size: 18px;
   &::before {
@@ -13,9 +14,10 @@ export const StyledHeader = styled.h4`
     margin-right: 13px;
     margin-bottom: 2px;
   }
+  ${({ $isBold }) => $isBold && "font-weight: 700;"}
 `;
 
-const ArticleTitle = ({ title }: { title: string }) => {
-  return <StyledHeader>{title}</StyledHeader>;
+const ArticleTitle = ({ title, isBold }: { title: string; isBold?: boolean }) => {
+  return <StyledHeader $isBold={isBold}>{title}</StyledHeader>;
 };
 export default ArticleTitle;
