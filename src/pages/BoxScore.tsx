@@ -5,7 +5,6 @@ import { FilterGameBatterType, FilterGamePitcherType } from "@customTypes/boxSco
 import { gameBatterHeaders, gamePitcherHeaders } from "@data/gameHeaders";
 import { filterGameBatterData, filterGamePitcherData } from "@utils/filterBoxScoreData";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
 import { useGameStore } from "store/actions/useGameStore";
 import styled from "styled-components";
 import LocationTitle from "../components/Location/LocationTitle";
@@ -20,26 +19,21 @@ const ArticleWrapper = styled.article`
 
 const BoxScore = () => {
   const fetchDaySchedule = useGameStore((state) => state.fetchDaySchedule);
-  const fetchBoxScore = useGameStore((state) => state.fetchBoxScore);
   const hBatters = useGameStore((state) => state.hBatters);
   const hPitchers = useGameStore((state) => state.hPitchers);
   const vBatters = useGameStore((state) => state.vBatters);
   const vPitchers = useGameStore((state) => state.vPitchers);
   const schedule = useGameStore((state) => state.schedule);
 
-  const { gameDate, gmkey } = useParams<{ gameDate: string; gmkey: string }>();
-
   // 처음 페이지 방문시
   useEffect(() => {
-    if (!gameDate || !gmkey) {
+    if (!schedule) {
       fetchDaySchedule();
       console.log(schedule);
     }
   }, []);
+  if (!schedule) return <></>;
 
-  useEffect(() => {
-    if (gameDate && gmkey) fetchBoxScore(gameDate, gmkey);
-  }, [gameDate, gmkey]);
   const filteredHBatters: FilterGameBatterType[] | undefined = hBatters?.map(filterGameBatterData);
   const filteredHPitchers: FilterGamePitcherType[] | undefined = hPitchers?.map(filterGamePitcherData);
   const filteredVBatters: FilterGameBatterType[] | undefined = vBatters?.map(filterGameBatterData);

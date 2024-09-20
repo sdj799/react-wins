@@ -12,11 +12,11 @@ export const useGameStore = create<GameStoreType>((set) => ({
   vBatters: null,
   vPitchers: null,
   fetchDaySchedule: async () => {
-    const data = await api("game/dayschedule");
-    data && set({ daySchedule: data.data.ktwiztodaygame[0] });
-    const resData = await api(
-      `game/boxscore?gamData=${data.data.ktwiztodaygame[0].gamedata}&gmkey=${data.data.ktwiztodaygame[0].gmkey}`
-    );
+    const data = await api("game/recentGames");
+    data && set({ daySchedule: data.data.current });
+
+    const resData = await api(`game/boxscore`);
+
     resData &&
       set({
         schedule: resData.data.schedule,
@@ -29,8 +29,7 @@ export const useGameStore = create<GameStoreType>((set) => ({
       });
   },
   fetchBoxScore: async (gameData: string, gmkey: string) => {
-    const data = await api(`game/boxscore?gamData=${gameData}&gmkey=${gmkey}`);
-    console.log(data);
+    const data = await api(`game/boxscore?gameDate=${gameData}&gmkey=${gmkey}`);
 
     data &&
       set({

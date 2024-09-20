@@ -40,6 +40,7 @@ export type ScheduleType = {
 export type ScheduleListType = {
   current: ScheduleType;
   prev: ScheduleType;
+  next: ScheduleType;
 };
 
 export type ScoreboardType = {
