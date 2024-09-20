@@ -29,7 +29,6 @@ const BoxScore = () => {
   useEffect(() => {
     if (!schedule) {
       fetchDaySchedule();
-      console.log(schedule);
     }
   }, []);
   if (!schedule) return <></>;
