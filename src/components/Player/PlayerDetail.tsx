@@ -28,7 +28,9 @@ import {
   pitTotalHeaders,
 } from "data/playerHeaders";
 import { useState } from "react";
+import { usePlayerStore } from "store/actions/usePlayerStore";
 import styled from "styled-components";
+import PlayerChart from "./PlayerChart";
 import PlayerTable from "./PlayerTable";
 
 const DetailMenuWrapper = styled.div`
@@ -62,6 +64,10 @@ const PlayerDetail = ({ isPitcher }: { isPitcher: boolean }) => {
   const [menu, setMenu] = useState("league");
   const [title, setTitle] = useState("2024 시즌 정규리그 기록");
 
+  const pitcherSeasonSummary = usePlayerStore((state) => state.pitcherSeasonSummary);
+  const hitterSeasonSummary = usePlayerStore((state) => state.hitterSeasonSummary);
+
+  if ((!isPitcher && !hitterSeasonSummary) || (isPitcher && !pitcherSeasonSummary)) return <></>;
   // 필터링된 데이터
   const filteredPitchers: FilterPitcherType[] = pitcherData.map(filterPitcherData);
   const filteredPitchers2: FilterPitcherType2[] = pitcherData.map(filterPitcherData2);
@@ -123,17 +129,38 @@ const PlayerDetail = ({ isPitcher }: { isPitcher: boolean }) => {
               <PlayerTable<FilterPitcherType> resData={filteredPitchers} headers={pitcherHeaders} />
               <TableMargin />
               <PlayerTable<FilterPitcherType2> resData={filteredPitchers2} headers={pitcherHeaders2} />
-              {/* <PitcherTable />
-              <PitcherTable2 /> */}
+              {pitcherSeasonSummary && (
+                <PlayerChart
+                  isPitcher={isPitcher}
+                  data={[
+                    Number(pitcherSeasonSummary.era) < 6 ? 6 - Number(pitcherSeasonSummary.era) : 0,
+                    Number(pitcherSeasonSummary.whip) < 2 ? 2 - Number(pitcherSeasonSummary.whip) : 0,
+                    pitcherSeasonSummary.kk,
+                    Number(pitcherSeasonSummary.innDisplay),
+                    Number(pitcherSeasonSummary.wra),
+                    Number(pitcherSeasonSummary.kbb),
+                  ]}
+                />
+              )}
             </>
           ) : (
             <>
               <PlayerTable<FilterHitterType> resData={filteredHitters} headers={hitterHeaders} />
               <TableMargin />
               <PlayerTable<FilterHitterType2> resData={filteredHitters2} headers={hitterHeaders2} />
-
-              {/* <HitterTable />
-              <HitterTable2 /> */}
+              {hitterSeasonSummary && (
+                <PlayerChart
+                  isPitcher={isPitcher}
+                  data={[
+                    Number(hitterSeasonSummary.hra),
+                    hitterSeasonSummary.hr,
+                    hitterSeasonSummary.rbi,
+                    Number(hitterSeasonSummary.bra),
+                    Number(hitterSeasonSummary.slg),
+                    hitterSeasonSummary.sb,
+                  ]}
+                />
+              )}
             </>
           ))}
         {menu === "recent" &&
