@@ -1,19 +1,6 @@
+import { TCheer } from "@customTypes/cheer";
 import styled from "styled-components";
 import CheerInfo from "./CheerInfo";
-
-type CheerProps = {
-  position: string;
-  kName: string;
-  eName: string;
-  profile: {
-    nickname: string;
-    heightBlood: string;
-    hobby: string;
-    favoritePlayer: string;
-    motto: string;
-  };
-  imageUrl: string;
-};
 
 const SlideWrapper = styled.div`
   position: relative;
@@ -24,16 +11,39 @@ const SlideWrapper = styled.div`
 
 const ProfileContainer = styled.div`
   height: 74.2%;
+  width: 100%;
   max-width: 990px;
   margin-left: auto;
   margin-right: auto;
 `;
 
-const Cheer = ({ position, kName, eName, profile, imageUrl }: CheerProps) => {
+const Cheer = ({
+  leaderPosition,
+  leaderName,
+  leaderEngName,
+  leaderNickName,
+  leaderHeight,
+  leaderBloodGroups,
+  leaderHobby,
+  leaderLikePlayer,
+  leaderMotto,
+  titleImgPath,
+}: TCheer) => {
   return (
     <SlideWrapper>
       <ProfileContainer>
-        <CheerInfo position={position} kName={kName} eName={eName} profile={profile} imageUrl={imageUrl} />
+        <CheerInfo
+          leaderName={leaderName}
+          leaderPosition={leaderPosition}
+          leaderEngName={leaderEngName}
+          leaderNickName={leaderNickName}
+          leaderHeight={leaderHeight}
+          leaderBloodGroups={leaderBloodGroups}
+          leaderHobby={leaderHobby}
+          leaderLikePlayer={leaderLikePlayer}
+          leaderMotto={leaderMotto}
+          titleImgPath={titleImgPath}
+        />
       </ProfileContainer>
     </SlideWrapper>
   );

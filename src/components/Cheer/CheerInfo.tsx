@@ -1,18 +1,5 @@
+import { TCheer } from "@customTypes/cheer";
 import styled from "styled-components";
-
-type CheerInfoProps = {
-  position: string;
-  kName: string;
-  eName: string;
-  profile: {
-    nickname: string;
-    heightBlood: string;
-    hobby: string;
-    favoritePlayer: string;
-    motto: string;
-  };
-  imageUrl: string;
-};
 
 // styled.div를 사용하여 imageUrl을 스타일 속성으로 설정
 const CheerInfoDiv = styled.div<{ $imageUrl: string }>`
@@ -85,42 +72,55 @@ const ProfileDD = styled.dd`
   line-height: 24px;
 `;
 
-const CheerInfo = ({ position, kName, eName, profile, imageUrl }: CheerInfoProps) => {
+const CheerInfo = ({
+  leaderPosition,
+  leaderName,
+  leaderEngName,
+  leaderNickName,
+  leaderHeight,
+  leaderBloodGroups,
+  leaderHobby,
+  leaderLikePlayer,
+  leaderMotto,
+  titleImgPath,
+}: TCheer) => {
   return (
-    <CheerInfoDiv $imageUrl={imageUrl}>
+    <CheerInfoDiv $imageUrl={titleImgPath}>
       <CheerInfoContainer>
-        <PositionSpan>{position}</PositionSpan>
-        <KNameSpan>{kName}</KNameSpan>
-        <ENameSpan>{eName}</ENameSpan>
+        <PositionSpan>{leaderPosition}</PositionSpan>
+        <KNameSpan>{leaderName}</KNameSpan>
+        <ENameSpan>{leaderEngName}</ENameSpan>
         <InfoUl>
           <li>
             <InfoDl>
               <ProfileDT>별명</ProfileDT>
-              <ProfileDD>{profile.nickname}</ProfileDD>
+              <ProfileDD>{leaderNickName}</ProfileDD>
             </InfoDl>
           </li>
           <li>
             <InfoDl>
               <ProfileDT>키/혈액형</ProfileDT>
-              <ProfileDD>{profile.heightBlood}</ProfileDD>
+              <ProfileDD>
+                {leaderHeight}/{leaderBloodGroups}
+              </ProfileDD>
             </InfoDl>
           </li>
           <li>
             <InfoDl>
               <ProfileDT>취미</ProfileDT>
-              <ProfileDD>{profile.hobby}</ProfileDD>
+              <ProfileDD>{leaderHobby}</ProfileDD>
             </InfoDl>
           </li>
           <li>
             <InfoDl>
               <ProfileDT>좋아하는 선수</ProfileDT>
-              <ProfileDD>{profile.favoritePlayer}</ProfileDD>
+              <ProfileDD>{leaderLikePlayer}</ProfileDD>
             </InfoDl>
           </li>
           <li>
             <InfoDl>
               <ProfileDT>좌우명</ProfileDT>
-              <ProfileDD>{profile.motto}</ProfileDD>
+              <ProfileDD>{leaderMotto}</ProfileDD>
             </InfoDl>
           </li>
         </InfoUl>
