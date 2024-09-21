@@ -41,7 +41,8 @@ const StyledRow = styled.tr`
     color: #5b5a5a;
   }
 
-  &.home > td {
+  &.home > td,
+  &.visit > td {
     color: #ec0a0b;
     background-color: #fff5f7;
   }
@@ -51,6 +52,8 @@ const Table = () => {
   const gameScore = useWatchPointStore((state) => state.gameScore);
   const visitPitcher = useWatchPointStore((state) => state.visitPitcher);
   const homePitcher = useWatchPointStore((state) => state.homePitcher);
+  const home = gameScore?.home === "KT";
+  const visit = gameScore?.visit === "KT";
 
   return (
     <TableWrapper>
@@ -77,7 +80,7 @@ const Table = () => {
           </StyledRow>
         </thead>
         <tbody>
-          <StyledRow className="home">
+          <StyledRow className={!home ? "home" : ""}>
             <td>{gameScore?.visit}</td>
             <td>{visitPitcher?.playerName}</td>
             <td>{visitPitcher?.era}</td>
@@ -96,7 +99,7 @@ const Table = () => {
             <td>{visitPitcher?.r}</td>
             <td>{visitPitcher?.er}</td>
           </StyledRow>
-          <StyledRow>
+          <StyledRow className={!visit ? "visit" : ""}>
             <td>{gameScore?.home}</td>
             <td>{homePitcher?.playerName}</td>
             <td>{homePitcher?.era}</td>

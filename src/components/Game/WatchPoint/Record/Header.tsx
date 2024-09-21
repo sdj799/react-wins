@@ -1,14 +1,7 @@
-import { ScheduleElType } from "@customTypes/watchPoint";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { useWatchPointStore } from "store/actions/useWatchPointStore";
 import styled from "styled-components";
 import Button from "./Button";
-
-interface HeaderProps {
-  currentIndex: number;
-  filteredData: ScheduleElType | null;
-  scheduleArr: (ScheduleElType | undefined)[];
-  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
-}
 
 const HeaderStyle = styled.div`
   width: 100%;
@@ -37,13 +30,17 @@ const HeaderStyle = styled.div`
   }
 `;
 
-const Header = ({ filteredData, currentIndex, scheduleArr, setCurrentIndex }: HeaderProps) => {
+const Header = () => {
+  const fetchData = useWatchPointStore((state) => state.fetchData);
+  const gameScore = useWatchPointStore((state) => state.gameScore);
+  const schedule = useWatchPointStore((state) => state.schedule);
+
   const movePrevHandler = () => {
-    if (currentIndex > 0) setCurrentIndex(currentIndex - 1);
+    fetchData(schedule?.prev.gameDate.toString()!, schedule?.prev.gmkey!);
   };
 
   const moveNextHandler = () => {
-    if (currentIndex < scheduleArr.length - 1) setCurrentIndex(currentIndex + 1);
+    fetchData(schedule?.next.gameDate.toString()!, schedule?.next.gmkey!);
   };
 
   return (
@@ -52,24 +49,24 @@ const Header = ({ filteredData, currentIndex, scheduleArr, setCurrentIndex }: He
         <Button
           $color="#fff"
           $fontSize="20px"
-          $bgColor={`${currentIndex === 0 ? "rgba(0,0,0,0.4)" : "rgba(0,0,0,0.7)"}`}
+          $bgColor={`${!schedule?.prev ? "rgba(0,0,0,0.4)" : "rgba(0,0,0,0.7)"}`}
           $rounded="50%"
           onClick={movePrevHandler}
-          $disabled={currentIndex === 0}>
+          $disabled={!schedule?.prev}>
           <IoIosArrowBack />
         </Button>
-        <span>{`0${filteredData?.gmonth}.${filteredData?.gday} (토) ${filteredData?.gtime}`}</span>
+        <span>{`${gameScore?.displayDate}`}</span>
         <Button
           $color="#fff"
           $fontSize="20px"
-          $bgColor={`${currentIndex === 2 ? "rgba(0,0,0,0.4)" : "rgba(0,0,0,0.7)"}`}
+          $bgColor={`${!schedule?.next ? "rgba(0,0,0,0.4)" : "rgba(0,0,0,0.7)"}`}
           $rounded="50%"
           onClick={moveNextHandler}
-          $disabled={currentIndex === scheduleArr.length - 1}>
+          $disabled={!schedule?.next}>
           <IoIosArrowForward />
         </Button>
       </div>
-      <span>{`${filteredData?.gtime} ${filteredData?.stadium}`}</span>
+      <span>{`${gameScore?.gtime} ${gameScore?.stadium}`}</span>
     </HeaderStyle>
   );
 };

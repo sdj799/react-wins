@@ -1,12 +1,7 @@
-import { ScheduleElType } from "@customTypes/watchPoint";
 import { useWatchPointStore } from "store/actions/useWatchPointStore";
 import styled from "styled-components";
 import Logo from "./Logo";
 import Table from "./Table";
-
-interface BodyProps {
-  filteredData: ScheduleElType | null;
-}
 
 const BodyStyle = styled.div`
   width: 100%;
@@ -16,14 +11,14 @@ const BodyStyle = styled.div`
   gap: 40px;
 `;
 
-const Body = ({ filteredData }: BodyProps) => {
+const Body = () => {
   const gameScore = useWatchPointStore((state) => state.gameScore);
 
   return (
     <BodyStyle>
-      <Logo src={gameScore?.visitLogo} team={`${filteredData?.visit} (원정)`} />
+      <Logo src={gameScore?.visitLogo} team={`${gameScore?.visit} (원정)`} />
       <Table />
-      <Logo src={gameScore?.homeLogo} team={`${filteredData?.home} (홈)`} />
+      <Logo src={gameScore?.homeLogo} team={`${gameScore?.home} (홈)`} />
     </BodyStyle>
   );
 };

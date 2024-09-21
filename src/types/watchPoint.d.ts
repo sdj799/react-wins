@@ -161,3 +161,18 @@ export type ScheduleType = {
   next: ScheduleElType;
   prev: ScheduleElType;
 };
+
+export type DayScheduleType = {
+  displayDate: string;
+  gameDate: number;
+  gmkey: string;
+  gtime: string;
+  home: string;
+  homeKey: string;
+  homeLogo: string;
+  stadium: string;
+  stadiumKey: string;
+  visit: string;
+  visitKey: string;
+  visitLogo: string;
+};

@@ -4,7 +4,7 @@ import Pitcher from "@components/Game/WatchPoint/Pitcher";
 import Record from "@components/Game/WatchPoint/Record";
 import Weather from "@components/Game/WatchPoint/Weather";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useWatchPointStore } from "store/actions/useWatchPointStore";
 import styled from "styled-components";
 
@@ -22,35 +22,29 @@ const WatchPointStyle = styled.div`
 `;
 
 const WatchPoint = () => {
-  const fetchData = useWatchPointStore((state) => state.fetchdata);
-
+  const fetchData = useWatchPointStore((state) => state.fetchData);
+  const fetchDaySchedule = useWatchPointStore((state) => state.fetchDaySchedule);
+  const ktwiztodaygame = useWatchPointStore((state) => state.ktwiztodaygame);
+  const gameScore = useWatchPointStore((state) => state.gameScore);
   const schedule = useWatchPointStore((state) => state.schedule);
-  const scheduleArr = [schedule?.prev, schedule?.current, schedule?.next];
-  const [currentIndex, setCurrentIndex] = useState(1);
-  const filteredData = scheduleArr[currentIndex];
 
   useEffect(() => {
-    fetchData();
+    fetchDaySchedule();
   }, []);
 
   useEffect(() => {
-    setCurrentIndex(1);
-  }, [schedule]);
+    ktwiztodaygame && fetchData(ktwiztodaygame?.gameDate.toString(), ktwiztodaygame?.gmkey);
+  }, [ktwiztodaygame]);
 
-  if (!filteredData) return null;
+  if (!schedule && !gameScore) return null;
 
   return (
     <WatchPointStyle>
-      <Record
-        filteredData={filteredData}
-        currentIndex={currentIndex}
-        scheduleArr={scheduleArr}
-        setCurrentIndex={setCurrentIndex}
-      />
+      <Record />
       <Pitcher />
       <Lineup />
       <div>
-        <Channel filteredData={filteredData} />
+        <Channel />
         <Weather />
       </div>
     </WatchPointStyle>

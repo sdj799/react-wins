@@ -3,6 +3,7 @@ import { WatchPointStoreType } from "store/types/watchPointStore";
 import { create } from "zustand";
 
 export const useWatchPointStore = create<WatchPointStoreType>((set) => ({
+  ktwiztodaygame: null,
   gameScore: null,
   homeLineup: null,
   homePitcher: null,
@@ -13,8 +14,12 @@ export const useWatchPointStore = create<WatchPointStoreType>((set) => ({
   visitPitcher: null,
   visitTeamRank: null,
   visitTeamWinLose: null,
-  fetchdata: async () => {
-    const data = await api("game/watchpoint?gameDate=20240914&gmkey=20240914KTOB0");
+  fetchDaySchedule: async () => {
+    const data = await api("game/dayschedule");
+    data.data && set({ ktwiztodaygame: data.data.ktwiztodaygame[0] });
+  },
+  fetchData: async (gameDate: string, gmkey: string) => {
+    const data = await api(`game/watchpoint?gameDate=${gameDate}&gmkey=${gmkey}`);
     data.data &&
       set({
         gameScore: data.data.gameScore,
