@@ -4,7 +4,7 @@ declare const __BASE_URL__: string;
 
 const instance = axios.create({
   baseURL: `${__BASE_URL__}/api/`,
-  timeout: 3000,
+  timeout: 3600,
   headers: { "Content-Type": "application/json" },
 });
 export const api = async (
