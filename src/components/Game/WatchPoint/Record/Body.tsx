@@ -1,14 +1,15 @@
 import { useWatchPointStore } from "store/actions/useWatchPointStore";
 import styled from "styled-components";
-import Logo from "./Logo";
+import Logo from "../../Common/Logo";
 import Table from "./Table";
 
 const BodyStyle = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 40px;
+  padding-top: 20px;
 `;
 
 const Body = () => {

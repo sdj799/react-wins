@@ -31,7 +31,7 @@ const StyledRow = styled.tr`
   }
 
   & > th.wide {
-    width: 14%;
+    width: 7%;
   }
 
   & > td {
@@ -54,6 +54,25 @@ const Table = () => {
   const homePitcher = useWatchPointStore((state) => state.homePitcher);
   const home = gameScore?.home === "KT";
   const visit = gameScore?.visit === "KT";
+
+  const pitcherStats = (pitcher: any) => [
+    pitcher?.playerName,
+    pitcher?.era,
+    pitcher?.gamenum,
+    pitcher?.w,
+    pitcher?.l,
+    pitcher?.sv,
+    pitcher?.hold,
+    pitcher?.wra,
+    pitcher?.innDisplay,
+    pitcher?.hit,
+    pitcher?.hr,
+    pitcher?.bb,
+    pitcher?.hp,
+    pitcher?.kk,
+    pitcher?.r,
+    pitcher?.er,
+  ];
 
   return (
     <TableWrapper>
@@ -82,41 +101,15 @@ const Table = () => {
         <tbody>
           <StyledRow className={!home ? "home" : ""}>
             <td>{gameScore?.visit}</td>
-            <td>{visitPitcher?.playerName}</td>
-            <td>{visitPitcher?.era}</td>
-            <td>{visitPitcher?.gamenum}</td>
-            <td>{visitPitcher?.w}</td>
-            <td>{visitPitcher?.l}</td>
-            <td>{visitPitcher?.sv}</td>
-            <td>{visitPitcher?.hold}</td>
-            <td>{visitPitcher?.wra}</td>
-            <td>{visitPitcher?.innDisplay}</td>
-            <td>{visitPitcher?.hit}</td>
-            <td>{visitPitcher?.hr}</td>
-            <td>{visitPitcher?.bb}</td>
-            <td>{visitPitcher?.hp}</td>
-            <td>{visitPitcher?.kk}</td>
-            <td>{visitPitcher?.r}</td>
-            <td>{visitPitcher?.er}</td>
+            {pitcherStats(visitPitcher).map((stat, index) => (
+              <td key={index}>{stat}</td>
+            ))}
           </StyledRow>
           <StyledRow className={!visit ? "visit" : ""}>
             <td>{gameScore?.home}</td>
-            <td>{homePitcher?.playerName}</td>
-            <td>{homePitcher?.era}</td>
-            <td>{homePitcher?.gamenum}</td>
-            <td>{homePitcher?.w}</td>
-            <td>{homePitcher?.l}</td>
-            <td>{homePitcher?.sv}</td>
-            <td>{homePitcher?.hold}</td>
-            <td>{homePitcher?.wra}</td>
-            <td>{homePitcher?.innDisplay}</td>
-            <td>{homePitcher?.hit}</td>
-            <td>{homePitcher?.hr}</td>
-            <td>{homePitcher?.bb}</td>
-            <td>{homePitcher?.hp}</td>
-            <td>{homePitcher?.kk}</td>
-            <td>{homePitcher?.r}</td>
-            <td>{homePitcher?.er}</td>
+            {pitcherStats(homePitcher).map((stat, index) => (
+              <td key={index}>{stat}</td>
+            ))}
           </StyledRow>
         </tbody>
       </StyledTable>

@@ -1,7 +1,7 @@
+import ControllBtn from "@components/Game/Common/ControllButton";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useWatchPointStore } from "store/actions/useWatchPointStore";
 import styled from "styled-components";
-import Button from "./Button";
 
 const HeaderStyle = styled.div`
   width: 100%;
@@ -46,25 +46,19 @@ const Header = () => {
   return (
     <HeaderStyle>
       <div>
-        <Button
-          $color="#fff"
-          $fontSize="20px"
-          $bgColor={`${!schedule?.prev ? "rgba(0,0,0,0.4)" : "rgba(0,0,0,0.7)"}`}
-          $rounded="50%"
-          onClick={movePrevHandler}
-          $disabled={!schedule?.prev}>
-          <IoIosArrowBack />
-        </Button>
+        <ControllBtn
+          type="button"
+          onClickHandler={movePrevHandler}
+          $disabled={!schedule?.prev}
+          icon={<IoIosArrowBack />}
+        />
         <span>{`${gameScore?.displayDate}`}</span>
-        <Button
-          $color="#fff"
-          $fontSize="20px"
-          $bgColor={`${!schedule?.next ? "rgba(0,0,0,0.4)" : "rgba(0,0,0,0.7)"}`}
-          $rounded="50%"
-          onClick={moveNextHandler}
-          $disabled={!schedule?.next}>
-          <IoIosArrowForward />
-        </Button>
+        <ControllBtn
+          type="button"
+          onClickHandler={moveNextHandler}
+          $disabled={!schedule?.next}
+          icon={<IoIosArrowForward />}
+        />
       </div>
       <span>{`${gameScore?.gtime} ${gameScore?.stadium}`}</span>
     </HeaderStyle>
