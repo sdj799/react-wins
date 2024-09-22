@@ -14,6 +14,7 @@ export const useWatchPointStore = create<WatchPointStoreType>((set) => ({
   visitPitcher: null,
   visitTeamRank: null,
   visitTeamWinLose: null,
+  weather: null,
   fetchDaySchedule: async () => {
     const data = await api("game/dayschedule");
     data.data && set({ ktwiztodaygame: data.data.ktwiztodaygame[0] });
@@ -32,6 +33,7 @@ export const useWatchPointStore = create<WatchPointStoreType>((set) => ({
         visitPitcher: data.data.visitPitcher,
         visitTeamRank: data.data.visitTeamRank,
         visitTeamWinLose: data.data.visitTeamWinLose,
+        weather: data.data.weather,
       });
   },
 }));

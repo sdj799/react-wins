@@ -176,3 +176,15 @@ export type DayScheduleType = {
   visitKey: string;
   visitLogo: string;
 };
+
+export type WeatherType = {
+  addr: string;
+  pop: string;
+  pty: string;
+  reh: string;
+  stadium: string;
+  temp: string;
+  wdkor: string;
+  wfkor: string;
+  ws: string;
+};

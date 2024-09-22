@@ -5,6 +5,7 @@ import {
   PitcherType,
   ScheduleType,
   TeamRankType,
+  WeatherType,
 } from "@customTypes/watchPoint";
 
 export type WatchPointStoreType = {
@@ -18,6 +19,7 @@ export type WatchPointStoreType = {
   visitPitcher: PitcherType | null;
   visitTeamRank: TeamRankType | null;
   visitTeamWinLose: TeamWinLoseType | null;
+  weather: WeatherType | null | undefined;
   ktwiztodaygame: DayScheduleType | null;
   fetchData: (gameDate: string, gmkey: string) => void;
   fetchDaySchedule: () => void;
