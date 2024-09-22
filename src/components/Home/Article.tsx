@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useHomeStore } from "store/actions/useHomeStore";
 import styled from "styled-components";
 import Container from "./Common/Container";
 import Description from "./Common/Description";
@@ -28,30 +30,33 @@ const ArticleInnerStyle = styled.div`
 `;
 
 const Article = () => {
+  const fetchHotIssue = useHomeStore((state) => state.fetchHotIssue);
+  const issue = useHomeStore((state) => state.issue);
+
+  useEffect(() => {
+    fetchHotIssue("1");
+  }, []);
+
   return (
     <ArticleStyle>
       <ArticleOuterStyle>
         <Container to="/media/wiznews" target="_self" $position="absolute" $bottom="55px" $left="0">
-          <ArticleInnerStyle>
-            <Tag tag="위즈소식" $marginBottom="16px" />
-            <Text
-              $marginBottom="12px"
-              $fontSize="20px"
-              $fontWeight="300"
-              $color="#fff"
-              text="[안내] 2024 정규리그 홈경기 운영안내"
-            />
-            <Description
-              $marginBottom="16px"
-              $fontSize="13px"
-              $fontWeight="300"
-              $color="#fff"
-              $opacity="0.6"
-              $textShadow="0 3px 6px rgba(0,0,0,.16)"
-              desc="안녕하세요, kt wiz 야구단입니다. 2024 정규리그 홈경기 운영 안내드리며, 원활한 정규시즌 경기 관람을 위해 공지 내 내용을 확인 부탁드립니다."
-            />
-            <Shortcut $fontSize="13px" $fontWeight="300" $color="#fff" shortcut="자세히보기" />
-          </ArticleInnerStyle>
+          {issue?.map((item, index) => (
+            <ArticleInnerStyle key={index}>
+              <Tag tag="위즈소식" $marginBottom="16px" />
+              <Text $marginBottom="12px" $fontSize="20px" $fontWeight="300" $color="#fff" text={item.artcTitle} />
+              <Description
+                $marginBottom="16px"
+                $fontSize="13px"
+                $fontWeight="300"
+                $color="#fff"
+                $opacity="0.6"
+                $textShadow="0 3px 6px rgba(0,0,0,.16)"
+                desc={item.artcContents}
+              />
+              <Shortcut $fontSize="13px" $fontWeight="300" $color="#fff" shortcut="자세히보기" />
+            </ArticleInnerStyle>
+          ))}
         </Container>
       </ArticleOuterStyle>
     </ArticleStyle>
