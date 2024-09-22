@@ -1,10 +1,10 @@
-import { MatchesType } from "@customTypes/recentMatch";
+import { RecentGamesType } from "@customTypes/home";
 import { IoIosArrowForward } from "react-icons/io";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-interface MatchItemProps {
-  data: MatchesType[];
-  currentIndex: number;
+interface HeaderProps {
+  filteredData: RecentGamesType;
 }
 
 const RecentMatchItemStyle = styled.li`
@@ -12,7 +12,7 @@ const RecentMatchItemStyle = styled.li`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 30px;
 
   & > div:first-child,
   & > div:last-child {
@@ -36,6 +36,7 @@ const RecentMatchItemStyle = styled.li`
   & > div:nth-child(2) {
     display: flex;
     flex-direction: column;
+    align-self: flex-end;
     gap: 20px;
 
     & > div {
@@ -58,7 +59,7 @@ const RecentMatchItemStyle = styled.li`
       }
     }
 
-    & > button {
+    & > a {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -82,35 +83,30 @@ const RecentMatchItemStyle = styled.li`
   }
 `;
 
-const RecentMatchItem = ({ data, currentIndex }: MatchItemProps) => {
+const RecentMatchItem = ({ filteredData }: HeaderProps) => {
   return (
     <ul>
-      {data.map(
-        (match, index) =>
-          index === currentIndex && (
-            <RecentMatchItemStyle key={index}>
-              <div>
-                <img src={match.visitLogo} alt="visitLogo" />
-                <span>{match.visitKey}</span>
-              </div>
-              <div>
-                <div>
-                  <strong>{match.visitScore ? match.visitScore : "0"}</strong>
-                  <span>:</span>
-                  <strong>{match.homeScore ? match.homeScore : "0"}</strong>
-                </div>
-                <button type="button">
-                  <span>경기정보</span>
-                  <IoIosArrowForward />
-                </button>
-              </div>
-              <div>
-                <img src={match.homeLogo} alt="homeLogo" />
-                <span>{match.homeKey}</span>
-              </div>
-            </RecentMatchItemStyle>
-          )
-      )}
+      <RecentMatchItemStyle>
+        <div>
+          <img src={filteredData?.visitLogo} alt="visitLogo" />
+          <span>{filteredData?.visitKey}</span>
+        </div>
+        <div>
+          <div>
+            <strong>{filteredData?.visitScore ? filteredData?.visitScore : "0"}</strong>
+            <span>:</span>
+            <strong>{filteredData?.homeScore ? filteredData?.homeScore : "0"}</strong>
+          </div>
+          <Link to={`game/boxscore`}>
+            <span>경기정보</span>
+            <IoIosArrowForward />
+          </Link>
+        </div>
+        <div>
+          <img src={filteredData?.homeLogo} alt="homeLogo" />
+          <span>{filteredData?.homeKey}</span>
+        </div>
+      </RecentMatchItemStyle>
     </ul>
   );
 };
