@@ -1,4 +1,6 @@
 import Search from "@components/common/Search";
+import TopButton from "@components/common/TopButton";
+import ScrollToTop from "@components/ScrollToTop";
 import Footer from "@components/ui/footer/Footer";
 import Header from "@components/ui/header/Header";
 import Banner from "@components/ui/main/Banner";
@@ -48,6 +50,7 @@ const CommonLayout = () => {
 
   return (
     <CommonLayoutStyle>
+      <ScrollToTop />
       <Header />
       <Banner />
       <MainStyle>
@@ -63,6 +66,7 @@ const CommonLayout = () => {
         <MainInnerStyle $hasPadding={!(currentPath[0] === "game" || currentPath[0] === "media")}>
           <Outlet />
         </MainInnerStyle>
+        <TopButton />
       </MainStyle>
       <Footer />
     </CommonLayoutStyle>
