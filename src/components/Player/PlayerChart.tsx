@@ -13,8 +13,8 @@ const PlayerChart = ({ isPitcher, data }: { isPitcher: boolean; data: number[] }
 
   const indicator = isPitcher
     ? [
-        { name: "평균 자책점", max: 6 },
-        { name: "WHIP", max: 2 },
+        { name: "6-평균 자책점", max: 6 },
+        { name: "2-WHIP", max: 2 },
         { name: "탈삼진", max: 300 },
         { name: "이닝", max: 250 },
         { name: "승률", max: 1 },
@@ -30,6 +30,9 @@ const PlayerChart = ({ isPitcher, data }: { isPitcher: boolean; data: number[] }
       ];
 
   const option = {
+    tooltip: {
+      trigger: "item",
+    },
     legend: {
       data: [player?.playerName],
       left: "30%",
@@ -47,6 +50,11 @@ const PlayerChart = ({ isPitcher, data }: { isPitcher: boolean; data: number[] }
             name: player?.playerName,
           },
         ],
+        itemStyle: {
+          color: "#ec0a0b",
+        },
+        symbol: "circle",
+        symbolSize: 7,
       },
     ],
   };

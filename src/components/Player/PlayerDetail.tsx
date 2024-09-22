@@ -133,10 +133,14 @@ const PlayerDetail = ({ isPitcher }: { isPitcher: boolean }) => {
                 <PlayerChart
                   isPitcher={isPitcher}
                   data={[
-                    Number(pitcherSeasonSummary.era) < 6 ? 6 - Number(pitcherSeasonSummary.era) : 0,
-                    Number(pitcherSeasonSummary.whip) < 2 ? 2 - Number(pitcherSeasonSummary.whip) : 0,
+                    Number(pitcherSeasonSummary.era) < 6
+                      ? Math.round((6 - parseFloat(pitcherSeasonSummary.era)) * 100) / 100
+                      : 0,
+                    Number(pitcherSeasonSummary.whip) < 2
+                      ? Math.round((2 - parseFloat(pitcherSeasonSummary.whip)) * 100) / 100
+                      : 0,
                     pitcherSeasonSummary.kk,
-                    Number(pitcherSeasonSummary.innDisplay),
+                    Math.floor(pitcherSeasonSummary.inn2 / 3),
                     Number(pitcherSeasonSummary.wra),
                     Number(pitcherSeasonSummary.kbb),
                   ]}
