@@ -1,4 +1,6 @@
 import Article from "@components/Home/Article";
+import ScrollToTop from "@components/ScrollToTop";
+import TopButton from "@components/common/TopButton";
 import Footer from "@components/ui/footer/Footer";
 import Header from "@components/ui/header/Header";
 import { Outlet } from "react-router-dom";
@@ -22,10 +24,12 @@ const MainStyle = styled.main`
 const BasicLayout = () => {
   return (
     <BasicLayoutStyle>
+      <ScrollToTop />
       <Header />
       <Article />
       <MainStyle>
         <Outlet />
+        <TopButton />
       </MainStyle>
       <Footer />
     </BasicLayoutStyle>

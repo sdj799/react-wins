@@ -32,17 +32,15 @@ const RecentMatchList = () => {
   if (!filteredData) return null;
 
   return (
-    <>
-      <RecentMatchListStyle>
-        <MatchesHeader
-          recentGames={recentGames}
-          filteredData={filteredData}
-          currentIndex={currentIndex}
-          setCurrentIndex={setCurrentIndex}
-        />
-        <RecentMatchItem filteredData={filteredData} />
-      </RecentMatchListStyle>
-    </>
+    <RecentMatchListStyle>
+      <MatchesHeader
+        recentGames={recentGames}
+        filteredData={filteredData}
+        currentIndex={currentIndex}
+        setCurrentIndex={setCurrentIndex}
+      />
+      <RecentMatchItem filteredData={filteredData} />
+    </RecentMatchListStyle>
   );
 };
 export default RecentMatchList;

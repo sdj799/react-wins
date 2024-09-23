@@ -4,7 +4,7 @@ import styled from "styled-components";
 import ControllBtn from "./ControllBtn";
 import MatchesInfo from "./MatchesInfo";
 
-interface HeaderProps {
+interface MatchedHeaderProps {
   recentGames: (RecentGamesType | null | undefined)[];
   filteredData: RecentGamesType;
   currentIndex: number;
@@ -22,7 +22,7 @@ const MatchesHeaderStyle = styled.div`
   }
 `;
 
-const MatchesHeader = ({ recentGames, filteredData, currentIndex, setCurrentIndex }: HeaderProps) => {
+const MatchesHeader = ({ recentGames, filteredData, currentIndex, setCurrentIndex }: MatchedHeaderProps) => {
   const movePrevHandler = () => {
     if (currentIndex > 0) setCurrentIndex(currentIndex - 1);
   };
@@ -30,6 +30,7 @@ const MatchesHeader = ({ recentGames, filteredData, currentIndex, setCurrentInde
   const moveNextHandler = () => {
     if (currentIndex < recentGames.length - 1) setCurrentIndex(currentIndex + 1);
   };
+  
   return (
     <MatchesHeaderStyle>
       <ControllBtn

@@ -1,6 +1,5 @@
 import PlayerDetail from "@components/Player/PlayerDetail";
 import PlayerInfo from "@components/Player/PlayerInfo";
-import TopButton from "@components/TopButton";
 import { PlayerContentsWrapper } from "@styles/PlayerTable.style";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -20,7 +19,6 @@ const CatcherDetail = () => {
       <PlayerContentsWrapper>
         <PlayerInfo isCatcher={true} />
         <PlayerDetail isPitcher={false} />
-        <TopButton />
       </PlayerContentsWrapper>
     </>
   );

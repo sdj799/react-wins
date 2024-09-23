@@ -31,7 +31,7 @@ const SelectOptionsStyle = styled.ul<{ $isOptionsVisible: boolean }>`
   top: 40px;
   left: 0;
   width: 100%;
-  overflow: scroll;
+  overflow-y: scroll;
   height: 100px;
   max-height: ${(props) => (props.$isOptionsVisible ? "none" : "0")};
   padding: 0;

@@ -3,7 +3,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-interface HeaderProps {
+interface MatchItemProps {
   filteredData: RecentGamesType;
 }
 
@@ -83,7 +83,7 @@ const RecentMatchItemStyle = styled.li`
   }
 `;
 
-const RecentMatchItem = ({ filteredData }: HeaderProps) => {
+const RecentMatchItem = ({ filteredData }: MatchItemProps) => {
   return (
     <ul>
       <RecentMatchItemStyle>

@@ -1,5 +1,4 @@
 import PlayerInfo from "@components/Player/PlayerInfo";
-import TopButton from "@components/TopButton";
 import { PlayerContentsWrapper } from "@styles/PlayerTable.style";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -19,7 +18,6 @@ const CoachDetail = () => {
     <>
       <PlayerContentsWrapper>
         <PlayerInfo />
-        <TopButton />
       </PlayerContentsWrapper>
     </>
   );

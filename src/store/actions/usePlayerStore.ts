@@ -29,14 +29,14 @@ export const usePlayerStore = create<PlayerStoreType>((set) => ({
       url === "pitcher" &&
         set({
           player: data.data.gameplayer,
-          pitcherSeasonSummary: data.data.seasonsummary,
+          pitcherSeasonSummary: data.data.seasonsummary ? data.data.seasonsummary : data.data.seasonsummaryfutures,
           pitcherRecentRecordList: data.data.recentgamerecordlist,
           pitcherYearRecordList: data.data.yearrecordlist,
         });
       (url === "catcher" || url === "infielder" || url === "outfielder") &&
         set({
           player: data.data.gameplayer,
-          hitterSeasonSummary: data.data.seasonsummary,
+          hitterSeasonSummary: data.data.seasonsummary ? data.data.seasonsummary : data.data.seasonsummaryfutures,
           hitterRecentRecordList: data.data.recentgamerecordlist,
           hitterYearRecordList: data.data.yearrecordlist,
         });
