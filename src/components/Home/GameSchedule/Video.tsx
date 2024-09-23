@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const VideoStyle = styled.div`
   width: 100%;
-  min-width: 400px;
+  max-width: 400px;
 
   & > iframe {
     width: 100%;

@@ -3,7 +3,8 @@ import { HomeStoreType } from "store/types/homeStore";
 import { create } from "zustand";
 
 export const useHomeStore = create<HomeStoreType>((set) => ({
-  data: { current: null, prev: null, next: null },
+  data: null,
+  issue: null,
   ktWizTeamRank: null,
   fetchRecentGames: async () => {
     const data = await api("game/recentGames");
@@ -15,5 +16,9 @@ export const useHomeStore = create<HomeStoreType>((set) => ({
       set({
         ktWizTeamRank: data.data.ktWizTeamRank,
       });
+  },
+  fetchHotIssue: async (count: string) => {
+    const data = await api(`media/hotissue?count=${count}`);
+    data && set({ issue: data });
   },
 }));
