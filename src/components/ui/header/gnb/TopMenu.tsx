@@ -76,8 +76,8 @@ const TopMenu = ({ $isShowNav }: NavEventType) => {
   ];
   return (
     <TopMenuStyle $isShowNav={$isShowNav}>
-      {topMenuList.map((menu) => (
-        <li>
+      {topMenuList.map((menu, index) => (
+        <li key={index}>
           <Link to={menu.link} target={menu.target}>
             {menu.title}
           </Link>
