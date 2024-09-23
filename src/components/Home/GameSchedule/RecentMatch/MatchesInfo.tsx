@@ -1,11 +1,9 @@
 import styled from "styled-components";
 
 interface MatchesInfoProps {
-  gyear: string;
-  gmonth: number;
-  gday: number;
+  date: string;
   stadium: string;
-  gtime: string;
+  time: string;
 }
 
 const MatchesInfoStyle = styled.div`
@@ -28,11 +26,11 @@ const MatchesInfoStyle = styled.div`
   }
 `;
 
-const MatchesInfo = ({ gyear, gmonth, gday, stadium, gtime }: MatchesInfoProps) => {
+const MatchesInfo = ({ date, stadium, time }: MatchesInfoProps) => {
   return (
     <MatchesInfoStyle>
-      <strong>{`${gyear}.${gmonth.toString()}.${gday.toString()}`}</strong>
-      <span>{`${stadium} ${gtime}`}</span>
+      <strong>{date}</strong>
+      <span>{`${stadium} ${time}`}</span>
     </MatchesInfoStyle>
   );
 };

@@ -1,3 +1,4 @@
+import playerSkeleton from "@assets/images/playerSkeleton.png";
 import { formatCareer } from "@utils/career";
 import { stringToDate } from "@utils/date";
 import { FaChevronRight } from "react-icons/fa6";
@@ -110,54 +111,60 @@ const PlayerInfo = ({ isPitcher, isCatcher }: { isPitcher?: boolean; isCatcher?:
     <>
       <InfoArti>
         <div>
-          <InfoImg src={player?.playerPrvwImg2} />
-          <dl>
-            <InfoDt>
-              <InfoNumber>No. {player?.backnum}</InfoNumber>
-              {player?.playerName}
-              <InfoEng>{player?.engName}</InfoEng>
-            </InfoDt>
-            <InfoListWrapper>
-              <ul>
-                {infoList.map((info, index) => (
-                  <li key={index}>
-                    <dl>
-                      <InfoListDt>{info.title}</InfoListDt>
-                      <InfoListDd>{info.text}</InfoListDd>
-                    </dl>
-                  </li>
-                ))}
-              </ul>
-              <PictureButton href={`/media/photos/1?searchWord=${player?.playerName}&search.sort=400`}>
-                {(isCatcher || isPitcher) && "선수 "}사진 보기 <FaChevronRight fontSize={"0.8em"} />
-              </PictureButton>
-            </InfoListWrapper>
-          </dl>
-          {isPitcher && (
-            <PlayerRecord>
+          {!player ? (
+            <InfoImg src={playerSkeleton} />
+          ) : (
+            <>
+              <InfoImg src={player?.playerPrvwImg2} />
               <dl>
-                <PlayerRecordDt>{player?.gyear} 정규리그 성적 : </PlayerRecordDt>
-                <PlayerRecordDd>
-                  평균자책점 {pitcherSeasonSummary ? pitcherSeasonSummary.era : "-"} /{" "}
-                  {pitcherSeasonSummary ? pitcherSeasonSummary.w : "-"} 승 /{" "}
-                  {pitcherSeasonSummary ? pitcherSeasonSummary.l : "-"} 패 /{" "}
-                  {pitcherSeasonSummary ? pitcherSeasonSummary.sv : "-"} 세이브
-                </PlayerRecordDd>
+                <InfoDt>
+                  <InfoNumber>No. {player?.backnum}</InfoNumber>
+                  {player?.playerName}
+                  <InfoEng>{player?.engName}</InfoEng>
+                </InfoDt>
+                <InfoListWrapper>
+                  <ul>
+                    {infoList.map((info, index) => (
+                      <li key={index}>
+                        <dl>
+                          <InfoListDt>{info.title}</InfoListDt>
+                          <InfoListDd>{info.text}</InfoListDd>
+                        </dl>
+                      </li>
+                    ))}
+                  </ul>
+                  <PictureButton href={`/media/photos/1?searchWord=${player?.playerName}&search.sort=400`}>
+                    {(isCatcher || isPitcher) && "선수 "}사진 보기 <FaChevronRight fontSize={"0.8em"} />
+                  </PictureButton>
+                </InfoListWrapper>
               </dl>
-            </PlayerRecord>
-          )}
-          {isCatcher && (
-            <PlayerRecord>
-              <dl>
-                <PlayerRecordDt>{player?.gyear} 정규리그 성적 : </PlayerRecordDt>
-                <PlayerRecordDd>
-                  타율 {hitterSeasonSummary ? hitterSeasonSummary.hra : "-"} / 안타{" "}
-                  {hitterSeasonSummary ? hitterSeasonSummary.hit : "-"} / 타점{" "}
-                  {hitterSeasonSummary ? hitterSeasonSummary.rbi : "-"} / 홈런{" "}
-                  {hitterSeasonSummary ? hitterSeasonSummary.hr : "-"}
-                </PlayerRecordDd>
-              </dl>
-            </PlayerRecord>
+              {isPitcher && (
+                <PlayerRecord>
+                  <dl>
+                    <PlayerRecordDt>{player?.gyear} 정규리그 성적 : </PlayerRecordDt>
+                    <PlayerRecordDd>
+                      평균자책점 {pitcherSeasonSummary ? pitcherSeasonSummary.era : "-"} /{" "}
+                      {pitcherSeasonSummary ? pitcherSeasonSummary.w : "-"} 승 /{" "}
+                      {pitcherSeasonSummary ? pitcherSeasonSummary.l : "-"} 패 /{" "}
+                      {pitcherSeasonSummary ? pitcherSeasonSummary.sv : "-"} 세이브
+                    </PlayerRecordDd>
+                  </dl>
+                </PlayerRecord>
+              )}
+              {isCatcher && (
+                <PlayerRecord>
+                  <dl>
+                    <PlayerRecordDt>{player?.gyear} 정규리그 성적 : </PlayerRecordDt>
+                    <PlayerRecordDd>
+                      타율 {hitterSeasonSummary ? hitterSeasonSummary.hra : "-"} / 안타{" "}
+                      {hitterSeasonSummary ? hitterSeasonSummary.hit : "-"} / 타점{" "}
+                      {hitterSeasonSummary ? hitterSeasonSummary.rbi : "-"} / 홈런{" "}
+                      {hitterSeasonSummary ? hitterSeasonSummary.hr : "-"}
+                    </PlayerRecordDd>
+                  </dl>
+                </PlayerRecord>
+              )}
+            </>
           )}
         </div>
       </InfoArti>
