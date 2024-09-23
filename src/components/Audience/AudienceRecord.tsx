@@ -87,7 +87,7 @@ const AudienceRecord = () => {
                     <td>{team.teamName}</td>
                     <td>{team.game}</td>
                     <td>{team.crowd.toLocaleString()}</td>
-                    <td>{team.crowd.toLocaleString()}</td>
+                    <td>{Math.floor(team.crowd / team.game).toLocaleString()}</td>
                   </HighlightRow>
                 ) : (
                   <tr key={index}>
@@ -95,7 +95,7 @@ const AudienceRecord = () => {
                     <td>{team.teamName}</td>
                     <td>{team.game}</td>
                     <td>{team.crowd.toLocaleString()}</td>
-                    <td>{team.crowd.toLocaleString()}</td>
+                    <td>{Math.floor(team.crowd / team.game).toLocaleString()}</td>
                   </tr>
                 )
               )}
