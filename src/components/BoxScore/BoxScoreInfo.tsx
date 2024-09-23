@@ -1,6 +1,8 @@
 import { FilterScoreboardType } from "@customTypes/boxScore";
 import { stringDate } from "@utils/date";
 import { filterScoreboardData } from "@utils/filterBoxScoreData";
+import { useBoxScoreQuery } from "hooks/useBoxScore";
+import { useState } from "react";
 import { GrNext, GrPrevious } from "react-icons/gr";
 import { useGameStore } from "store/actions/useGameStore";
 import styled from "styled-components";
@@ -24,9 +26,11 @@ const BoxScoreButton = styled.button`
   color: #fff;
   border-radius: 50%;
   font-size: 12px;
+  cursor: not-allowed;
 
   &.active {
     background-color: #35383e;
+    cursor: pointer;
   }
 `;
 
@@ -97,9 +101,13 @@ const Logo = styled.span<{ $img: string }>`
 const BoxScoreInfo = () => {
   const schedule = useGameStore((state) => state.schedule);
   const scoreBoard = useGameStore((state) => state.scoreBoard);
-  const fetchBoxScore = useGameStore((state) => state.fetchBoxScore);
+  const setDaySchedule = useGameStore(state => state.setDaySchedule)
 
   const filterScoreBoard = scoreBoard?.map(filterScoreboardData);
+
+  const fetchHandler = (gameDate: string, gmkey: string) => {
+    setDaySchedule({ gameDate, gmkey });
+  };
 
   if (!schedule) return <></>;
 
@@ -112,13 +120,13 @@ const BoxScoreInfo = () => {
           <div>
             <BoxScoreButton
               className={schedule.prev ? "active" : ""}
-              onClick={() => fetchBoxScore(schedule.prev.gameDate.toString(), schedule.prev.gmkey)}>
+              onClick={() => schedule.prev && fetchHandler(schedule.prev.gameDate.toString(), schedule.prev.gmkey)}>
               <GrPrevious fontSize={"1.5em"} />
             </BoxScoreButton>
             <DateSpan>{stringDate(schedule.current.gameDate.toString())}</DateSpan>
             <BoxScoreButton
               className={schedule.next ? "active" : ""}
-              onClick={() => fetchBoxScore(schedule.next.gameDate.toString(), schedule.next.gmkey)}>
+              onClick={() => schedule.next && fetchHandler(schedule.next.gameDate.toString(), schedule.next.gmkey)}>
               <GrNext fontSize={"1.5em"} />
             </BoxScoreButton>
           </div>

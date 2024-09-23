@@ -10,7 +10,7 @@ export const useGameStore = create<GameStoreType>((set) => ({
   hPitchers: null,
   vBatters: null,
   vPitchers: null,
-  setDaySchedule: (data) => set({ daySchedule: data }),
+  setDaySchedule: (data) => set({ daySchedule: { gameDate: data.gameDate, gmkey: data.gmkey } }),
   setBoxScore: (data) =>
     set({
       schedule: data.schedule,

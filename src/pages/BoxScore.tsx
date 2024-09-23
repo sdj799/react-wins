@@ -23,10 +23,11 @@ const BoxScore = () => {
   const vBatters = useGameStore((state) => state.vBatters);
   const vPitchers = useGameStore((state) => state.vPitchers);
   const schedule = useGameStore((state) => state.schedule);
+  const daySchedule = useGameStore((state) => state.daySchedule);
 
-  const { isError, isLoading } = useBoxScoreQuery();
+  const { isError } = useBoxScoreQuery(daySchedule?.gameDate, daySchedule?.gmkey);
 
-  if (isError || isLoading) return <></>;
+  if (isError) return <></>;
 
   const filteredHBatters: FilterGameBatterType[] | undefined = hBatters?.map(filterGameBatterData);
   const filteredHPitchers: FilterGamePitcherType[] | undefined = hPitchers?.map(filterGamePitcherData);
@@ -42,25 +43,25 @@ const BoxScore = () => {
           <MainTable />
         </ArticleWrapper>
         <ArticleWrapper>
-          <LocationTitle title={`${schedule?.current.visit} 타자 기록`} />
+          <LocationTitle title={`${schedule ? schedule.current.visit : ""} 타자 기록`} />
           {filteredVBatters && (
             <PlayerTable<FilterGameBatterType> resData={filteredVBatters} headers={gameBatterHeaders} />
           )}
         </ArticleWrapper>
         <ArticleWrapper>
-          <LocationTitle title={`${schedule?.current.home} 타자 기록`} />
+          <LocationTitle title={`${schedule ? schedule.current.home : ""} 타자 기록`} />
           {filteredHBatters && (
             <PlayerTable<FilterGameBatterType> resData={filteredHBatters} headers={gameBatterHeaders} />
           )}
         </ArticleWrapper>
         <ArticleWrapper>
-          <LocationTitle title={`${schedule?.current.visit} 투수 기록`} />
+          <LocationTitle title={`${schedule ? schedule.current.visit : ""} 투수 기록`} />
           {filteredVPitchers && (
             <PlayerTable<FilterGamePitcherType> resData={filteredVPitchers} headers={gamePitcherHeaders} />
           )}
         </ArticleWrapper>
         <ArticleWrapper>
-          <LocationTitle title={`${schedule?.current.home} 투수 기록`} />
+          <LocationTitle title={`${schedule ? schedule.current.home : ""} 투수 기록`} />
           {filteredHPitchers && (
             <PlayerTable<FilterGamePitcherType> resData={filteredHPitchers} headers={gamePitcherHeaders} />
           )}
