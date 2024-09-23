@@ -1,4 +1,5 @@
 import { RecentGamesType } from "@customTypes/home";
+import React from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -110,4 +111,4 @@ const RecentMatchItem = ({ filteredData }: MatchItemProps) => {
     </ul>
   );
 };
-export default RecentMatchItem;
+export default React.memo(RecentMatchItem);

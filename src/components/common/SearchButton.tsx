@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
@@ -17,4 +18,4 @@ const SearchButton = () => {
     </>
   );
 };
-export default SearchButton;
+export default React.memo(SearchButton);

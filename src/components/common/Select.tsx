@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 const SelectStyle = styled.select`
@@ -17,4 +18,4 @@ const Select = () => {
     </SelectStyle>
   );
 };
-export default Select;
+export default React.memo(Select);

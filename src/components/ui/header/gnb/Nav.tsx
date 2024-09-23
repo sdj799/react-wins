@@ -1,4 +1,5 @@
 import { NavEventType } from "@customTypes/layout";
+import React from "react";
 import styled from "styled-components";
 import BottomMenu from "./BottomMenu";
 import TopMenu from "./TopMenu";
@@ -14,8 +15,8 @@ const Nav = ({ $isShowNav }: NavEventType) => {
   return (
     <MainNavStyle $isShowNav={$isShowNav}>
       <TopMenu $isShowNav={$isShowNav} />
-      {$isShowNav && <BottomMenu $isShowNav={$isShowNav} />}
+      {$isShowNav && <BottomMenu />}
     </MainNavStyle>
   );
 };
-export default Nav;
+export default React.memo(Nav);

@@ -1,4 +1,5 @@
 import footerLogo from "@assets/footerLogo.svg";
+import React from "react";
 import styled from "styled-components";
 
 const FooterLogoStyle = styled.h2`
@@ -14,4 +15,4 @@ const Logo = () => {
     </FooterLogoStyle>
   );
 };
-export default Logo;
+export default React.memo(Logo);

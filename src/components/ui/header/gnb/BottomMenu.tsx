@@ -1,8 +1,8 @@
-import { NavEventType } from "@customTypes/layout";
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const BottomMenuStyle = styled.ul<{ $isShowNav: boolean }>`
+const BottomMenuStyle = styled.ul`
   display: contents;
   & > li {
     color: #000;
@@ -28,9 +28,9 @@ const BottomMenuStyle = styled.ul<{ $isShowNav: boolean }>`
   }
 `;
 
-const BottomMenu = ({ $isShowNav }: NavEventType) => {
+const BottomMenu = () => {
   return (
-    <BottomMenuStyle $isShowNav={$isShowNav}>
+    <BottomMenuStyle>
       <li>
         <ul>
           <li>
@@ -109,4 +109,4 @@ const BottomMenu = ({ $isShowNav }: NavEventType) => {
     </BottomMenuStyle>
   );
 };
-export default BottomMenu;
+export default React.memo(BottomMenu);

@@ -1,3 +1,4 @@
+import React from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { TiHome } from "react-icons/ti";
 import { useLocation } from "react-router-dom";
@@ -50,4 +51,4 @@ const Breadcrumb = () => {
     </BreadcumbStyle>
   );
 };
-export default Breadcrumb;
+export default React.memo(Breadcrumb);

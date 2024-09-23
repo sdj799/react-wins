@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
 
 interface ControllBtnProps {
@@ -24,4 +24,4 @@ const ControllBtn = ({ type, icon, onClickHandler, $disabled }: ControllBtnProps
     </ControllBtnStyle>
   );
 };
-export default ControllBtn;
+export default React.memo(ControllBtn);

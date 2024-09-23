@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 interface MatchesInfoProps {
@@ -34,4 +35,4 @@ const MatchesInfo = ({ date, stadium, time }: MatchesInfoProps) => {
     </MatchesInfoStyle>
   );
 };
-export default MatchesInfo;
+export default React.memo(MatchesInfo);

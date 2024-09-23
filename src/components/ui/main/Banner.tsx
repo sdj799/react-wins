@@ -1,5 +1,6 @@
 import { NavDescType, NavPathType, NavType } from "@customTypes/layout";
 import navData from "@data/nav.json";
+import React from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import TabList from "./tab/TabList";
@@ -74,4 +75,4 @@ const Banner = () => {
     </BannerStyle>
   );
 };
-export default Banner;
+export default React.memo(Banner);
