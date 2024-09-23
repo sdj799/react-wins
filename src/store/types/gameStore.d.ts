@@ -16,6 +16,6 @@ export type GameStoreType = {
   hPitchers: GamePitchersType[] | null;
   vBatters: GameBattersType[] | null;
   vPitchers: GamePitchersType[] | null;
-  fetchDaySchedule: () => void;
-  fetchBoxScore: (gameData: string, gmkey: string) => void;
+  setDaySchedule: (data) => void;
+  setBoxScore: (data) => void;
 };

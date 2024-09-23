@@ -4,7 +4,7 @@ import PlayerTable from "@components/Player/PlayerTable";
 import { FilterGameBatterType, FilterGamePitcherType } from "@customTypes/boxScore";
 import { gameBatterHeaders, gamePitcherHeaders } from "@data/gameHeaders";
 import { filterGameBatterData, filterGamePitcherData } from "@utils/filterBoxScoreData";
-import { useEffect } from "react";
+import { useBoxScoreQuery } from "hooks/useBoxScore";
 import { useGameStore } from "store/actions/useGameStore";
 import styled from "styled-components";
 import LocationTitle from "../components/Location/LocationTitle";
@@ -18,20 +18,15 @@ const ArticleWrapper = styled.article`
 `;
 
 const BoxScore = () => {
-  const fetchDaySchedule = useGameStore((state) => state.fetchDaySchedule);
   const hBatters = useGameStore((state) => state.hBatters);
   const hPitchers = useGameStore((state) => state.hPitchers);
   const vBatters = useGameStore((state) => state.vBatters);
   const vPitchers = useGameStore((state) => state.vPitchers);
   const schedule = useGameStore((state) => state.schedule);
 
-  // 처음 페이지 방문시
-  useEffect(() => {
-    if (!schedule) {
-      fetchDaySchedule();
-    }
-  }, []);
-  if (!schedule) return <></>;
+  const { isError, isLoading } = useBoxScoreQuery();
+
+  if (isError || isLoading) return <></>;
 
   const filteredHBatters: FilterGameBatterType[] | undefined = hBatters?.map(filterGameBatterData);
   const filteredHPitchers: FilterGamePitcherType[] | undefined = hPitchers?.map(filterGamePitcherData);
