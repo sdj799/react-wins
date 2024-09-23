@@ -1,14 +1,14 @@
-import { MatchesType } from "@customTypes/recentMatch";
+import { RecentGamesType } from "@customTypes/home";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import styled from "styled-components";
 import ControllBtn from "./ControllBtn";
 import MatchesInfo from "./MatchesInfo";
 
 interface MatchedHeaderProps {
-  data: MatchesType[];
+  recentGames: (RecentGamesType | null | undefined)[];
+  filteredData: RecentGamesType;
   currentIndex: number;
-  prevBtnHandler: () => void;
-  nextBtnHandler: () => void;
+  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const MatchesHeaderStyle = styled.div`
@@ -22,24 +22,34 @@ const MatchesHeaderStyle = styled.div`
   }
 `;
 
-const MatchesHeader = ({ data, currentIndex, prevBtnHandler, nextBtnHandler }: MatchedHeaderProps) => {
+const MatchesHeader = ({ recentGames, filteredData, currentIndex, setCurrentIndex }: MatchedHeaderProps) => {
+  const movePrevHandler = () => {
+    if (currentIndex > 0) setCurrentIndex(currentIndex - 1);
+  };
+
+  const moveNextHandler = () => {
+    if (currentIndex < recentGames.length - 1) setCurrentIndex(currentIndex + 1);
+  };
+
   return (
     <MatchesHeaderStyle>
-      <ControllBtn type="button" icon={<IoIosArrowBack />} onClickHandler={prevBtnHandler} />
-      {data.map(
-        (match, index) =>
-          index === currentIndex && (
-            <MatchesInfo
-              key={index}
-              gyear={match.gyear}
-              gmonth={match.gmonth}
-              gday={match.gday}
-              stadium={match.stadium}
-              gtime={match.gtime}
-            />
-          )
-      )}
-      <ControllBtn type="button" icon={<IoIosArrowForward />} onClickHandler={nextBtnHandler} />
+      <ControllBtn
+        type="button"
+        icon={<IoIosArrowBack />}
+        onClickHandler={movePrevHandler}
+        $disabled={currentIndex === 0}
+      />
+      <MatchesInfo
+        date={`${filteredData.gyear}.${filteredData.gmonth}.${filteredData.gday}`}
+        stadium={filteredData.stadium}
+        time={filteredData.gtime}
+      />
+      <ControllBtn
+        type="button"
+        icon={<IoIosArrowForward />}
+        onClickHandler={moveNextHandler}
+        $disabled={currentIndex === recentGames.length - 1}
+      />
     </MatchesHeaderStyle>
   );
 };
