@@ -1,6 +1,5 @@
 import ArticleTitle from "@components/common/ArticleTitle";
 import { Tcrowd } from "@customTypes/Crowd";
-import { StyledArticle } from "@styles/Ranking.style";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { api } from "../../api/api.ts";
@@ -49,6 +48,12 @@ const HighlightRow = styled.tr`
     color: #ec0a0b;
   }
 `;
+
+const StyledArticle = styled.article`
+  width: 100%;
+  height: 435px;
+`;
+
 const AudienceRecord = () => {
   const [crowdData, setCrowdData] = useState<Tcrowd[]>([]);
 
