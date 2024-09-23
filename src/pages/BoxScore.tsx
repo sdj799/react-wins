@@ -25,9 +25,9 @@ const BoxScore = () => {
   const schedule = useGameStore((state) => state.schedule);
   const daySchedule = useGameStore((state) => state.daySchedule);
 
-  const { isError } = useBoxScoreQuery(daySchedule?.gameDate, daySchedule?.gmkey);
+  const { isError, isLoading } = useBoxScoreQuery(daySchedule?.gameDate, daySchedule?.gmkey);
 
-  if (isError) return <></>;
+  if (isError || (!schedule && isLoading)) return <></>;
 
   const filteredHBatters: FilterGameBatterType[] | undefined = hBatters?.map(filterGameBatterData);
   const filteredHPitchers: FilterGamePitcherType[] | undefined = hPitchers?.map(filterGamePitcherData);

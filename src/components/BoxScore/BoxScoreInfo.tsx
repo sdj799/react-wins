@@ -1,8 +1,6 @@
 import { FilterScoreboardType } from "@customTypes/boxScore";
 import { stringDate } from "@utils/date";
 import { filterScoreboardData } from "@utils/filterBoxScoreData";
-import { useBoxScoreQuery } from "hooks/useBoxScore";
-import { useState } from "react";
 import { GrNext, GrPrevious } from "react-icons/gr";
 import { useGameStore } from "store/actions/useGameStore";
 import styled from "styled-components";
@@ -101,7 +99,7 @@ const Logo = styled.span<{ $img: string }>`
 const BoxScoreInfo = () => {
   const schedule = useGameStore((state) => state.schedule);
   const scoreBoard = useGameStore((state) => state.scoreBoard);
-  const setDaySchedule = useGameStore(state => state.setDaySchedule)
+  const setDaySchedule = useGameStore((state) => state.setDaySchedule);
 
   const filterScoreBoard = scoreBoard?.map(filterScoreboardData);
 
