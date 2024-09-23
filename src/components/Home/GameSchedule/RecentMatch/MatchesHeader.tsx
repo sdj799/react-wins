@@ -30,7 +30,7 @@ const MatchesHeader = ({ recentGames, filteredData, currentIndex, setCurrentInde
   const moveNextHandler = () => {
     if (currentIndex < recentGames.length - 1) setCurrentIndex(currentIndex + 1);
   };
-
+  
   return (
     <MatchesHeaderStyle>
       <ControllBtn
