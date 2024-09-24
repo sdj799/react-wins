@@ -1,6 +1,7 @@
 import blackLogo from "@assets/blackLogo.svg";
 import whiteLogo from "@assets/whiteLogo.svg";
 import { NavEventType } from "@customTypes/layout";
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -26,4 +27,4 @@ const Logo = ({ $isShowNav }: NavEventType) => {
     </HeaderLogoStyle>
   );
 };
-export default Logo;
+export default React.memo(Logo);

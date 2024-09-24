@@ -1,16 +1,9 @@
 import whiteLogo from "@assets/whiteLogo.svg";
 import montlyPlyerData from "@data/montlyPlayer.json";
-import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Container from "../Common/Container";
 import Image from "../Common/Image";
 import Text from "../Common/Text";
-
-type MontlyPlayerType = {
-  imgFilePath: string;
-  name: string;
-  num: number;
-};
 
 const MontlyPlayerStyle = styled.div`
   width: 100%;
@@ -25,28 +18,19 @@ const MontlyPlayerStyle = styled.div`
 `;
 
 const MontlyPlayer = () => {
-  const [data, setData] = useState<MontlyPlayerType[]>([]);
-
-  useEffect(() => {
-    const playerData = [...montlyPlyerData];
-    setData(playerData);
-  }, []);
+  const playerData = montlyPlyerData[0];
 
   return (
-    <>
-      {data.map((player, index) => (
-        <Container to="player/infielder/detail?pcode=50054" target="_self" $bgImage={player.imgFilePath} key={index}>
-          <MontlyPlayerStyle>
-            <div>
-              <Image src={whiteLogo} alt="logo" $maxWidth="81px" $marginBottom="5px" />
-              <Text text="이달의 선수" $fontSize="15px" $fontWeight="200" $color="#fff" $opacity="0.8" />
-            </div>
-            <Text text={`${player.num}`} $fontSize="53px" $fontWeight="300" $color="#f53232" />
-            <Text text={player.name} $fontSize="53px" $fontWeight="300" $color="#fff" />
-          </MontlyPlayerStyle>
-        </Container>
-      ))}
-    </>
+    <Container to="player/infielder/detail?pcode=50054" target="_self" $bgImage={playerData.imgFilePath}>
+      <MontlyPlayerStyle>
+        <div>
+          <Image src={whiteLogo} alt="logo" $maxWidth="81px" $marginBottom="5px" />
+          <Text text="이달의 선수" $fontSize="15px" $fontWeight="200" $color="#fff" $opacity="0.8" />
+        </div>
+        <Text text={`${playerData.num}`} $fontSize="53px" $fontWeight="300" $color="#f53232" />
+        <Text text={playerData.name} $fontSize="53px" $fontWeight="300" $color="#fff" />
+      </MontlyPlayerStyle>
+    </Container>
   );
 };
 export default MontlyPlayer;

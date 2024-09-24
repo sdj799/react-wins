@@ -1,10 +1,12 @@
 import { NavEventType } from "@customTypes/layout";
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const TopMenuStyle = styled.ul<{ $isShowNav: boolean }>`
   display: ${(props) => (props.$isShowNav ? "contents" : "grid")};
   grid-template-columns: ${(props) => !props.$isShowNav && "repeat(8, 1fr)"};
+
   & > li {
     color: ${(props) => (props.$isShowNav ? "#000" : "#fff")};
     font-size: 17px;
@@ -30,37 +32,58 @@ const TopMenuStyle = styled.ul<{ $isShowNav: boolean }>`
 `;
 
 const TopMenu = ({ $isShowNav }: NavEventType) => {
+  const topMenuList = [
+    {
+      link: "/ktwiz/about",
+      title: "kt wiz",
+      target: "_self",
+    },
+    {
+      link: "/wizpark/intro",
+      title: "wiz park",
+      target: "_self",
+    },
+    {
+      link: "/game/schedule",
+      title: "Game",
+      target: "_self",
+    },
+    {
+      link: "/player/coach",
+      title: "Player",
+      target: "_self",
+    },
+    {
+      link: "/media/wiznews",
+      title: "Media",
+      target: "_self",
+    },
+    {
+      link: "https://www.ktwizstore.co.kr/",
+      title: "Shop",
+      target: "_blank",
+    },
+    {
+      link: "https://b2b.ktwiz.co.kr/",
+      title: "스폰서",
+      target: "_blank",
+    },
+    {
+      link: "/ticket/reservation",
+      title: "티켓구매",
+      target: "_self",
+    },
+  ];
   return (
     <TopMenuStyle $isShowNav={$isShowNav}>
-      <li>
-        <Link to="/ktwiz/about">kt wiz</Link>
-      </li>
-      <li>
-        <Link to="/wizpark/intro">wiz park</Link>
-      </li>
-      <li>
-        <Link to="/game/schedule">Game</Link>
-      </li>
-      <li>
-        <Link to="/player/coach">Player</Link>
-      </li>
-      <li>
-        <Link to="/media/wiznews">Media</Link>
-      </li>
-      <li>
-        <a href="https://www.ktwizstore.co.kr/" target="_blank">
-          Shop
-        </a>
-      </li>
-      <li>
-        <a href="https://b2b.ktwiz.co.kr/" target="_blank">
-          스폰서
-        </a>
-      </li>
-      <li className="redText">
-        <Link to="/ticket/reservation">티켓구매</Link>
-      </li>
+      {topMenuList.map((menu, index) => (
+        <li key={index}>
+          <Link to={menu.link} target={menu.target}>
+            {menu.title}
+          </Link>
+        </li>
+      ))}
     </TopMenuStyle>
   );
 };
-export default TopMenu;
+export default React.memo(TopMenu);

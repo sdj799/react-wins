@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -58,10 +58,14 @@ const Select = () => {
   const [currentOption, setCurrentOption] = useState("Project-wins");
   const [$isOptionsVisible, setIsOptionsVisible] = useState(false);
 
-  const onClickOptionHandler = (e: React.MouseEvent<HTMLElement>) => {
+  const onClickOptionHandler = useCallback((e: React.MouseEvent<HTMLElement>) => {
     const target = e.target as HTMLElement;
     setCurrentOption(target.getAttribute("value")!);
-  };
+  }, []);
+
+  const toggleOptionsVisibility = useCallback(() => {
+    setIsOptionsVisible((prev) => !prev);
+  }, []);
 
   const MEMBER_LIST = [
     {
@@ -92,7 +96,7 @@ const Select = () => {
   ];
 
   return (
-    <SelectStyle onClick={() => setIsOptionsVisible((prev) => !prev)}>
+    <SelectStyle onClick={toggleOptionsVisibility}>
       <LabelStyle>{currentOption}</LabelStyle>
       <SelectOptionsStyle $isOptionsVisible={$isOptionsVisible}>
         {MEMBER_LIST.map((member) => (
@@ -106,4 +110,4 @@ const Select = () => {
     </SelectStyle>
   );
 };
-export default Select;
+export default React.memo(Select);

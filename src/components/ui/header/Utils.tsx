@@ -1,5 +1,6 @@
 import headerBtn from "@assets/headerBtn.svg";
 import { NavEventType } from "@customTypes/layout";
+import React from "react";
 import styled from "styled-components";
 
 const UtilsStyle = styled.ul<{ $isShowNav: boolean }>`
@@ -39,4 +40,4 @@ const Utils = ({ $isShowNav }: NavEventType) => {
     </UtilsStyle>
   );
 };
-export default Utils;
+export default React.memo(Utils);

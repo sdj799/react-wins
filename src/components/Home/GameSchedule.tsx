@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import Parking from "./GameSchedule/Parking";
 import RecentMatchList from "./GameSchedule/RecentMatch/RecentMatchList";
@@ -59,4 +60,4 @@ const GameSchedule = () => {
     </GameScheduleStyle>
   );
 };
-export default GameSchedule;
+export default React.memo(GameSchedule);

@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import Information from "./Information";
 import Logo from "./Logo";
@@ -63,4 +64,4 @@ const Footer = () => {
     </FooterStyle>
   );
 };
-export default Footer;
+export default React.memo(Footer);

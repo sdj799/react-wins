@@ -1,6 +1,6 @@
 import { NavType } from "@customTypes/layout";
 import navData from "@data/nav.json";
-import { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import TabItem from "./TabItem";
@@ -38,13 +38,13 @@ const TabList = () => {
     return [];
   });
 
-  const onClickTabHandler = (index: number) => {
+  const onClickTabHandler = useCallback((index: number) => {
     setActiveTabId(index);
     const selectedTab = tabList.find((tab) => tab.id === index);
     if (selectedTab) {
       navigate(selectedTab.tabPath);
     }
-  };
+  }, []);
 
   return (
     <TabListStyle>
@@ -61,4 +61,4 @@ const TabList = () => {
     </TabListStyle>
   );
 };
-export default TabList;
+export default React.memo(TabList);
