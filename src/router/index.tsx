@@ -149,7 +149,7 @@ export const router = createBrowserRouter([
             ],
           },
           {
-            path: "watchPoint",
+            path: "watchpoint",
             element: <WatchPoint />,
           },
         ],

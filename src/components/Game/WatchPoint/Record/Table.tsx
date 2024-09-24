@@ -1,3 +1,4 @@
+import { calculateRatio } from "@utils/calculateRatio";
 import { useWatchPointStore } from "store/actions/useWatchPointStore";
 import styled from "styled-components";
 
@@ -49,6 +50,15 @@ const Table = () => {
   const homeTeamRank = useWatchPointStore((state) => state.homeTeamRank);
   const homeTeamWinLose = useWatchPointStore((state) => state.homeTeamWinLose);
 
+  const teamRank = (team: any) => [team?.win, team?.lose, team?.drawn, team?.wra];
+
+  const teamWinLose = (team: any) => [
+    team?.win,
+    team?.lose,
+    team?.drawn,
+    calculateRatio(team?.win, team?.lose, team?.drawn),
+  ];
+
   return (
     <TableWrapper>
       <StyledTable>
@@ -67,26 +77,22 @@ const Table = () => {
         </thead>
         <tbody>
           <StyledRow>
-            <td>{visitTeamRank?.win}</td>
-            <td>{visitTeamRank?.lose}</td>
-            <td>{visitTeamRank?.drawn}</td>
-            <td>{visitTeamRank?.wra}</td>
+            {teamRank(visitTeamRank).map((team, index) => (
+              <td key={index}>{team}</td>
+            ))}
             <td className="bold rowTitle">시즌 성적</td>
-            <td>{homeTeamRank?.win}</td>
-            <td>{homeTeamRank?.lose}</td>
-            <td>{homeTeamRank?.drawn}</td>
-            <td>{homeTeamRank?.wra}</td>
+            {teamRank(homeTeamRank).map((team, index) => (
+              <td key={index}>{team}</td>
+            ))}
           </StyledRow>
           <StyledRow>
-            <td>{visitTeamWinLose?.win}</td>
-            <td>{visitTeamWinLose?.lose}</td>
-            <td>{visitTeamWinLose?.drawn}</td>
-            <td>0.25</td>
+            {teamWinLose(visitTeamWinLose).map((team, index) => (
+              <td key={index}>{team}</td>
+            ))}
             <td className="bold rowTitle">시즌 상대 전적</td>
-            <td>{homeTeamWinLose?.win}</td>
-            <td>{homeTeamWinLose?.lose}</td>
-            <td>{homeTeamWinLose?.drawn}</td>
-            <td>0.75</td>
+            {teamWinLose(homeTeamWinLose).map((team, index) => (
+              <td key={index}>{team}</td>
+            ))}
           </StyledRow>
           <StyledRow>
             <td colSpan={4}>{`${visitTeamRank?.rank}위`}</td>

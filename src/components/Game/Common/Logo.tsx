@@ -3,6 +3,7 @@ import styled from "styled-components";
 interface LogoProps {
   src: string | undefined;
   team: string | undefined;
+  score?: string | undefined;
 }
 
 const LogoStyle = styled.div`
@@ -12,9 +13,14 @@ const LogoStyle = styled.div`
   align-items: center;
 
   & > img {
-    width: 100%;
-    max-width: 164px;
-    margin-bottom: 8px;
+    /* width: 100%; */
+    width: 85px;
+  }
+
+  & > strong {
+    font-size: 24px;
+    font-weight: 400;
+    margin: 10px 0;
   }
 
   & > span {
@@ -23,10 +29,11 @@ const LogoStyle = styled.div`
   }
 `;
 
-const Logo = ({ src, team }: LogoProps) => {
+const Logo = ({ src, team, score }: LogoProps) => {
   return (
     <LogoStyle>
       <img src={src} alt="teamLogo" />
+      {score && <strong>{score}</strong>}
       <span>{team}</span>
     </LogoStyle>
   );
