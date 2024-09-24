@@ -53,7 +53,7 @@ const Description = ({ desc, isChannel, isWeather }: DescProps) => {
           <li>{`- 온도 : 현재 ${weather?.temp} (최저 ˚, 최고 ˚)`}</li>
           <li>{`- 날씨 : ${weather?.wfkor}`}</li>
           <li>{`- 강수확률 : ${weather?.pop}%`}</li>
-          <li>{`- 풍속 : ${weather?.ws}m/s`}</li>
+          <li>{`- 풍속 : ${Number(weather?.ws).toFixed(1)}m/s`}</li>
           <li>{`- 풍향 : ${weather?.wdkor} ${getWindDirection(weather?.wdkor)}`}</li>
           <li>{`- 습도 : ${weather?.reh}%`}</li>
         </>
