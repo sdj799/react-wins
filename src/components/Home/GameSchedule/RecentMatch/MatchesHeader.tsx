@@ -31,7 +31,7 @@ const MatchesHeader = ({ recentGames, filteredData, currentIndex, setCurrentInde
   const moveNextHandler = useCallback(() => {
     if (currentIndex < recentGames.length - 1) setCurrentIndex(currentIndex + 1);
   }, [currentIndex, recentGames.length, setCurrentIndex]);
-
+  
   return (
     <MatchesHeaderStyle>
       <ControllBtn
