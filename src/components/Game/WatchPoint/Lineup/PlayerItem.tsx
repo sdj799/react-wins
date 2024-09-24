@@ -8,8 +8,8 @@ interface PlayerItemProps {
 const PlaterItemStyle = styled.li`
   position: absolute;
   width: 100%;
-  max-width: 72px;
-  padding: 6px 10px;
+  max-width: 74px;
+  padding: 6px 0;
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAAAYCAYAAABZY7uwAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAANVJREFUeNrs0j0OAUEAxfG1xkdC9gRCwtYaVFxAohEJiUT0LqBQuIBO4giotDoahTMoaDXbbKNQrPcaDROdZt9L/rObKX+ZRFDwHSxnGvW5t9sM8J9y4r0QLdEKRQZHFm1RzdE4D81QEU1dHBPhfN0ItQjUk4V1fQKV5GCdTyBXDtZlhPNjAhKQgAQkIAEJSEAC0gQkIAH9fRGBQjlYdyfQQQ7WHQm0QA9ZfOyG1gS6ojEKZPLeBQ35cEy60+bFKVkpN/HtoirKxxSGj+SM9ujJi5cAAwAllRzksJCigAAAAABJRU5ErkJggg==");
   background-repeat: no-repeat;
   background-size: cover;
