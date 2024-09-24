@@ -23,6 +23,7 @@ import PitcherDetail from "@pages/PitcherDetail";
 import Policy from "@pages/Policy";
 import Press from "@pages/Press";
 import PressDetail from "@pages/PressDetail";
+import Schedule from "@pages/Schedule";
 import Store from "@pages/Store";
 import TeamRanking from "@pages/TeamRanking";
 import WatchPoint from "@pages/WatchPoint";
@@ -130,7 +131,7 @@ export const router = createBrowserRouter([
         children: [
           {
             path: "schedule",
-            element: "정규리그 component",
+            element: <Schedule />,
           },
           {
             path: "boxscore",
