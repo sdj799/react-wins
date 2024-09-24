@@ -29,3 +29,9 @@ export const stringDate = (input: string): string | null => {
 
   return `${year}년 ${month}월 ${day}일`;
 };
+
+export const chartDate = (date: string) => {
+  const month = date.substring(4, 6);
+  const day = date.substring(6, 8);
+  return `${month}.${day}`;
+};
