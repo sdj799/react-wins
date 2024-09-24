@@ -1,14 +1,7 @@
-import {
-  DayScheduleType,
-  EtcGames,
-  GameBattersType,
-  GamePitchersType,
-  ScheduleListType,
-  ScoreboardType,
-} from "@customTypes/boxScore";
+import { EtcGames, GameBattersType, GamePitchersType, ScheduleListType, ScoreboardType } from "@customTypes/boxScore";
 
 export type GameStoreType = {
-  daySchedule: DayScheduleType | null;
+  daySchedule: { gameDate: string; gmkey: string } | null;
   schedule: ScheduleListType | null;
   scoreBoard: ScoreboardType[] | null;
   etcGames: EtcGames[] | null;
@@ -16,6 +9,6 @@ export type GameStoreType = {
   hPitchers: GamePitchersType[] | null;
   vBatters: GameBattersType[] | null;
   vPitchers: GamePitchersType[] | null;
-  fetchDaySchedule: () => void;
-  fetchBoxScore: (gameData: string, gmkey: string) => void;
+  setDaySchedule: (data) => void;
+  setBoxScore: (data) => void;
 };
