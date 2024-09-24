@@ -26,6 +26,7 @@ export type RecentGamesType = {
   homeFullname: string;
   homeKey: string;
   homeLogo: string;
+  homeScore: number;
   homeStarter: string;
   matchTeamCode: string;
   matchTeamName: string;
@@ -37,6 +38,7 @@ export type RecentGamesType = {
   visitFullname: string;
   visitKey: string;
   visitLogo: string;
+  visitScore: number;
   visitStarter: string;
 };
 
@@ -49,4 +51,11 @@ export type TeamRankingType = {
   teamName: string;
   wldName: string;
   wra: string;
+};
+
+export type IssueType = {
+  artcContents: string;
+  artcTitle: string;
+  imgFilePath: string;
+  viewCnt: number;
 };

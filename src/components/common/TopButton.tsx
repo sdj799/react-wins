@@ -3,18 +3,17 @@ import styled from "styled-components";
 
 const TopBtn = styled.button`
   position: absolute;
-  right: 0%;
-  bottom: 0%;
-  display: inline-block;
+  right: 0;
+  bottom: -70px;
   background-color: #222;
-  font-size: 14px;
+  font-size: 12px;
   color: #fff !important;
   padding: 8px 24px 8px 24px;
   border-radius: 4px;
 `;
 
 const TopBtnWrapper = styled.div`
-  height: 100px;
+  width: 100%;
   position: relative;
 `;
 
@@ -22,7 +21,7 @@ const TopButton = () => {
   return (
     <>
       <TopBtnWrapper>
-        <TopBtn onClick={() => window.scrollTo(0, 0)}>
+        <TopBtn onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
           TOP <IoTriangle />
         </TopBtn>
       </TopBtnWrapper>

@@ -2,7 +2,6 @@ import { FilterScoreboardType } from "@customTypes/boxScore";
 import { stringDate } from "@utils/date";
 import { filterScoreboardData } from "@utils/filterBoxScoreData";
 import { GrNext, GrPrevious } from "react-icons/gr";
-import { useNavigate } from "react-router-dom";
 import { useGameStore } from "store/actions/useGameStore";
 import styled from "styled-components";
 import BoxTable from "./BoxTable";
@@ -98,7 +97,7 @@ const Logo = styled.span<{ $img: string }>`
 const BoxScoreInfo = () => {
   const schedule = useGameStore((state) => state.schedule);
   const scoreBoard = useGameStore((state) => state.scoreBoard);
-  const navigate = useNavigate();
+  const fetchBoxScore = useGameStore((state) => state.fetchBoxScore);
 
   const filterScoreBoard = scoreBoard?.map(filterScoreboardData);
 
@@ -106,19 +105,20 @@ const BoxScoreInfo = () => {
 
   const boxHeaders = ["팀", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "R", "H", "E", "B"];
 
-  const onClickHandler = () => {
-    navigate(`/game/boxscore/${schedule.prev.gameDate}/${schedule.prev.gmkey}`);
-  };
   return (
     <>
       <BoxScoreWrapper>
         <article>
           <div>
-            <BoxScoreButton className={schedule.prev ? "active" : ""} onClick={onClickHandler}>
+            <BoxScoreButton
+              className={schedule.prev ? "active" : ""}
+              onClick={() => fetchBoxScore(schedule.prev.gameDate.toString(), schedule.prev.gmkey)}>
               <GrPrevious fontSize={"1.5em"} />
             </BoxScoreButton>
             <DateSpan>{stringDate(schedule.current.gameDate.toString())}</DateSpan>
-            <BoxScoreButton>
+            <BoxScoreButton
+              className={schedule.next ? "active" : ""}
+              onClick={() => fetchBoxScore(schedule.next.gameDate.toString(), schedule.next.gmkey)}>
               <GrNext fontSize={"1.5em"} />
             </BoxScoreButton>
           </div>
