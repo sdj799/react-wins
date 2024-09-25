@@ -20,8 +20,6 @@ const ThumbBox = styled.li`
   padding: 10px;
 `;
 
-const StyledLink = styled(Link)``;
-
 const ImgBox = styled.div`
   display: block;
   position: relative;
