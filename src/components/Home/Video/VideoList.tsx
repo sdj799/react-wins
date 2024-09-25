@@ -1,4 +1,4 @@
-import dummy from "@data/main/highlightList.json";
+import { TVideo } from "@customTypes/highlight";
 import { homeDate } from "@utils/date";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -20,15 +20,22 @@ const ThumbBox = styled.li`
   padding: 10px;
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(Link)``;
+
+const ImgBox = styled.div`
+  display: block;
+  position: relative;
+  width: 260px;
+  height: 146px;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin-bottom: 17px;
   & > img {
     width: 100%;
-    height: 146px;
     margin-bottom: 17px;
-    border-radius: 10px;
   }
 `;
-
 const InfoTop = styled.div`
   display: flex;
   flex-direction: row;
@@ -51,22 +58,25 @@ const InfoTop = styled.div`
     text-align: left;
   }
 `;
-const VideoList = () => {
+const VideoList = ({ videoList }: { videoList: TVideo[] }) => {
   return (
     <Container>
       <ul>
-        {dummy.data.list.map((item) => (
-          <ThumbBox key={item.artcSeq}>
-            <StyledLink to={`/media/highlight/${item.refSeq}`}>
-              <img src={item.imgFilePath} />
-              <InfoTop>
-                <div>하이라이트</div>
-                <span>{homeDate(item.contentsDate)}</span>
-              </InfoTop>
-              <p>{item.artcTitle}</p>
-            </StyledLink>
-          </ThumbBox>
-        ))}
+        {videoList &&
+          videoList?.map((item) => (
+            <ThumbBox key={item.artcSeq}>
+              <Link to={`/media/highlight/${item.refSeq}`}>
+                <ImgBox>
+                  <img src={item.imgFilePath} />
+                </ImgBox>
+                <InfoTop>
+                  <div>하이라이트</div>
+                  <span>{homeDate(item.contentsDate)}</span>
+                </InfoTop>
+                <p>{item.artcTitle}</p>
+              </Link>
+            </ThumbBox>
+          ))}
       </ul>
     </Container>
   );
