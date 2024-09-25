@@ -49,7 +49,7 @@ const Cells = ({ currentMonth, setSelectedDate }: CellsProps) => {
   let num = 0;
 
   while (day <= endDate) {
-    let formattedDate = "";
+    let formattedDate;
 
     for (let i = 0; i < 7; i++) {
       formattedDate = format(day, "yyyy-MM-dd");
