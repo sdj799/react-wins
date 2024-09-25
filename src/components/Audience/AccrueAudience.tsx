@@ -1,20 +1,10 @@
 import ArticleTitle from "@components/common/ArticleTitle";
 import ReactECharts from "echarts-for-react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { api } from "../../api/api.ts";
+import { Tcrowd } from "../../types/Crowd";
 
-// 더미 데이터
-const data = [
-  { team: "KT", value: 700000 },
-  { team: "LG", value: 1300000 },
-  { team: "삼성", value: 1250000 },
-  { team: "두산", value: 1200000 },
-  { team: "KIA", value: 1150000 },
-  { team: "롯데", value: 1200000 },
-  { team: "SSG", value: 1150000 },
-  { team: "키움", value: 900000 },
-  { team: "한화", value: 950000 },
-  { team: "NC", value: 850000 },
-];
 const StyledArticle = styled.article`
   width: 100%;
   height: 435px;
@@ -22,9 +12,22 @@ const StyledArticle = styled.article`
 `;
 
 const AccrueAudience = () => {
-  // xAxis와 yAxis에 사용할 데이터
-  const teams = data.map((item) => item.team);
-  const values = data.map((item) => item.value);
+  const [crowdData, setCrowdData] = useState<Tcrowd[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await api("game/rank/crowd?gyear=2024");
+
+      const teamOrder = ["KT", "LG", "삼성", "두산", "KIA", "롯데", "SSG", "키움", "한화", "NC"];
+
+      const sortedData = teamOrder.map((team) => data.list.find((item: Tcrowd) => item.teamName === team));
+      setCrowdData(sortedData);
+    };
+    fetchData();
+  }, []);
+
+  const teams = crowdData.map((item) => item?.teamName);
+  const values = crowdData.map((item) => item?.crowd || 0);
 
   const options = {
     tooltip: {
@@ -40,17 +43,17 @@ const AccrueAudience = () => {
       bottom: "6%",
     },
     xAxis: {
-      type: "category", // 팀 이름을 x축에 표시
+      type: "category",
       data: teams,
       axisLabel: {
         interval: 0,
-        rotate: 0, // x축 라벨을 기울여서 표시
+        rotate: 0,
         margin: 5,
         verticalAlign: "top",
       },
     },
     yAxis: {
-      type: "value", // y축은 직접 설정한 값 사용
+      type: "value",
       axisLabel: {
         formatter: (value: number) => value.toLocaleString(),
       },
@@ -60,25 +63,23 @@ const AccrueAudience = () => {
     },
     series: [
       {
-        data: values, // 팀별 관중 수 데이터
-        type: "bar", // 막대형 차트로 설정
+        data: values,
+        type: "bar",
         itemStyle: {
-          color: (params: any) => (params.dataIndex === 0 ? "#d73027" : "#4a4a4a"), // KT팀은 빨간색, 나머지는 회색
+          color: (params: any) => (params.dataIndex === 0 ? "#d73027" : "#4a4a4a"),
         },
-        barWidth: "15%", // 막대 너비 설정
+        barWidth: "15%",
       },
     ],
   };
 
   return (
-    <>
-      <StyledArticle>
-        <ArticleTitle title="2024 시즌 누적관중" />
-        <div style={{ border: "1px solid black", width: "100%", height: "350px" }}>
-          <ReactECharts option={options} style={{ width: "100%", height: "300px" }} opts={{ renderer: "svg" }} />
-        </div>
-      </StyledArticle>
-    </>
+    <StyledArticle>
+      <ArticleTitle title="2024 시즌 누적관중" />
+      <div style={{ border: "1px solid black", width: "100%", height: "350px" }}>
+        <ReactECharts option={options} style={{ width: "100%", height: "300px" }} opts={{ renderer: "svg" }} />
+      </div>
+    </StyledArticle>
   );
 };
 
