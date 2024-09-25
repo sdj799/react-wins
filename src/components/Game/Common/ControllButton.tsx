@@ -5,10 +5,10 @@ interface ControllBtnProps {
   type: "button" | "submit";
   icon: ReactNode;
   onClickHandler: () => void;
-  $disabled: boolean;
+  $disabled?: boolean;
 }
 
-const ControllBtnStyle = styled.button<{ $disabled: boolean }>`
+const ControllBtnStyle = styled.button<{ $disabled?: boolean }>`
   width: 40px;
   height: 40px;
   display: flex;

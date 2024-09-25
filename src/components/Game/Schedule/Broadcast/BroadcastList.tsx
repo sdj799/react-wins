@@ -19,7 +19,7 @@ const BroadcastList = () => {
   return (
     <>
       {tagList.map((tag, index) => (
-        <BroadcastListStyle>
+        <BroadcastListStyle key={index}>
           <Tag tag={tag} />
           <div key={index}>
             <BroadcastItem tag={tag} />
