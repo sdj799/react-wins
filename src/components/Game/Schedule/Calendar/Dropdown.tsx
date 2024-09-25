@@ -25,6 +25,7 @@ const DropdownStyle = styled.div<{ $isOpen: boolean }>`
 
   & > ul {
     width: 90px;
+    height: 110px;
     display: ${({ $isOpen }) => ($isOpen ? "block" : "none")};
     position: absolute;
     top: 100%;
@@ -32,6 +33,7 @@ const DropdownStyle = styled.div<{ $isOpen: boolean }>`
     background-color: #fff;
     border: 1px solid #d2d2d2;
     border-top: 0;
+    overflow: scroll;
 
     & > li {
       text-align: center;
