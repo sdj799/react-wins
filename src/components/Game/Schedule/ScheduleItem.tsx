@@ -3,8 +3,22 @@ import Button from "./Common/Button";
 import Date from "./Common/Date";
 import Score from "./Common/Score";
 import Text from "./Common/Text";
-import HomeTeam from "./HomeTeam";
-import VisitTeam from "./VisitTeam";
+import Team from "./Team";
+
+interface ScheduleItemProps {
+  date: string;
+  visitScore: number | undefined;
+  homeScore: number | undefined;
+  home: string | undefined;
+  visit: string | undefined;
+  result: string | undefined;
+  homePlayer: string | undefined;
+  visitPlayer: string | undefined;
+  link: string;
+  homeLogo: string | undefined;
+  visitLogo: string | undefined;
+  $isCurrent: boolean;
+}
 
 const ScheduleItemStyle = styled.li`
   position: relative;
@@ -42,18 +56,31 @@ const ScheduleItemStyle = styled.li`
   }
 `;
 
-const ScheduleItem = () => {
+const ScheduleItem = ({
+  date,
+  visitScore,
+  homeScore,
+  home,
+  visit,
+  result,
+  homePlayer,
+  visitPlayer,
+  link,
+  visitLogo,
+  homeLogo,
+  $isCurrent,
+}: ScheduleItemProps) => {
   return (
     <ScheduleItemStyle>
-      <Date date="2024.9.21" />
+      <Date date={date} $isCurrent={$isCurrent} />
       <div>
-        <VisitTeam />
+        <Team visitLogo={visitLogo} visit={visit} visitPlayer={visitPlayer} />
         <div>
-          <Score visitScore={4} homeScore={1} />
-          <Text text="패" $color="#ec0a0b" />
-          <Button to="#" />
+          <Score visitScore={visitScore} homeScore={homeScore} />
+          <Text result={result} $color={result?.length === 1 ? "#ec0a0b" : "#222"} />
+          <Button to={link} />
         </div>
-        <HomeTeam />
+        <Team homeLogo={homeLogo} home={home} homePlayer={homePlayer} />
       </div>
     </ScheduleItemStyle>
   );
