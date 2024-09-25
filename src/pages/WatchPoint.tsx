@@ -5,6 +5,7 @@ import Record from "@components/Game/WatchPoint/Record";
 import Weather from "@components/Game/WatchPoint/Weather";
 
 import { useEffect } from "react";
+import { useHomeStore } from "store/actions/useHomeStore";
 import { useWatchPointStore } from "store/actions/useWatchPointStore";
 import styled from "styled-components";
 
@@ -24,9 +25,11 @@ const WatchPointStyle = styled.div`
 const WatchPoint = () => {
   const fetchData = useWatchPointStore((state) => state.fetchData);
   const fetchDaySchedule = useWatchPointStore((state) => state.fetchDaySchedule);
+  const fetchRecentGames = useHomeStore((state) => state.fetchRecentGames);
   const ktwiztodaygame = useWatchPointStore((state) => state.ktwiztodaygame);
   const gameScore = useWatchPointStore((state) => state.gameScore);
   const schedule = useWatchPointStore((state) => state.schedule);
+  const data = useHomeStore((state) => state.data);
 
   useEffect(() => {
     fetchDaySchedule();
@@ -36,7 +39,18 @@ const WatchPoint = () => {
     ktwiztodaygame && fetchData(ktwiztodaygame?.gameDate.toString(), ktwiztodaygame?.gmkey);
   }, [ktwiztodaygame]);
 
+  useEffect(() => {
+    !ktwiztodaygame && fetchRecentGames();
+  }, []);
+
+  useEffect(() => {
+    if (!ktwiztodaygame && data?.current) {
+      fetchData(data.current?.gameDate.toString(), data.current?.gmkey);
+    }
+  }, [data?.current]);
+
   if (!schedule && !gameScore) return null;
+  if (!data) return null;
 
   return (
     <WatchPointStyle>
