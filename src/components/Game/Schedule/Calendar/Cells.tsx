@@ -38,7 +38,7 @@ const CellsStyle = styled.div`
   }
 `;
 
-const Cells = ({ currentMonth, selectedDate, setSelectedDate }: CellsProps) => {
+const Cells = ({ currentMonth, setSelectedDate }: CellsProps) => {
   const monthStart = startOfMonth(currentMonth);
   const monthEnd = endOfMonth(monthStart);
   const startDate = startOfWeek(monthStart);
@@ -46,10 +46,11 @@ const Cells = ({ currentMonth, selectedDate, setSelectedDate }: CellsProps) => {
   const rows = [];
   let days = [];
   let day = startDate;
-  let formattedDate = "";
   let num = 0;
 
   while (day <= endDate) {
+    let formattedDate = "";
+
     for (let i = 0; i < 7; i++) {
       formattedDate = format(day, "yyyy-MM-dd");
       const cloneDay = day;

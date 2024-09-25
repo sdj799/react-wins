@@ -52,10 +52,7 @@ const Calendar = () => {
         {activeTab === "kt wiz 경기" ? (
           <Cells currentMonth={currentMonth} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
         ) : (
-          <>
-            <div>탭 test</div>
-            <Cells currentMonth={currentMonth} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
-          </>
+          <Cells currentMonth={currentMonth} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
         )}
       </div>
       <span>* 경기 일정은 사정에 따라 변동될 수있습니다.</span>
