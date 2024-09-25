@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 interface TextProps {
-  text: string;
+  home?: string;
+  visit?: string;
+  homePlayer?: string;
+  visitPlayer?: string;
+  result?: string;
   $color?: string;
   $fontSize?: string;
 }
@@ -12,10 +16,10 @@ const TextStyle = styled.span<{ $color?: string; $fontSize?: string }>`
   font-weight: 300;
 `;
 
-const Text = ({ text, $color, $fontSize }: TextProps) => {
+const Text = ({ home, visit, homePlayer, visitPlayer, result, $color, $fontSize }: TextProps) => {
   return (
     <TextStyle $color={$color} $fontSize={$fontSize}>
-      {text}
+      {home || visit || homePlayer || visitPlayer || result}
     </TextStyle>
   );
 };
