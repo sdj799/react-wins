@@ -56,7 +56,9 @@ export function filterPitRecentData(data: PitcherRecentType): FilterPitRecentTyp
     hit: data.hit,
     hr: data.hr,
     bb: data.bb,
+    hp: data.hp,
     kk: data.kk,
+    r: data.r,
     er: data.er,
   };
 }

@@ -28,6 +28,8 @@ export type FilterPitRecentType = {
   hit: number;
   hr: number;
   bb: number;
+  hp: number;
   kk: number;
+  r: number;
   er: number;
 };
