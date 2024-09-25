@@ -1,10 +1,12 @@
 import { format, setMonth } from "date-fns";
 import { useState } from "react";
+import { useScheduleStore } from "store/actions/useScheduleStore";
 import styled from "styled-components";
 
 interface DropdownProps {
   currentMonth: Date;
   setCurrentMonth: React.Dispatch<React.SetStateAction<Date>>;
+  formattedDate: string;
 }
 
 const DropdownStyle = styled.div<{ $isOpen: boolean }>`
@@ -47,16 +49,21 @@ const DropdownStyle = styled.div<{ $isOpen: boolean }>`
   }
 `;
 
-const Dropdown = ({ currentMonth, setCurrentMonth }: DropdownProps) => {
+const Dropdown = ({ currentMonth, setCurrentMonth, formattedDate }: DropdownProps) => {
+  const fetchMonthSchedule = useScheduleStore((state) => state.fetchMonthSchedule);
+
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const months = Array.from({ length: 12 }, (_, index) => index);
 
   const toggleDropdownHandler = () => {
+    fetchMonthSchedule(formattedDate);
     setIsDropdownOpen(!isDropdownOpen);
   };
 
   const monthSelectHandler = (month: number) => {
-    setCurrentMonth(setMonth(currentMonth, month));
+    const newFormattedDate = setMonth(currentMonth, month);
+    setCurrentMonth(newFormattedDate);
+    fetchMonthSchedule(format(newFormattedDate, "yyyyMM"));
     setIsDropdownOpen(false);
   };
 

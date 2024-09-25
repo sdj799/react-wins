@@ -1,8 +1,10 @@
+import { useScheduleStore } from "store/actions/useScheduleStore";
 import styled from "styled-components";
 
 interface TabProps {
   activeTab: string;
   setActiveTab: React.Dispatch<React.SetStateAction<string>>;
+  formattedDate: string;
 }
 
 const TabStyle = styled.ul`
@@ -29,12 +31,26 @@ const TabStyle = styled.ul`
   }
 `;
 
-const Tab = ({ activeTab, setActiveTab }: TabProps) => {
+const Tab = ({ activeTab, setActiveTab, formattedDate }: TabProps) => {
+  const fetchMonthSchedule = useScheduleStore((state) => state.fetchMonthSchedule);
+  const fetchAllGameSchedule = useScheduleStore((state) => state.fetchAllGameSchedule);
+
   const tabList = ["kt wiz 경기", "전체 리그"];
+
+  const onClickHandler = (tab: string) => {
+    setActiveTab(tab);
+
+    if (tab === "kt wiz 경기") {
+      fetchMonthSchedule(formattedDate);
+    } else {
+      fetchAllGameSchedule(formattedDate);
+    }
+  };
+
   return (
     <TabStyle>
       {tabList.map((tab, index) => (
-        <li key={index} className={activeTab === tab ? "active" : ""} onClick={() => setActiveTab(tab)}>
+        <li key={index} className={activeTab === tab ? "active" : ""} onClick={() => onClickHandler(tab)}>
           {tab}
         </li>
       ))}
