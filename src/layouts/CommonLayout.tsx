@@ -1,3 +1,4 @@
+import WideImage from "@components/About/WideImage";
 import Search from "@components/common/Search";
 import TopButton from "@components/common/TopButton";
 import ScrollToTop from "@components/ScrollToTop";
@@ -68,6 +69,7 @@ const CommonLayout = () => {
         </MainInnerStyle>
         <TopButton />
       </MainStyle>
+      {currentPath[1] === "about" && <WideImage />}
       <Footer />
     </CommonLayoutStyle>
   );
