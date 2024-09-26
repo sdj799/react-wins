@@ -4,6 +4,8 @@ import { filterScoreboardData } from "@utils/filterBoxScoreData";
 import { GrNext, GrPrevious } from "react-icons/gr";
 import { useGameStore } from "store/actions/useGameStore";
 import styled from "styled-components";
+import ControllBtn from "../Common/ControllButton";
+import Logo from "../Common/Logo";
 import BoxTable from "./BoxTable";
 
 const BoxScoreWrapper = styled.div`
@@ -13,22 +15,11 @@ const BoxScoreWrapper = styled.div`
   box-sizing: border-box;
   text-align: center;
   padding: 30px;
-`;
 
-const BoxScoreButton = styled.button`
-  display: inline-block;
-  vertical-align: middle;
-  width: 40px;
-  height: 40px;
-  background-color: #717781;
-  color: #fff;
-  border-radius: 50%;
-  font-size: 12px;
-  cursor: not-allowed;
-
-  &.active {
-    background-color: #35383e;
-    cursor: pointer;
+  & > article > div {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
   }
 `;
 
@@ -85,17 +76,6 @@ const Team2 = styled.div`
   right: 20px;
 `;
 
-const Logo = styled.span<{ $img: string }>`
-  width: 86.64px;
-  display: inline-block;
-  height: 73px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: 50%;
-  background-image: url(${(props) => props.$img});
-  font-size: 0;
-`;
-
 const BoxScoreInfo = () => {
   const schedule = useGameStore((state) => state.schedule);
   const scoreBoard = useGameStore((state) => state.scoreBoard);
@@ -116,17 +96,21 @@ const BoxScoreInfo = () => {
       <BoxScoreWrapper>
         <article>
           <div>
-            <BoxScoreButton
-              className={schedule.prev ? "active" : ""}
-              onClick={() => schedule.prev && fetchHandler(schedule.prev.gameDate.toString(), schedule.prev.gmkey)}>
-              <GrPrevious fontSize={"1.5em"} />
-            </BoxScoreButton>
+            <ControllBtn
+              type="button"
+              icon={<GrPrevious fontSize={"1.5em"} />}
+              $disabled={!schedule.prev}
+              onClickHandler={() =>
+                schedule.prev && fetchHandler(schedule.prev.gameDate.toString(), schedule.prev.gmkey)
+              }></ControllBtn>
             <DateSpan>{stringDate(schedule.current.gameDate.toString())}</DateSpan>
-            <BoxScoreButton
-              className={schedule.next ? "active" : ""}
-              onClick={() => schedule.next && fetchHandler(schedule.next.gameDate.toString(), schedule.next.gmkey)}>
-              <GrNext fontSize={"1.5em"} />
-            </BoxScoreButton>
+            <ControllBtn
+              type="button"
+              icon={<GrNext fontSize={"1.5em"} />}
+              $disabled={!schedule.next}
+              onClickHandler={() =>
+                schedule.next && fetchHandler(schedule.next.gameDate.toString(), schedule.next.gmkey)
+              }></ControllBtn>
           </div>
           <InfoWrapper>
             <InfoUl>
@@ -137,16 +121,18 @@ const BoxScoreInfo = () => {
           {filterScoreBoard && <BoxTable<FilterScoreboardType> headers={boxHeaders} resData={filterScoreBoard} />}
           <TeamWrapper>
             <Team1>
-              <Logo $img={schedule.current.visitLogo}></Logo>
-              <span className="score">{schedule.current.vscore}</span>
-              <span className="team_place">{schedule.current.visit + " (원정)"}</span>
+              <Logo
+                src={schedule.current.visitLogo}
+                team={schedule.current.visit + " (원정)"}
+                score={schedule.current.vscore.toString()}></Logo>
             </Team1>
           </TeamWrapper>
           <TeamWrapper>
             <Team2>
-              <Logo $img={schedule.current.homeLogo}></Logo>
-              <span className="score">{schedule.current.hscore}</span>
-              <span className="team_place">{schedule.current.home + " (홈)"}</span>
+              <Logo
+                src={schedule.current.homeLogo}
+                team={schedule.current.home + " (홈)"}
+                score={schedule.current.hscore.toString()}></Logo>
             </Team2>
           </TeamWrapper>
         </article>
