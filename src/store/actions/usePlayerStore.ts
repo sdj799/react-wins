@@ -42,4 +42,18 @@ export const usePlayerStore = create<PlayerStoreType>((set) => ({
         });
     }
   },
+  setPlayerList: (data) => set({ playerList: data }),
+  setPlayer: (data) => set({ player: data }),
+  setPitcherDetail: (data) =>
+    set({
+      pitcherSeasonSummary: data.data.seasonsummary ? data.data.seasonsummary : data.data.seasonsummaryfutures,
+      pitcherRecentRecordList: data.data.recentgamerecordlist,
+      pitcherYearRecordList: data.data.yearrecordlist,
+    }),
+  setHitterDetail: (data) =>
+    set({
+      hitterSeasonSummary: data.data.seasonsummary ? data.data.seasonsummary : data.data.seasonsummaryfutures,
+      hitterRecentRecordList: data.data.recentgamerecordlist,
+      hitterYearRecordList: data.data.yearrecordlist,
+    }),
 }));

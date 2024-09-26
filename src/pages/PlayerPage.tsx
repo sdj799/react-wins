@@ -1,14 +1,16 @@
 import PlayerCard from "@components/Player/PlayerCard";
 import { PlayerContentsWrapper } from "@styles/PlayerTable.style";
-import { useEffect } from "react";
+import { usePlayerListQuery } from "hooks/usePlayer";
+import { useParams } from "react-router-dom";
 import { usePlayerStore } from "store/actions/usePlayerStore";
 
-const Outfielder = () => {
-  const fetchPlayer = usePlayerStore((state) => state.fetchPlayerList);
+const Catcher = () => {
   const playerList = usePlayerStore((state) => state.playerList);
-  useEffect(() => {
-    fetchPlayer("outfielderlist");
-  }, []);
+  const { playerType } = useParams();
+
+  const { isError, isLoading } = usePlayerListQuery(playerType ?? "coach");
+
+  if (isError && isLoading) return <></>;
 
   return (
     <>
@@ -21,7 +23,7 @@ const Outfielder = () => {
                 playerName={data.playerName}
                 playerNum={data.backnum}
                 imgSrc={data.playerPrvwImg}
-                href={`/player/outfielder/detail?pcode=${data.pcode}`}
+                href={`/player/${playerType}/detail?pcode=${data.pcode}`}
               />
             ))}
         </ul>
@@ -29,4 +31,4 @@ const Outfielder = () => {
     </>
   );
 };
-export default Outfielder;
+export default Catcher;

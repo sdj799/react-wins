@@ -7,7 +7,7 @@ export const useBoxScoreQuery = (gameDate?: string, gmkey?: string) => {
 
   if (!gameDate && !gmkey)
     return useQuery({
-      queryKey: ["boxScore", gameDate, gmkey],
+      queryKey: [gameDate, gmkey],
       queryFn: async () => {
         const data = await api(`game/boxscore`);
         setBoxScore(data.data);
@@ -16,7 +16,7 @@ export const useBoxScoreQuery = (gameDate?: string, gmkey?: string) => {
     });
 
   return useQuery({
-    queryKey: ["boxScore", gameDate, gmkey],
+    queryKey: [gameDate, gmkey],
     queryFn: async () => {
       const data = await api(`game/boxscore?gameDate=${gameDate}&gmkey=${gmkey}`);
       setBoxScore(data.data);

@@ -1,24 +1,22 @@
 import PlayerDetail from "@components/Player/PlayerDetail";
 import PlayerInfo from "@components/Player/PlayerInfo";
 import { PlayerContentsWrapper } from "@styles/PlayerTable.style";
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { usePlayerStore } from "store/actions/usePlayerStore";
+import { usePlayerDetailQuery } from "hooks/usePlayer";
+import { useLocation, useParams } from "react-router-dom";
 
 const CatcherDetail = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
+  const { playerType } = useParams();
   const pcode = searchParams.get("pcode");
-  const fetchPlayerDetail = usePlayerStore((state) => state.fetchPlayerDetail);
-  useEffect(() => {
-    pcode && fetchPlayerDetail("catcher", pcode);
-  }, [pcode]);
+  const { isError, isLoading } = usePlayerDetailQuery(playerType ?? "coach", pcode ?? "");
+  if (isError && isLoading) return <></>;
 
   return (
     <>
       <PlayerContentsWrapper>
-        <PlayerInfo isCatcher={true} />
-        <PlayerDetail isPitcher={false} />
+        {playerType && <PlayerInfo playerType={playerType} />}
+        {playerType && playerType !== "coach" && <PlayerDetail playerType={playerType} />}
       </PlayerContentsWrapper>
     </>
   );

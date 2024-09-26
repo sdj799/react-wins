@@ -1,5 +1,5 @@
-import BoxScoreInfo from "@components/BoxScore/BoxScoreInfo";
-import MainTable from "@components/BoxScore/MainTable";
+import BoxScoreInfo from "@components/Game/BoxScore/BoxScoreInfo";
+import MainTable from "@components/Game/BoxScore/MainTable";
 import PlayerTable from "@components/Player/PlayerTable";
 import { FilterGameBatterType, FilterGamePitcherType } from "@customTypes/boxScore";
 import { gameBatterHeaders, gamePitcherHeaders } from "@data/gameHeaders";
