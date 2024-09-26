@@ -1,5 +1,5 @@
-import blackLogo from "@assets/blackLogo.svg";
-import whiteLogo from "@assets/whiteLogo.svg";
+import blackLogo from "@assets/images/blackLogo.svg";
+import whiteLogo from "@assets/images/whiteLogo.svg";
 import { NavEventType } from "@customTypes/layout";
 import React from "react";
 import { Link } from "react-router-dom";

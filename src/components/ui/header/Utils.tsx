@@ -1,4 +1,4 @@
-import headerBtn from "@assets/headerBtn.svg";
+import headerBtn from "@assets/images/headerBtn.svg";
 import { NavEventType } from "@customTypes/layout";
 import React from "react";
 import styled from "styled-components";

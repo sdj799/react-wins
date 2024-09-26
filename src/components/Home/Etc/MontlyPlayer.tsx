@@ -1,4 +1,4 @@
-import whiteLogo from "@assets/whiteLogo.svg";
+import whiteLogo from "@assets/images/whiteLogo.svg";
 import montlyPlyerData from "@data/montlyPlayer.json";
 import styled from "styled-components";
 import Container from "../Common/Container";
