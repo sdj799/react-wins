@@ -1,8 +1,9 @@
 import ArticleTitle from "@components/common/ArticleTitle";
 import Table from "@components/common/Table";
 import { TBattingRank } from "@customTypes/teamRank";
-import dummy from "@data/game/rankBatting.json";
 import { filterData } from "@utils/filterData";
+import { api } from "api/api";
+import { useEffect, useState } from "react";
 
 export const teamRankingHeaders: [string, string][] = [
   ["teamName", "팀명"],
@@ -24,11 +25,23 @@ export const teamRankingHeaders: [string, string][] = [
   ["hra", "타율"],
 ];
 const RecordBatter = () => {
-  const data = dummy.data.list.map((data) => filterData(data, teamRankingHeaders)) as TBattingRank[];
+  const [batters, setBatters] = useState<TBattingRank[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await api("game/rank/batting");
+      const ranking = data?.list?.map((team: TBattingRank) => filterData(team, teamRankingHeaders));
+      setBatters(ranking);
+    };
+    fetchData();
+  }, []);
+
   return (
     <article>
       <ArticleTitle title="2024 시즌 팀 타자 기록" />
-      <Table<TBattingRank> resData={data} headers={teamRankingHeaders.map((item) => item[1])} />
+      {batters.length > 0 && (
+        <Table<TBattingRank> resData={batters} headers={teamRankingHeaders.map((item) => item[1])} />
+      )}
     </article>
   );
 };
