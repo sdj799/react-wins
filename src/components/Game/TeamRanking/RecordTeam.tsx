@@ -1,8 +1,9 @@
 import ArticleTitle from "@components/common/ArticleTitle";
 import Table from "@components/common/Table";
 import { TTemaRank } from "@customTypes/teamRank";
-import dummy from "@data/game/teamRankByYear.json";
 import { filterData } from "@utils/filterData";
+import { api } from "api/api";
+import { useEffect, useState } from "react";
 
 export const teamRankingHeaders: [string, string][] = [
   ["rank", "순위"],
@@ -42,12 +43,20 @@ export const teamRankHeaders = [
 ];
 
 const RecordTeam = () => {
-  const data = dummy.data.list.map((data) => filterData(data, teamRankingHeaders)) as TTemaRank[];
+  const [teams, setTeams] = useState<TTemaRank[]>([]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await api("game/teamrankbyyear");
+      const ranking = data?.list?.map((team: TTemaRank) => filterData(team, teamRankingHeaders));
+      setTeams(ranking);
+    };
+    fetchData();
+  }, []);
   return (
     <article>
       <ArticleTitle title="2024 시즌 팀 기록" />
-      <Table<TTemaRank> resData={data} headers={teamRankingHeaders.map((item) => item[1])} />
+      {teams.length > 0 && <Table<TTemaRank> resData={teams} headers={teamRankingHeaders.map((item) => item[1])} />}
     </article>
   );
 };

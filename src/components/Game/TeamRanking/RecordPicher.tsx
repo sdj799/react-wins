@@ -1,8 +1,9 @@
 import ArticleTitle from "@components/common/ArticleTitle";
 import Table from "@components/common/Table";
 import { TPicheringRank } from "@customTypes/teamRank";
-import dummy from "@data/game/rankPitching.json";
 import { filterData } from "@utils/filterData";
+import { api } from "api/api";
+import { useEffect, useState } from "react";
 
 export const teamRankingHeaders: [string, string][] = [
   ["teamName", "팀명"],
@@ -22,12 +23,23 @@ export const teamRankingHeaders: [string, string][] = [
   ["qs", "QS"],
 ];
 const RecordPicher = () => {
-  const data = dummy.data.list.map((data) => filterData(data, teamRankingHeaders)) as TPicheringRank[];
+  const [pitchers, setPitchers] = useState<TPicheringRank[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await api("game/rank/pitching");
+      const ranking = data?.list?.map((team: TPicheringRank) => filterData(team, teamRankingHeaders));
+      setPitchers(ranking);
+    };
+    fetchData();
+  }, []);
 
   return (
     <article>
       <ArticleTitle title="2024 시즌 팀 투수 기록" />
-      <Table<TPicheringRank> resData={data} headers={teamRankingHeaders.map((item) => item[1])} />
+      {pitchers.length > 0 && (
+        <Table<TPicheringRank> resData={pitchers} headers={teamRankingHeaders.map((item) => item[1])} />
+      )}
     </article>
   );
 };
