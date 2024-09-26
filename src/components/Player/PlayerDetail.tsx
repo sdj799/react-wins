@@ -24,7 +24,7 @@ const MenuA = styled.a`
   line-height: 60px;
 `;
 
-const PlayerDetail = ({ isPitcher }: { isPitcher: boolean }) => {
+const PlayerDetail = ({ playerType }: { playerType: string }) => {
   const [menu, setMenu] = useState("league");
   const [title, setTitle] = useState("2024 시즌 정규리그 기록");
 
@@ -70,7 +70,7 @@ const PlayerDetail = ({ isPitcher }: { isPitcher: boolean }) => {
       <div style={{ marginTop: "40px" }}>
         <Title title={title} />
       </div>
-      <PlayerTableInfo isPitcher={isPitcher} menu={menu} />
+      <PlayerTableInfo isPitcher={playerType === "pitcher"} menu={menu} />
     </>
   );
 };

@@ -2,24 +2,16 @@ import ClubDescription from "@components/About/ClubDescription";
 import ClubHistory from "@components/About/ClubHistory";
 import Audience from "@pages/Audience.tsx";
 import BoxScore from "@pages/BoxScore";
-import Catcher from "@pages/Catcher";
-import CatcherDetail from "@pages/CatcherDetail";
 import Cheer from "@pages/Cheer.tsx";
-import Coach from "@pages/Coach";
-import CoachDetail from "@pages/CoachDetail";
 import Donation from "@pages/Donation";
 import Entrance from "@pages/Entrance";
 import Home from "@pages/Home";
 import Iksan from "@pages/Iksan";
-import Infielder from "@pages/Infielder";
-import InfielderDetail from "@pages/InfielderDetail";
 import Location from "@pages/Location";
 import News from "@pages/News";
 import NewsDetail from "@pages/NewsDetail";
-import Outfielder from "@pages/Outfielder";
-import OutfielderDetail from "@pages/OutfielderDetail";
-import Pitcher from "@pages/Pitcher";
-import PitcherDetail from "@pages/PitcherDetail";
+import PlayerDetailPage from "@pages/PlayerDetailPage";
+import PlayerPage from "@pages/PlayerPage";
 import Policy from "@pages/Policy";
 import Press from "@pages/Press";
 import PressDetail from "@pages/PressDetail";
@@ -155,74 +147,76 @@ export const router = createBrowserRouter([
           },
         ],
       },
+      { path: "/player/:playerType", element: <PlayerPage /> },
+      { path: "/player/:playerType/detail", element: <PlayerDetailPage /> },
       {
         path: "/player",
         children: [
-          {
-            path: "coach",
-            children: [
-              {
-                index: true,
-                element: <Coach />,
-              },
-              {
-                path: "detail",
-                element: <CoachDetail />,
-              },
-            ],
-          },
-          {
-            path: "pitcher",
-            children: [
-              {
-                index: true,
-                element: <Pitcher />,
-              },
-              {
-                path: "detail",
-                element: <PitcherDetail />,
-              },
-            ],
-          },
-          {
-            path: "catcher",
-            children: [
-              {
-                index: true,
-                element: <Catcher />,
-              },
-              {
-                path: "detail",
-                element: <CatcherDetail />,
-              },
-            ],
-          },
-          {
-            path: "infielder",
-            children: [
-              {
-                index: true,
-                element: <Infielder />,
-              },
-              {
-                path: "detail",
-                element: <InfielderDetail />,
-              },
-            ],
-          },
-          {
-            path: "outfielder",
-            children: [
-              {
-                index: true,
-                element: <Outfielder />,
-              },
-              {
-                path: "detail",
-                element: <OutfielderDetail />,
-              },
-            ],
-          },
+          // {
+          //   path: "coach",
+          //   children: [
+          //     {
+          //       index: true,
+          //       element: <Coach />,
+          //     },
+          //     {
+          //       path: "detail",
+          //       element: <CoachDetail />,
+          //     },
+          //   ],
+          // },
+          // {
+          //   path: "pitcher",
+          //   children: [
+          //     {
+          //       index: true,
+          //       element: <Pitcher />,
+          //     },
+          //     {
+          //       path: "detail",
+          //       element: <PitcherDetail />,
+          //     },
+          //   ],
+          // },
+          // {
+          //   path: "catcher",
+          //   children: [
+          //     {
+          //       index: true,
+          //       element: <Catcher />,
+          //     },
+          //     {
+          //       path: "detail",
+          //       element: <CatcherDetail />,
+          //     },
+          //   ],
+          // },
+          // {
+          //   path: "infielder",
+          //   children: [
+          //     {
+          //       index: true,
+          //       element: <Infielder />,
+          //     },
+          //     {
+          //       path: "detail",
+          //       element: <InfielderDetail />,
+          //     },
+          //   ],
+          // },
+          // {
+          //   path: "outfielder",
+          //   children: [
+          //     {
+          //       index: true,
+          //       element: <Outfielder />,
+          //     },
+          //     {
+          //       path: "detail",
+          //       element: <OutfielderDetail />,
+          //     },
+          //   ],
+          // },
           {
             path: "cheer",
             element: <Cheer />,
