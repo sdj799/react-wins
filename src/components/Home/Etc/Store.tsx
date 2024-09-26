@@ -1,4 +1,4 @@
-import whiteLogo from "@assets/whiteLogo.svg";
+import whiteLogo from "@assets/images/whiteLogo.svg";
 import styled from "styled-components";
 import Container from "../Common/Container";
 import Description from "../Common/Description";

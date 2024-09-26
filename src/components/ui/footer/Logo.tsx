@@ -1,4 +1,4 @@
-import footerLogo from "@assets/footerLogo.svg";
+import footerLogo from "@assets/images/footerLogo.svg";
 import React from "react";
 import styled from "styled-components";
 
