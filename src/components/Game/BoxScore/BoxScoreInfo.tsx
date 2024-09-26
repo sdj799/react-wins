@@ -102,7 +102,8 @@ const BoxScoreInfo = () => {
               $disabled={!schedule.prev}
               onClickHandler={() =>
                 schedule.prev && fetchHandler(schedule.prev.gameDate.toString(), schedule.prev.gmkey)
-              }></ControllBtn>
+              }
+            />
             <DateSpan>{stringDate(schedule.current.gameDate.toString())}</DateSpan>
             <ControllBtn
               type="button"
@@ -110,7 +111,8 @@ const BoxScoreInfo = () => {
               $disabled={!schedule.next}
               onClickHandler={() =>
                 schedule.next && fetchHandler(schedule.next.gameDate.toString(), schedule.next.gmkey)
-              }></ControllBtn>
+              }
+            />
           </div>
           <InfoWrapper>
             <InfoUl>
