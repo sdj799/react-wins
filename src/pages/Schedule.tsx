@@ -1,6 +1,8 @@
 import Broadcast from "@components/Game/Schedule/Broadcast";
 import Calendar from "@components/Game/Schedule/Calendar";
 import ScheduleList from "@components/Game/Schedule/ScheduleList";
+import { useEffect } from "react";
+import { useHomeStore } from "store/actions/useHomeStore";
 import styled from "styled-components";
 
 const ScheduleStyle = styled.section`
@@ -13,6 +15,12 @@ const ScheduleStyle = styled.section`
 `;
 
 const Schedule = () => {
+  const fetchRecentGames = useHomeStore((state) => state.fetchRecentGames);
+
+  useEffect(() => {
+    fetchRecentGames();
+  }, []);
+
   return (
     <ScheduleStyle>
       <ScheduleList />

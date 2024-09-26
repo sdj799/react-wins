@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { format } from "date-fns";
+import { useEffect, useState } from "react";
+import { useScheduleStore } from "store/actions/useScheduleStore";
 import styled from "styled-components";
 import Cells from "./Calendar/Cells";
 import Days from "./Calendar/Days";
@@ -36,23 +38,47 @@ const CalendarStyle = styled.div`
 `;
 
 const Calendar = () => {
+  const fetchMonthSchedule = useScheduleStore((state) => state.fetchMonthSchedule);
+  const fetchAllGameSchedule = useScheduleStore((state) => state.fetchAllGameSchedule);
+
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState("");
   const [activeTab, setActiveTab] = useState("kt wiz 경기");
 
+  const formattedDate = format(currentMonth, "yyyyMM");
+
+  useEffect(() => {
+    fetchMonthSchedule(formattedDate);
+  }, [formattedDate]);
+
+  useEffect(() => {
+    if (activeTab !== "kt wiz 경기") fetchAllGameSchedule(formattedDate);
+  }, [formattedDate]);
+
   return (
     <CalendarStyle>
       <div>
-        <Tab activeTab={activeTab} setActiveTab={setActiveTab} />
-        <Header currentMonth={currentMonth} setCurrentMonth={setCurrentMonth} />
+        <Tab activeTab={activeTab} setActiveTab={setActiveTab} formattedDate={formattedDate} />
+        <Header currentMonth={currentMonth} setCurrentMonth={setCurrentMonth} formattedDate={formattedDate} />
         <Result />
       </div>
       <div>
         <Days />
         {activeTab === "kt wiz 경기" ? (
-          <Cells currentMonth={currentMonth} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
+          <Cells
+            currentMonth={currentMonth}
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+            formattedDate={formattedDate}
+            isKtwizData
+          />
         ) : (
-          <Cells currentMonth={currentMonth} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
+          <Cells
+            currentMonth={currentMonth}
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+            formattedDate={formattedDate}
+          />
         )}
       </div>
       <span>* 경기 일정은 사정에 따라 변동될 수있습니다.</span>

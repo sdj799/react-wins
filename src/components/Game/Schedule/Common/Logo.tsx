@@ -1,15 +1,16 @@
 import styled from "styled-components";
 
 interface LogoProps {
-  src: string;
+  homeLogo?: string;
+  visitLogo?: string;
 }
 
 const LogoStyle = styled.img`
   width: 100%;
-  max-width: 56px;
+  max-width: 70px;
 `;
 
-const Logo = ({ src }: LogoProps) => {
-  return <LogoStyle src={src} alt="logo" />;
+const Logo = ({ homeLogo, visitLogo }: LogoProps) => {
+  return <LogoStyle src={homeLogo || visitLogo} alt="logo" />;
 };
 export default Logo;

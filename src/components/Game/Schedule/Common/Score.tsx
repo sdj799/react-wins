@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 interface ScoreProps {
-  visitScore: number;
-  homeScore: number;
+  visitScore?: number;
+  homeScore?: number;
 }
 
 const ScoreStyle = styled.div`
@@ -17,7 +17,7 @@ const ScoreStyle = styled.div`
 const Score = ({ visitScore, homeScore }: ScoreProps) => {
   return (
     <ScoreStyle>
-      <span>{`${visitScore} : ${homeScore}`}</span>
+      {!visitScore && !homeScore ? <span>VS</span> : <span>{`${visitScore} : ${homeScore}`}</span>}
     </ScoreStyle>
   );
 };
