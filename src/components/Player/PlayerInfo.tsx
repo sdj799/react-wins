@@ -151,7 +151,7 @@ const PlayerInfo = ({ playerType }: { playerType: string }) => {
                   </dl>
                 </PlayerRecord>
               )}
-              {(playerType === "catcher" || playerType === "infeilder" || playerType === "outfielder") && (
+              {(playerType === "catcher" || playerType === "infielder" || playerType === "outfielder") && (
                 <PlayerRecord>
                   <dl>
                     <PlayerRecordDt>{player?.gyear} 정규리그 성적 : </PlayerRecordDt>
