@@ -11,14 +11,10 @@ export type PlayerStoreType = {
   player: FetchPlayerDetail | null;
   pitcherSeasonSummary: PitcherType | null;
   hitterSeasonSummary: HitterType | null;
-  pitcherRecentRecordList: PitcherRecentType | null;
-  hitterRecentRecordList: HitterRecentType | null;
-  pitcherYearRecordList: PitcherTotalType | null;
-  hitterYearRecordList: HitterTotalType | null;
-  fetchCoachList: () => void;
-  fetchPlayerList: (url: string) => void;
-  fetchCoachDetail: (pcode: string) => void;
-  fetchPlayerDetail: (url: string, pcode: string) => void;
+  pitcherRecentRecordList: PitcherRecentType[] | null;
+  hitterRecentRecordList: HitterRecentType[] | null;
+  pitcherYearRecordList: PitcherTotalType[] | null;
+  hitterYearRecordList: HitterTotalType[] | null;
   setPlayerList: (data) => void;
   setPlayer: (data) => void;
   setPitcherDetail: (data) => void;

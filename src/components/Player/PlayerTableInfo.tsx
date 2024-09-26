@@ -17,7 +17,6 @@ import {
 import { TableMargin } from "@styles/PlayerTable.style";
 import { filterData } from "@utils/filterData";
 import { filterPitRecentData } from "@utils/fiterPlayerData";
-import { hitRecentData, hitterData, hitTotalData, pitcherData, pitRecentData, pitTotalData } from "data/playerData";
 import { usePlayerStore } from "store/actions/usePlayerStore";
 import styled from "styled-components";
 import PlayerChart from "./PlayerChart";
@@ -32,17 +31,33 @@ const TableWrapper = styled.div`
 const PlayerTableInfo = ({ isPitcher, menu }: { isPitcher: boolean; menu: string }) => {
   const pitcherSeasonSummary = usePlayerStore((state) => state.pitcherSeasonSummary);
   const hitterSeasonSummary = usePlayerStore((state) => state.hitterSeasonSummary);
+  const pitcherRecentRecordList = usePlayerStore((state) => state.pitcherRecentRecordList) || [];
+  const hitterRecentRecordList = usePlayerStore((state) => state.hitterRecentRecordList) || [];
+  const pitcherYearRecordList = usePlayerStore((state) => state.pitcherYearRecordList) || [];
+  const hitterYearRecordList = usePlayerStore((state) => state.hitterYearRecordList) || [];
 
   if ((!isPitcher && !hitterSeasonSummary) || (isPitcher && !pitcherSeasonSummary)) return <></>;
 
-  const filteredPitchers = pitcherData.map((data) => filterData(data, pitcherHeaders)) as FilterPitcherType[];
-  const filteredPitchers2 = pitcherData.map((data) => filterData(data, pitcherHeaders2)) as FilterPitcherType2[];
-  const filteredHitters = hitterData.map((data) => filterData(data, hitterHeaders)) as FilterHitterType[];
-  const filteredHitters2 = hitterData.map((data) => filterData(data, hitterHeaders2)) as FilterHitterType2[];
-  const filteredPitRecents: FilterPitRecentType[] = pitRecentData.map(filterPitRecentData);
-  const filteredHitRecents = hitRecentData.map((data) => filterData(data, hitRecentHeaders)) as FilterHitRecentType[];
-  const filteredPitTotals = pitTotalData.map((data) => filterData(data, pitTotalHeaders)) as FilterPitTotalType[];
-  const filteredHitTotals = hitTotalData.map((data) => filterData(data, hitTotalHeaders)) as FilterHitTotalType[];
+  const filteredPitchers =
+    pitcherSeasonSummary && ([filterData(pitcherSeasonSummary, pitcherHeaders)] as FilterPitcherType[]);
+  const filteredPitchers2 =
+    pitcherSeasonSummary && ([filterData(pitcherSeasonSummary, pitcherHeaders2)] as FilterPitcherType2[]);
+  const filteredHitters =
+    hitterSeasonSummary && ([filterData(hitterSeasonSummary, hitterHeaders)] as FilterHitterType[]);
+  const filteredHitters2 =
+    hitterSeasonSummary && ([filterData(hitterSeasonSummary, hitterHeaders2)] as FilterHitterType2[]);
+
+  const filteredPitRecents: FilterPitRecentType[] = pitcherRecentRecordList.map(filterPitRecentData);
+
+  const filteredHitRecents = hitterRecentRecordList.map((data) =>
+    filterData(data, hitRecentHeaders)
+  ) as FilterHitRecentType[];
+  const filteredPitTotals = pitcherYearRecordList.map((data) =>
+    filterData(data, pitTotalHeaders)
+  ) as FilterPitTotalType[];
+  const filteredHitTotals = hitterYearRecordList.map((data) =>
+    filterData(data, hitTotalHeaders)
+  ) as FilterHitTotalType[];
   return (
     <>
       <TableWrapper>
@@ -50,15 +65,19 @@ const PlayerTableInfo = ({ isPitcher, menu }: { isPitcher: boolean; menu: string
           <>
             {menu === "league" && (
               <>
-                <PlayerTable<FilterPitcherType>
-                  resData={filteredPitchers}
-                  headers={pitcherHeaders.map((item) => item[1])}
-                />
+                {filteredPitchers && (
+                  <PlayerTable<FilterPitcherType>
+                    resData={filteredPitchers}
+                    headers={pitcherHeaders.map((item) => item[1])}
+                  />
+                )}
                 <TableMargin />
-                <PlayerTable<FilterPitcherType2>
-                  resData={filteredPitchers2}
-                  headers={pitcherHeaders2.map((item) => item[1])}
-                />
+                {filteredPitchers2 && (
+                  <PlayerTable<FilterPitcherType2>
+                    resData={filteredPitchers2}
+                    headers={pitcherHeaders2.map((item) => item[1])}
+                  />
+                )}
                 {pitcherSeasonSummary && (
                   <PlayerChart
                     isPitcher={isPitcher}
@@ -92,15 +111,19 @@ const PlayerTableInfo = ({ isPitcher, menu }: { isPitcher: boolean; menu: string
           <>
             {menu === "league" && (
               <>
-                <PlayerTable<FilterHitterType>
-                  resData={filteredHitters}
-                  headers={hitterHeaders.map((item) => item[1])}
-                />
+                {filteredHitters && (
+                  <PlayerTable<FilterHitterType>
+                    resData={filteredHitters}
+                    headers={hitterHeaders.map((item) => item[1])}
+                  />
+                )}
                 <TableMargin />
-                <PlayerTable<FilterHitterType2>
-                  resData={filteredHitters2}
-                  headers={hitterHeaders2.map((item) => item[1])}
-                />
+                {filteredHitters2 && (
+                  <PlayerTable<FilterHitterType2>
+                    resData={filteredHitters2}
+                    headers={hitterHeaders2.map((item) => item[1])}
+                  />
+                )}
                 {hitterSeasonSummary && (
                   <PlayerChart
                     isPitcher={isPitcher}
