@@ -24,13 +24,55 @@ const CellsStyle = styled.div`
 
     & > li {
       width: calc(100% / 7);
-      min-height: 180px;
+      height: 180px;
       display: flex;
       flex-direction: column;
       padding: 10px;
       border-right: 1px solid #d2d2d2;
       text-align: right;
       cursor: pointer;
+      overflow: hidden;
+      gap: 5px;
+
+      & > div:first-child {
+        position: relative;
+        width: 100%;
+
+        & > strong {
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 25px;
+          height: 25px;
+          border-radius: 3px;
+          color: #fff;
+          font-weight: 400;
+
+          &.victory {
+            background-color: #ec090b;
+          }
+
+          &.defeat {
+            background-color: #343434;
+          }
+
+          &.draw {
+            background-color: #9d9d9d;
+          }
+
+          &.cancel {
+            background-color: #0098af;
+          }
+        }
+
+        & > span {
+          font-size: 14px;
+          font-weight: 300;
+        }
+      }
 
       &.notCurrentMonth {
         cursor: auto;
@@ -54,10 +96,12 @@ const CellsStyle = styled.div`
 
 const CellsInnerStyle = styled.div`
   width: 100%;
+  height: 180px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: scroll;
   gap: 10px;
 
   & > div {
@@ -68,37 +112,6 @@ const CellsInnerStyle = styled.div`
     & > span {
       font-size: 14px;
       font-weight: 300;
-    }
-  }
-
-  & > span {
-    font-size: 14px;
-    font-weight: 300;
-  }
-
-  & > strong {
-    position: absolute;
-    top: -15px;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 25px;
-    height: 25px;
-    border-radius: 3px;
-    color: #fff;
-    font-weight: 400;
-
-    &.victory {
-      background-color: #ec090b;
-    }
-
-    &.defeat {
-      background-color: #343434;
-    }
-
-    &.draw {
-      background-color: #9d9d9d;
     }
   }
 
@@ -166,21 +179,27 @@ const Cells = ({ isKtwizData, currentMonth, setSelectedDate }: CellsProps) => {
           }>
           {isCurrentMonth && (
             <>
-              <span>{format(currentDay, "d")}</span>
-              {isKtwizData && currentDayData && (
-                <CellsInnerStyle>
+              <div>
+                {isKtwizData && currentDayData && (
                   <strong
                     className={
-                      currentDayData.outcome === "승"
+                      currentDayData?.outcome === "승"
                         ? "victory"
-                        : currentDayData.outcome === "패"
+                        : currentDayData?.outcome === "패"
                           ? "defeat"
-                          : currentDayData.outcome === "무"
+                          : currentDayData?.outcome === "무"
                             ? "draw"
-                            : ""
+                            : currentDayData?.outcome === "취"
+                              ? "cancel"
+                              : ""
                     }>
-                    {currentDayData.outcome}
+                    {currentDayData?.outcome}
                   </strong>
+                )}
+                <span>{format(currentDay, "d")}</span>
+              </div>
+              {isKtwizData && currentDayData && (
+                <CellsInnerStyle>
                   <div>
                     <img src={isHome ? currentDayData.visitLogo : currentDayData.homeLogo} alt="logo" />
                     <span>{`${currentDayData.gtime} ${currentDayData.stadium}`}</span>
