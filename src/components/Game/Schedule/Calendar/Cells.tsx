@@ -153,15 +153,15 @@ const Cells = ({ isKtwizData, currentMonth, setSelectedDate }: CellsProps) => {
 
       return (
         <li
-          key={format(currentDay, "yyyyMMdd")} // Unique key for each day
+          key={format(currentDay, "yyyyMMdd")}
           onClick={() => isCurrentMonth && isKtwizData && currentDayData && onDateClickHandler(currentDay)}
           className={
-            !isCurrentMonth || !currentDayWholeData || (isKtwizData && !currentDayData)
+            !isCurrentMonth || (isKtwizData && !currentDayData) || !isKtwizData
               ? "notCurrentMonth"
-              : isHome && isKtwizData
+              : isKtwizData && isHome
                 ? "home"
                 : !isKtwizData && currentDayWholeData
-                  ? "whole notCurrentMonth"
+                  ? "whole"
                   : ""
           }>
           {isCurrentMonth && (
