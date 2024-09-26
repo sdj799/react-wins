@@ -1,5 +1,4 @@
-import ClubDescription from "@components/About/ClubDescription";
-import ClubHistory from "@components/About/ClubHistory";
+import About from "@pages/About";
 import Audience from "@pages/Audience.tsx";
 import BoxScore from "@pages/BoxScore";
 import Cheer from "@pages/Cheer.tsx";
@@ -43,11 +42,11 @@ export const router = createBrowserRouter([
         children: [
           {
             path: "about",
-            element: <ClubDescription />,
+            element: <About />,
           },
           {
             path: "history",
-            element: <ClubHistory />,
+            element: "연혁 component",
           },
           {
             path: "bi",
