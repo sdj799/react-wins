@@ -32,6 +32,9 @@ const RankingChart = () => {
   const options = {
     tooltip: {
       trigger: "item",
+      formatter: (params: { name: string; data: number }) => {
+        return `${params.name}<br/>${params.data + 1}위`;
+      },
     },
     grid: {
       left: "5%",
@@ -62,7 +65,7 @@ const RankingChart = () => {
     },
     series: [
       {
-        data: teamRank?.map((item) => item.rank),
+        data: teamRank?.map((item) => item.rank - 1),
         type: "line", //차트 타입
         lineStyle: {
           color: "#ec0a0b",
