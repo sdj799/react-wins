@@ -32,6 +32,9 @@ const RankingChart = () => {
   const options = {
     tooltip: {
       trigger: "item",
+      formatter: (params: { name: string; data: number }) => {
+        return `${params.name}<br/>${params.data + 1}위`;
+      },
     },
     grid: {
       left: "5%",
