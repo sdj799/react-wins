@@ -34,6 +34,10 @@ const CellsStyle = styled.div`
       overflow: hidden;
       gap: 5px;
 
+      &.li {
+        overflow: hidden;
+      }
+
       & > div:first-child {
         position: relative;
         width: 100%;
@@ -101,8 +105,16 @@ const CellsInnerStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: scroll;
+  overflow-y: auto;
   gap: 10px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &.scroll {
+    overflow-y: scroll;
+  }
 
   & > div {
     display: flex;
@@ -212,7 +224,15 @@ const Cells = ({ isKtwizData, currentMonth, setSelectedDate }: CellsProps) => {
                   {wholeDataList
                     .filter((data) => data.displayDate === format(currentDay, "yyyyMMdd"))
                     .map((data, index) => (
-                      <p key={index} className={data.visit.includes("KT") || data.home.includes("KT") ? "red" : ""}>
+                      <p
+                        key={index}
+                        className={
+                          data.visit.includes("KT") || data.home.includes("KT")
+                            ? "red"
+                            : data.visit.length > 6 && data.home.length > 6
+                              ? "scroll"
+                              : ""
+                        }>
                         {`${data.visit}${data.visitScore ? data.visitScore : ""}:${data.home}${data.homeScore ? data.homeScore : ""} [${data.stadium}]`}
                       </p>
                     ))}
