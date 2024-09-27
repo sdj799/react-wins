@@ -1,11 +1,7 @@
-import { ScheduleElType } from "@customTypes/watchPoint";
+import { useWatchPointStore } from "store/actions/useWatchPointStore";
 import styled from "styled-components";
 import Description from "./Description";
 import Title from "./Title";
-
-interface ChannelProps {
-  filteredData: ScheduleElType | null;
-}
 
 const ChannelStyle = styled.div`
   width: 100%;
@@ -13,11 +9,12 @@ const ChannelStyle = styled.div`
   flex-direction: column;
 `;
 
-const Channel = ({ filteredData }: ChannelProps) => {
+const Channel = () => {
+  const schedule = useWatchPointStore((state) => state.schedule);
   return (
     <ChannelStyle>
       <Title title="중계 채널" $marginBottom="20px;" />
-      <Description desc={`${filteredData?.broadcast}`} isChannel />
+      <Description desc={`${schedule?.current.broadcast}`} isChannel />
     </ChannelStyle>
   );
 };

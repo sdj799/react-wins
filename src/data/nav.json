@@ -7,20 +7,6 @@
       {
         "id": 1,
         "path": "/ktwiz/about"
-      },
-      {
-        "id": 2,
-        "path": "/ktwiz/history"
-      }
-    ],
-    "tab": [
-      {
-        "id": 1,
-        "tab": "구단 소개"
-      },
-      {
-        "id": 2,
-        "tab": "구단 연혁"
       }
     ]
   },
@@ -212,7 +198,7 @@
       },
       {
         "id": 4,
-        "path": "/game/watchPoint"
+        "path": "/game/watchpoint"
       },
       {
         "id": 5,

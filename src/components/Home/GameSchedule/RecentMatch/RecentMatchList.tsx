@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useHomeStore } from "store/actions/useHomeStore";
 import styled from "styled-components";
 import MatchesHeader from "./MatchesHeader";
@@ -16,17 +16,19 @@ const RecentMatchListStyle = styled.div`
 const RecentMatchList = () => {
   const fetchRecentGames = useHomeStore((state) => state.fetchRecentGames);
   const data = useHomeStore((state) => state.data);
-
-  const recentGames = [data?.prev, data?.current, data?.next];
   const [currentIndex, setCurrentIndex] = useState(1);
-  const filteredData = recentGames[currentIndex];
+
+  const recentGames = useMemo(() => [data?.prev, data?.current, data?.next], [data]);
+  const filteredData = useMemo(() => recentGames[currentIndex], [recentGames, currentIndex]);
 
   useEffect(() => {
     fetchRecentGames();
   }, []);
 
   useEffect(() => {
-    setCurrentIndex(1);
+    if (currentIndex !== 1) {
+      setCurrentIndex(1);
+    }
   }, [data]);
 
   if (!filteredData) return null;
@@ -43,4 +45,4 @@ const RecentMatchList = () => {
     </RecentMatchListStyle>
   );
 };
-export default RecentMatchList;
+export default React.memo(RecentMatchList);

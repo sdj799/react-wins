@@ -1,3 +1,4 @@
+import React from "react";
 import { FaFigma, FaGithub } from "react-icons/fa";
 import { RiNotionFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
@@ -28,26 +29,31 @@ const SocialStyle = styled.ul`
 `;
 
 const Social = () => {
+  const socialList = [
+    {
+      link: "https://github.com/project-wins/react-ktwiz",
+      icon: <FaGithub />,
+    },
+    {
+      link: "https://www.figma.com/design/cYvtDnXxX6l9mmYBOi2XkN/Ktwiz?node-id=0-1&t=LnNYLH0FyPx5eO8q-1",
+      icon: <FaFigma />,
+    },
+    {
+      link: "https://www.notion.so/sniperfactory1/KT-wins-fa7e73fb42cf42fa9c1b6e63516986b2",
+      icon: <RiNotionFill />,
+    },
+  ];
+
   return (
     <SocialStyle>
-      <li>
-        <Link to="https://github.com/project-wins/react-ktwiz" target="_blank">
-          <FaGithub />
-        </Link>
-      </li>
-      <li>
-        <Link
-          to="https://www.figma.com/design/cYvtDnXxX6l9mmYBOi2XkN/Ktwiz?node-id=0-1&t=LnNYLH0FyPx5eO8q-1"
-          target="_blank">
-          <FaFigma />
-        </Link>
-      </li>
-      <li>
-        <Link to="https://www.notion.so/sniperfactory1/KT-wins-fa7e73fb42cf42fa9c1b6e63516986b2" target="_blank">
-          <RiNotionFill />
-        </Link>
-      </li>
+      {socialList.map((social, index) => (
+        <li key={index}>
+          <Link to={social.link} target="_blank">
+            {social.icon}
+          </Link>
+        </li>
+      ))}
     </SocialStyle>
   );
 };
-export default Social;
+export default React.memo(Social);

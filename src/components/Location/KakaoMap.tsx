@@ -1,5 +1,6 @@
 import img from "@assets/icons/historyIcon.png";
 import { TKakaoMapp } from "@customTypes/kakaomap";
+import React from "react";
 import { Map, MapMarker, useKakaoLoader } from "react-kakao-maps-sdk";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
@@ -47,4 +48,4 @@ const KakaoMap = ({ lat, lng, location }: TKakaoMapp) => {
     </>
   );
 };
-export default KakaoMap;
+export default React.memo(KakaoMap);

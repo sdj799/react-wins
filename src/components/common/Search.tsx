@@ -1,3 +1,4 @@
+import React from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import SearchButton from "./SearchButton";
@@ -44,4 +45,4 @@ const Search = () => {
     </SearchFormStyle>
   );
 };
-export default Search;
+export default React.memo(Search);

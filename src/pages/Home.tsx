@@ -1,5 +1,6 @@
 import Etc from "@components/Home/Etc";
 import GameSchedule from "@components/Home/GameSchedule";
+import Highlight from "@components/Home/Highlight";
 import WizGallery from "@components/Home/WizGallery";
 
 import styled from "styled-components";
@@ -18,6 +19,7 @@ const Home = () => {
   return (
     <HomeStyle>
       <GameSchedule />
+      <Highlight />
       <WizGallery />
       <Etc />
     </HomeStyle>

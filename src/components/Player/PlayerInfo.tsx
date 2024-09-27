@@ -96,7 +96,7 @@ const PlayerRecordDd = styled.dd`
   line-height: 53px;
 `;
 
-const PlayerInfo = ({ isPitcher, isCatcher }: { isPitcher?: boolean; isCatcher?: boolean }) => {
+const PlayerInfo = ({ playerType }: { playerType: string }) => {
   const player = usePlayerStore((state) => state.player);
   const pitcherSeasonSummary = usePlayerStore((state) => state.pitcherSeasonSummary);
   const hitterSeasonSummary = usePlayerStore((state) => state.hitterSeasonSummary);
@@ -134,11 +134,11 @@ const PlayerInfo = ({ isPitcher, isCatcher }: { isPitcher?: boolean; isCatcher?:
                     ))}
                   </ul>
                   <PictureButton href={`/media/photos/1?searchWord=${player?.playerName}&search.sort=400`}>
-                    {(isCatcher || isPitcher) && "선수 "}사진 보기 <FaChevronRight fontSize={"0.8em"} />
+                    {playerType !== "coach" && "선수 "}사진 보기 <FaChevronRight fontSize={"0.8em"} />
                   </PictureButton>
                 </InfoListWrapper>
               </dl>
-              {isPitcher && (
+              {playerType === "pitcher" && (
                 <PlayerRecord>
                   <dl>
                     <PlayerRecordDt>{player?.gyear} 정규리그 성적 : </PlayerRecordDt>
@@ -151,7 +151,7 @@ const PlayerInfo = ({ isPitcher, isCatcher }: { isPitcher?: boolean; isCatcher?:
                   </dl>
                 </PlayerRecord>
               )}
-              {isCatcher && (
+              {(playerType === "catcher" || playerType === "infielder" || playerType === "outfielder") && (
                 <PlayerRecord>
                   <dl>
                     <PlayerRecordDt>{player?.gyear} 정규리그 성적 : </PlayerRecordDt>

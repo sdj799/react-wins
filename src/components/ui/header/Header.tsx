@@ -1,5 +1,5 @@
 import useDetectScroll from "hooks/useDetectScroll";
-import { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Nav from "./gnb/Nav";
@@ -47,13 +47,27 @@ const Header = () => {
   const [$isShowNav, setIsShowNav] = useState(false);
   const { $scrollHeight } = useDetectScroll();
 
-  const onMouseOverHandler = () => {
-    setIsShowNav(true);
-  };
+  const debounce = useCallback((func: () => void, delay: number) => {
+    let timeoutId: NodeJS.Timeout;
+    return () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(func, delay);
+    };
+  }, []);
 
-  const onMouseOutHandler = () => {
-    setIsShowNav((prev) => !prev);
-  };
+  const onMouseOverHandler = useCallback(
+    debounce(() => {
+      setIsShowNav(true);
+    }, 60),
+    []
+  );
+
+  const onMouseOutHandler = useCallback(
+    debounce(() => {
+      setIsShowNav(false);
+    }, 60),
+    []
+  );
 
   return (
     <HeaderStyle
@@ -70,4 +84,5 @@ const Header = () => {
     </HeaderStyle>
   );
 };
-export default Header;
+
+export default React.memo(Header);

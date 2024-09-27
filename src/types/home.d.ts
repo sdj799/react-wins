@@ -23,6 +23,8 @@ export type RecentGamesType = {
   gtime: string;
   gyear: string;
   home: string;
+  homeDecision: string;
+  homeDecisionPitcher: string;
   homeFullname: string;
   homeKey: string;
   homeLogo: string;
@@ -35,6 +37,8 @@ export type RecentGamesType = {
   stadiumKey: string;
   status: string;
   visit: string;
+  visitDecision: string;
+  visitDecisionPitcher: string;
   visitFullname: string;
   visitKey: string;
   visitLogo: string;

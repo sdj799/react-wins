@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 const FooterNavStyle = styled.ul`
@@ -15,21 +16,16 @@ const FooterNavStyle = styled.ul`
 `;
 
 const Nav = () => {
+  const navList = ["개인정보 처리방침", "이용약관", "이메일무단수집거부", "Sitemap"];
+
   return (
     <FooterNavStyle>
-      <li>
-        <button type="button">개인정보 처리방침</button>
-      </li>
-      <li>
-        <button type="button">이용약관</button>
-      </li>
-      <li>
-        <button type="button">이메일무단수집거부</button>
-      </li>
-      <li>
-        <button type="button">Sitemap</button>
-      </li>
+      {navList.map((nav, index) => (
+        <li key={index}>
+          <button type="button">{nav}</button>
+        </li>
+      ))}
     </FooterNavStyle>
   );
 };
-export default Nav;
+export default React.memo(Nav);

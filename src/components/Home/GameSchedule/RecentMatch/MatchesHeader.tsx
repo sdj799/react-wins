@@ -1,4 +1,5 @@
 import { RecentGamesType } from "@customTypes/home";
+import React, { useCallback } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import styled from "styled-components";
 import ControllBtn from "./ControllBtn";
@@ -23,13 +24,13 @@ const MatchesHeaderStyle = styled.div`
 `;
 
 const MatchesHeader = ({ recentGames, filteredData, currentIndex, setCurrentIndex }: MatchedHeaderProps) => {
-  const movePrevHandler = () => {
+  const movePrevHandler = useCallback(() => {
     if (currentIndex > 0) setCurrentIndex(currentIndex - 1);
-  };
+  }, [currentIndex, setCurrentIndex]);
 
-  const moveNextHandler = () => {
+  const moveNextHandler = useCallback(() => {
     if (currentIndex < recentGames.length - 1) setCurrentIndex(currentIndex + 1);
-  };
+  }, [currentIndex, recentGames.length, setCurrentIndex]);
   
   return (
     <MatchesHeaderStyle>
@@ -53,4 +54,4 @@ const MatchesHeader = ({ recentGames, filteredData, currentIndex, setCurrentInde
     </MatchesHeaderStyle>
   );
 };
-export default MatchesHeader;
+export default React.memo(MatchesHeader);

@@ -1,3 +1,4 @@
+import React, { useCallback } from "react";
 import { IoTriangle } from "react-icons/io5";
 import styled from "styled-components";
 
@@ -21,11 +22,11 @@ const TopButton = () => {
   return (
     <>
       <TopBtnWrapper>
-        <TopBtn onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+        <TopBtn onClick={useCallback(() => window.scrollTo({ top: 0, behavior: "smooth" }), [])}>
           TOP <IoTriangle />
         </TopBtn>
       </TopBtnWrapper>
     </>
   );
 };
-export default TopButton;
+export default React.memo(TopButton);
