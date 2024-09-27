@@ -65,7 +65,7 @@ const RankingChart = () => {
     },
     series: [
       {
-        data: teamRank?.map((item) => item.rank),
+        data: teamRank?.map((item) => item.rank - 1),
         type: "line", //차트 타입
         lineStyle: {
           color: "#ec0a0b",
