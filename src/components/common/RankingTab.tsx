@@ -14,9 +14,7 @@ const TabItem = styled.li`
   height: 40px;
   box-sizing: border-box;
   border: 1px solid #e4e4e4;
-  &:active {
-    background-color: red;
-  }
+
   &:not(:first-child) {
     border-left: none;
   }
@@ -37,13 +35,7 @@ const RankingTab = () => {
   return (
     <Tab>
       <TabItem>
-        <TabTitle to="">팀순위</TabTitle>
-      </TabItem>
-      <TabItem>
-        <TabTitle to="../pitcher">투수순위</TabTitle>
-      </TabItem>
-      <TabItem>
-        <TabTitle to="../batter">타자순위</TabTitle>
+        <TabTitle to="../team">팀순위</TabTitle>
       </TabItem>
       <TabItem>
         <TabTitle to="../crowd">관중현황</TabTitle>
