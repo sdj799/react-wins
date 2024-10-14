@@ -7,9 +7,6 @@ export const useScheduleStore = create<ScheduleStoreType>((set) => ({
   wholeList: [],
   fetchMonthSchedule: async (date: string) => {
     const data = await api(`game/monthschedule?yearMonth=${date}`);
-
-    console.log(data.data.list);
-
     data.data && set({ list: data.data.list });
   },
   fetchAllGameSchedule: async (date: string) => {
