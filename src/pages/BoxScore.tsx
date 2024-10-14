@@ -5,6 +5,8 @@ import { FilterGameBatterType, FilterGamePitcherType } from "@customTypes/boxSco
 import { gameBatterHeaders, gamePitcherHeaders } from "@data/gameHeaders";
 import { filterGameBatterData, filterGamePitcherData } from "@utils/filterBoxScoreData";
 import { useBoxScoreQuery } from "hooks/useBoxScore";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useGameStore } from "store/actions/useGameStore";
 import styled from "styled-components";
 import LocationTitle from "../components/Location/LocationTitle";
@@ -24,6 +26,13 @@ const BoxScore = () => {
   const vPitchers = useGameStore((state) => state.vPitchers);
   const schedule = useGameStore((state) => state.schedule);
   const daySchedule = useGameStore((state) => state.daySchedule);
+
+  const setDaySchedule = useGameStore((state) => state.setDaySchedule);
+  const { gameDate, gmkey } = useParams();
+
+  useEffect(() => {
+    setDaySchedule({ gameDate, gmkey });
+  }, [gameDate, gmkey]);
 
   const { isError, isLoading } = useBoxScoreQuery(daySchedule?.gameDate, daySchedule?.gmkey);
 

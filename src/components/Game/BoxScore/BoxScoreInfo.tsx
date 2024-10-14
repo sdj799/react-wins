@@ -2,6 +2,7 @@ import { FilterScoreboardType } from "@customTypes/boxScore";
 import { stringDate } from "@utils/date";
 import { filterScoreboardData } from "@utils/filterBoxScoreData";
 import { GrNext, GrPrevious } from "react-icons/gr";
+import { useNavigate } from "react-router-dom";
 import { useGameStore } from "store/actions/useGameStore";
 import styled from "styled-components";
 import ControllBtn from "../Common/ControllButton";
@@ -79,13 +80,9 @@ const Team2 = styled.div`
 const BoxScoreInfo = () => {
   const schedule = useGameStore((state) => state.schedule);
   const scoreBoard = useGameStore((state) => state.scoreBoard);
-  const setDaySchedule = useGameStore((state) => state.setDaySchedule);
 
   const filterScoreBoard = scoreBoard?.map(filterScoreboardData);
-
-  const fetchHandler = (gameDate: string, gmkey: string) => {
-    setDaySchedule({ gameDate, gmkey });
-  };
+  const navigate = useNavigate();
 
   if (!schedule) return <></>;
 
@@ -101,7 +98,7 @@ const BoxScoreInfo = () => {
               icon={<GrPrevious fontSize={"1.5em"} />}
               $disabled={!schedule.prev}
               onClickHandler={() =>
-                schedule.prev && fetchHandler(schedule.prev.gameDate.toString(), schedule.prev.gmkey)
+                schedule.prev && navigate(`/game/boxscore/${schedule.prev.gameDate.toString()}/${schedule.prev.gmkey}`)
               }
             />
             <DateSpan>{stringDate(schedule.current.gameDate.toString())}</DateSpan>
@@ -110,7 +107,7 @@ const BoxScoreInfo = () => {
               icon={<GrNext fontSize={"1.5em"} />}
               $disabled={!schedule.next}
               onClickHandler={() =>
-                schedule.next && fetchHandler(schedule.next.gameDate.toString(), schedule.next.gmkey)
+                schedule.next && navigate(`/game/boxscore/${schedule.next.gameDate.toString()}/${schedule.next.gmkey}`)
               }
             />
           </div>

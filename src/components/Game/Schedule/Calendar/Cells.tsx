@@ -179,7 +179,12 @@ const Cells = ({ isKtwizData, currentMonth, setSelectedDate }: CellsProps) => {
       return (
         <li
           key={format(currentDay, "yyyyMMdd")}
-          onClick={() => isCurrentMonth && isKtwizData && currentDayData && onDateClickHandler(currentDay)}
+          onClick={() =>
+            isCurrentMonth &&
+            isKtwizData &&
+            currentDayData &&
+            onDateClickHandler(currentDay, currentDayData.displayDate, currentDayData.gmkey)
+          }
           className={
             !isCurrentMonth || (isKtwizData && !currentDayData) || !isKtwizData
               ? "notCurrentMonth"
@@ -248,9 +253,9 @@ const Cells = ({ isKtwizData, currentMonth, setSelectedDate }: CellsProps) => {
     day = addDays(day, 7);
   }
 
-  const onDateClickHandler = (day: Date) => {
+  const onDateClickHandler = (day: Date, gameDate: string, gmkey: string) => {
     setSelectedDate(format(day, "yyyyMMdd"));
-    navigate("/game/boxscore");
+    navigate(`/game/boxscore/${gameDate}/${gmkey}`);
   };
 
   return <CellsStyle>{rows}</CellsStyle>;
